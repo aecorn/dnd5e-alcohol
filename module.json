@@ -13,28 +13,7 @@
       "discord": "ekorngutt"
     }
   ],
-  "relationships": {
-    "systems": [
-      {
-        "id": "dnd5e",
-        "type": "system",
-        "compatibility": {
-          "minimum": "2.3.0",
-          "verified": "2.3.1"
-        }
-      }
-    ]
-  },
   "url": "https://github.com/aecorn/foundryvtt-module-alcohol",
-  "scripts": ["scripts/macros.js"],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
-  "styles": [
-    "styles/alcohol.css"
-  ]
+  "manifest": "https://github.com/aecorn/foundryvtt-module-alcohol",
+  "scripts": []
 }
