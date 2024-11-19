@@ -37,12 +37,21 @@ function add_drunk(token){
     if (!token) {
         ui.notifications.warn("Please select a token.");
     } else {
-        let tipsyEffect = {
+        let drunkEffect = {
             name: "Drunk",
             id: "dnd5e-alcohol-drunk", // Use the unique ID from your system
-            icon: "icons/svg/stoned.svg",
+            icon: "icons/svg/down.svg",
             statuses: ["drunk"],
-            changes: [], // Add any mechanical changes here if needed
+            changes: [
+                { key: "system.bonuses.mwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.bonuses.msak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.bonuses.rwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.bonuses.rsak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.abilities.int.save", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.abilities.wis.save", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.abilities.int.check", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+                { key: "system.abilities.wis.check", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 20 }
+            ],
             duration: {
                 rounds: null, // Adjust duration as needed
                 seconds: null
@@ -59,7 +68,7 @@ function add_drunk(token){
             ui.notifications.info("The actor already has the 'Drunk' condition.");
         } else {
             // Apply the effect
-            token.actor.createEmbeddedDocuments("ActiveEffect", [tipsyEffect]).then(() => {
+            token.actor.createEmbeddedDocuments("ActiveEffect", [drunkEffect]).then(() => {
                 console.log("Added 'Drunk' condition to the actor.");
             }).catch(err => {
                 console.error("Failed to apply the 'Drunk' effect:", err);
@@ -68,26 +77,53 @@ function add_drunk(token){
     }
 }
 
-function add_incapacitated(token){
-
-}
-
-function remove_cond(token, condition_name){
+function add_wasted(token){
     if (!token) {
         ui.notifications.warn("Please select a token.");
     } else {
-        // Find the effect by label
-        let effect = token.actor.effects.find(e => e.label === condition_name);
+        let wastedEffect = {
+            name: "wasted",
+            id: "dnd5e-alcohol-wasted", // Use the unique ID from your system
+            icon: "icons/svg/stoned.svg",
+            statuses: ["wasted"],
+            changes: [],
+            duration: {
+                rounds: null, // Adjust duration as needed
+                seconds: null
+            },
+            transfer: false, // Adjust transferability
+            origin: null, // You can specify an origin if required
+            disabled: false, // Ensure the effect is active
+            tint: "#ffffff" // Optional: visual tint
+        };
     
-        if (effect) {
-            effect.delete().then(() => {
-                console.log(`Removed '${condition_name}' condition from the actor.`);
-            }).catch(err => {
-                console.error("Failed to remove effect:", err);
-            });
+        let existingEffect = token.actor.effects.find(e => e.label === "Wasted");
+    
+        if (existingEffect) {
+            ui.notifications.info("The actor already has the 'Wasted' condition.");
         } else {
-            ui.notifications.info(`The actor does not have the '${condition_name}' condition.`);
+            // Apply the effect
+            token.actor.createEmbeddedDocuments("ActiveEffect", [wastedEffect]).then(() => {
+                console.log("Added 'Wasted' condition to the actor.");
+            }).catch(err => {
+                console.error("Failed to apply the 'Wasted' effect:", err);
+            });
         }
+    }
+}
+
+function add_incapacitated(token){
+    game.clt.applyCondition("Incapacitated", token.actor, {allowDuplicates: false, replaceExisting: true});
+}
+function add_poisoned(token){
+    game.clt.applyCondition("Poisoned", token.actor, {allowDuplicates: false, replaceExisting: true});
+}
+
+function remove_condition(token, condition_name){
+    if (!token) {
+        ui.notifications.warn("Please select a token.");
+    } else {
+        game.clt.removeCondition(condition_name, token.actor)
     }
 }
 

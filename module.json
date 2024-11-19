@@ -23,6 +23,16 @@
           "verified": "2.3.1"
         }
       }
+    ],
+    "requires": [
+      {
+        "id": "condition-lab-triggler",
+        "type": "module",
+        "manifest": "https://github.com/mclemente/fvtt-condition-lab-triggler/releases/latest/download/module.json",
+        "compatibility": {
+          "verified": "2.0.3"
+        }
+      }
     ]
   },
   "url": "https://github.com/aecorn/foundryvtt-module-alcohol",

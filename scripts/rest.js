@@ -1,0 +1,1 @@
+"Hook on rests and check for conditions that might hamper gaining effects"
