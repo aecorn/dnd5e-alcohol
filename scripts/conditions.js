@@ -114,6 +114,7 @@ function add_wasted(token){
 
 function add_incapacitated(token){
     game.clt.applyCondition("Incapacitated", token.actor, {allowDuplicates: false, replaceExisting: true});
+    // Roll to see if player starts death saves?
 }
 function add_poisoned(token){
     game.clt.applyCondition("Poisoned", token.actor, {allowDuplicates: false, replaceExisting: true});
