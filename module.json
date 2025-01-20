@@ -24,19 +24,31 @@
         }
       }
     ],
+    
     "requires": [
-      {
-        "id": "condition-lab-triggler",
-        "type": "module",
-        "manifest": "https://github.com/mclemente/fvtt-condition-lab-triggler/releases/latest/download/module.json",
-        "compatibility": {
-          "verified": "2.0.3"
-        }
-      }
+      
     ]
+  
   },
+  "packs": [
+    {
+      "name": "drinks",
+      "label": "Alcoholic Drinks",
+      "entity": "Item",
+      "type": "Item",
+      "system": "dnd5e",
+      "path": "packs/drinks.db",
+      "module": "dnd5e-alcohol"
+    }
+  ],
+  
   "url": "https://github.com/aecorn/foundryvtt-module-alcohol",
-  "esmodules": ["scripts/macros.js"],
+  "esmodules": [
+    "scripts/main.js",
+    "scripts/conditions.js", 
+    "scripts/packs.js",
+    "scripts/rest.js"
+  ],
   "languages": [
     {
       "lang": "en",

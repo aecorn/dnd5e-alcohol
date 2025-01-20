@@ -1,0 +1,47 @@
+"packs": 
+  [
+    {
+      "name": "dnd5e-alcohol-drinks-items",
+      "label": "Alcoholic Drinks and Items",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OWNER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dnd5e-alcohol-feats",
+      "label": "Alcoholic Feats",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OWNER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "macros",
+      "label": "Macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    },
+    {
+      "name": "dnd5e-alcohol-monsters",
+      "label": "Alcoholic Monsters",
+      "type": "Actor",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
+    }
+  ],
