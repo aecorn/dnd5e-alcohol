@@ -1,0 +1,37 @@
+
+.dnd5e2.sheet.actor .meter.inebriation.progress::before {
+    background: linear-gradient(to right, #2473a1 0%, #94a810 100%);
+    border-inline-end: solid #f0e0e0;
+}
+
+.dnd5e2.sheet.actor .meter.hit-dice {
+    height: 25px;
+    font-size: var(--font-size-14);
+}
+
+.inebriation-thresholds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent interaction */
+}
+
+.inebriation-threshold {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 3px,
+        rgb(255, 255, 255) 3px,
+        rgb(255, 255, 255) 6px
+    );
+}
+
+.inebriation-score {
+    padding-inline-start: 55% !important;
+}
