@@ -9,8 +9,10 @@ export const MONSTERS = [
             abilities: { str: 18, dex: 8, con: 16, int: 6, wis: 10, cha: 7 },
             traits: { senses: ["darkvision 60 ft"], languages: ["Giant"] },
             movement: { walk: 30 },
-            actions: [
-                { name: "Smash", type: "melee", damage: "2d8+4" }
+            items: [
+                {   name: "Smash",
+                    type: "weapon",
+                }
             ]
         }
     },
@@ -24,8 +26,8 @@ export const MONSTERS = [
             abilities: { str: 14, dex: 12, con: 18, int: 4, wis: 12, cha: 10 },
             traits: { senses: ["tremorsense 30 ft"], languages: ["Primordial"] },
             movement: { walk: 40, swim: 30 },
-            actions: [
-                { name: "Foamy Slam", type: "melee", damage: "2d10+4" }
+            items: [
+                { name: "Foamy Slam", type: "melee"}
             ]
         }
     }

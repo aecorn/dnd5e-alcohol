@@ -61,7 +61,7 @@ const ALCOHOL_EFFECTS = {
 export async function refresh_conditions(actor) {
     console.log("Refreshing conditions");
 
-    let curr_ineb = actor.getFlag("dnd5e-alcohol", "inebriation");
+    let curr_ineb = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
     let con_mod = actor.system.abilities.con.mod;
     let con_score = actor.system.abilities.con.value;
 
@@ -190,10 +190,10 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
         `;
     } else {
         if (addedConditions.length > 0) {
-            chatContent += `<p><b>Added effects:</b> ${addedConditions.join(", ")}</p>`;
+            chatContent += `<p><b>Drunken effects you have:</b> ${addedConditions.join(", ")}</p>`;
         }
         if (removedConditions.length > 0) {
-            chatContent += `<p><b>Removed effects:</b> ${removedConditions.join(", ")}</p>`;
+            chatContent += `<p><b>Drunken effects you dont have (yet):</b> ${removedConditions.join(", ")}</p>`;
         }
         chatContent += `<p>Alcohol Level: ${alcoholLevel}</p>`;
     }
@@ -213,10 +213,7 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
 async function removeAlcoholEffect(actor, condition, chatMessage = true) {
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
 
-    let existingEffect = actor.effects.find(e => 
-        e.name === ALCOHOL_EFFECTS[condition.toLowerCase()].name &&
-        e.origin?.startsWith("dnd5e-alcohol") // Ensures it's an alcohol effect!
-    );
+    let existingEffect = actor.effects.getName(condition) || false; 
 
     if (existingEffect) {
         await existingEffect.delete();
@@ -226,30 +223,22 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
     }
 }
 
-Hooks.on("updateToken", async (tokenDoc, changes) => {
-    if (!changes.effects) return;
+Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
 
-    const actor = tokenDoc.actor;
-    if (!actor) return;
+    // Find matching effect in ALCOHOL_EFFECTS
+    let effectName = effect.name.toLowerCase();
+    let alcoholEffect = Object.values(ALCOHOL_EFFECTS).find(e => e.name.toLowerCase() === effectName);
 
-    // Get current and previous effects
-    const currentEffects = new Set(tokenDoc.effects);
-    const previousEffects = new Set(changes.effects.before || []);
+    if (alcoholEffect & effectName != "incapacitated") {
 
-    for (const condition of Object.keys(ALCOHOL_EFFECTS)) {
-        let effectIcon = CONFIG.statusEffects.find(e => e.id === condition)?.icon;
-        if (!effectIcon) continue; // Skip if effect icon is not found
+        // Modify the effect directly
+        await effect.updateSource({
+            img: alcoholEffect.img,
+            changes: alcoholEffect.changes,
+            description: alcoholEffect.description,
+        });
 
-        // Check if the condition was toggled ON
-        if (currentEffects.has(effectIcon) && !previousEffects.has(effectIcon)) {
-            await addAlcoholEffect(actor, condition);
-        }
-
-        // Check if the condition was toggled OFF
-        if (!currentEffects.has(effectIcon) && previousEffects.has(effectIcon)) {
-            await removeAlcoholEffect(actor, condition);
-        }
+        console.log(`Custom properties applied to ${effect.name} from the alcohol module.`);
     }
 });
-
 

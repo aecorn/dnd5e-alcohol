@@ -44,6 +44,9 @@ async function ensureCompendium(namespace, name, label, type) {
  */
 async function populateCompendium(packName, dataList) {
     const pack = game.packs.get(packName);
+
+    /* Unlock pack */
+
     if (!pack) {
         console.error(`Compendium '${packName}' not found.`);
         return;
@@ -55,9 +58,18 @@ async function populateCompendium(packName, dataList) {
     for (let data of dataList) {
         if (existingNames.has(data.name)) continue; // Skip if already exists
 
-        await Item.create(data, { pack: packName });
+        if (data.type === "npc") {
+            await Actor.create(data, { pack: packName });
+        } else if (data.type === "consumable" || data.type === "feat") {
+            await Item.create(data, { pack: packName });
+        } else {
+            console.error(`Invalid data type for ${data.name}`);
+            continue;
+        }
         console.log(`Added ${data.name} to ${packName}`);
     }
+
+    /* Lock pack */
 
     ui.notifications.info(`${pack.metadata.label} updated with new content!`);
 }

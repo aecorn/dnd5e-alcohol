@@ -39,15 +39,43 @@
       "system": "dnd5e",
       "path": "packs/drinks.db",
       "module": "dnd5e-alcohol"
+    },
+    {
+      "name": "feats",
+      "label": "Alcohol-Themed Feats",
+      "entity": "Item",
+      "type": "Item",
+      "system": "dnd5e",
+      "path": "packs/feats.db",
+      "module": "dnd5e-alcohol"
+    },
+    {
+      "name": "items",
+      "label": "Alcohol-Themed Items",
+      "entity": "Item",
+      "type": "Item",
+      "system": "dnd5e",
+      "path": "packs/items.db",
+      "module": "dnd5e-alcohol"
+    },
+    {
+      "name": "monsters",
+      "label": "Alcoholic Monsters",
+      "entity": "Actor",
+      "type": "Actor",
+      "system": "dnd5e",
+      "path": "packs/monsters.db",
+      "module": "dnd5e-alcohol"
     }
+    
   ],
-  
   "url": "https://github.com/aecorn/foundryvtt-module-alcohol",
   "esmodules": [
     "scripts/main.js",
     "scripts/conditions.js", 
-    "scripts/packs.js",
-    "scripts/rest.js"
+    "scripts/rest.js",
+    "scripts/sheet.js",
+    "scripts/drinking.js"
   ],
   "languages": [
     {
