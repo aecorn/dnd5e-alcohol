@@ -58,10 +58,10 @@ const ALCOHOL_EFFECTS = {
 };
 
 
-export async function refresh_conditions(actor) {
+export async function refresh_conditions(actor, inebriation = null) {
     console.log("Refreshing conditions");
 
-    let curr_ineb = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let curr_ineb = inebriation || actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
     let con_mod = actor.system.abilities.con.mod;
     let con_score = actor.system.abilities.con.value;
 
@@ -87,7 +87,7 @@ export async function refresh_conditions(actor) {
     }
     if (curr_ineb < (10 + con_mod)) {
         removeEffects.add("Wasted");
-        await actor.unsetFlag("dnd5e-alcohol", "wasted_active");
+        actor.unsetFlag("dnd5e-alcohol", "wasted_active");
     }
 
     /* If inebriation points equals Constitution -> Incapacitated */
@@ -163,7 +163,7 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
         statuses: [effectData.id]
     }]);
     if (chatMessage){
-        AlcoholChatMessage(actor, condition, "add");
+        await AlcoholChatMessage(actor, condition, "add");
     }
     
 }
@@ -199,7 +199,7 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
     }
 
     if (chatContent) {
-        ChatMessage.create({
+        await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: chatContent,
             type: CONST.CHAT_MESSAGE_STYLES.OTHER
@@ -216,9 +216,9 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
     let existingEffect = actor.effects.getName(condition) || false; 
 
     if (existingEffect) {
-        await existingEffect.delete();
+        existingEffect.delete();
         if (chatMessage) {
-            AlcoholChatMessage(actor, condition, "remove");
+            await AlcoholChatMessage(actor, condition, "remove");
         }
     }
 }

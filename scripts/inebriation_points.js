@@ -13,7 +13,7 @@ export async function add_inebriation_points(target, num_points=1) {
       // Update the token's inebriation flag
       await actor.setFlag("dnd5e-alcohol", "inebriation", inebriation);
 
-      refresh_conditions(actor);
+      await refresh_conditions(actor, inebriation);
 
       // Notify the user of the current inebriation level
       ui.notifications.info(`${actor.name}'s inebriation level is now ${inebriation}.`);
@@ -36,7 +36,7 @@ export async function decrease_inebriation_points(target, num_points=1) {
     // Update the token's inebriation flag
     await actor.setFlag("dnd5e-alcohol", "inebriation", inebriation);
 
-    refresh_conditions(actor);
+    await refresh_conditions(actor, inebriation);
 
     // Notify the user of the current inebriation level
     ui.notifications.info(`${actor.name}'s inebriation level is now ${inebriation}.`);
@@ -51,7 +51,7 @@ export async function reset_inebriation(target) {
     // Update the token's inebriation flag
     await actor.setFlag("dnd5e-alcohol", "inebriation", 0);
 
-    refresh_conditions(actor);
+    await refresh_conditions(actor, 0);
 
     // Notify the user of the current inebriation level
     ui.notifications.info(`${actor.name}'s inebriation level is now 0.`);

@@ -78,11 +78,7 @@
     "scripts/drinking.js"
   ],
   "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
+    
   ],
   "styles": [
     "styles/alcohol.css"
