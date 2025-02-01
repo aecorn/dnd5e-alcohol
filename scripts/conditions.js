@@ -130,7 +130,7 @@ export async function refresh_conditions(actor, inebriation = null) {
 
 
 Hooks.once("init", () => {
-    console.log("Registering Alcohol Status Effects");
+    //console.log("Registering Alcohol Status Effects");
 
     for (const effect of Object.values(ALCOHOL_EFFECTS)) {
         CONFIG.statusEffects.push({
@@ -144,7 +144,7 @@ Hooks.once("init", () => {
 
 
 async function addAlcoholEffect(actor, condition, chatMessage = true) {
-    console.log(`Adding alcohol effect: ${condition}`);
+    //console.log(`Adding alcohol effect: ${condition}`);
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
     
     let effectData = ALCOHOL_EFFECTS[condition.toLowerCase()];

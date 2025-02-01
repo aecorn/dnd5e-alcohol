@@ -2,17 +2,17 @@ import { add_inebriation_points, decrease_inebriation_points, reset_inebriation}
 
 
 export function increase_inebriation_macro(token, num_points){
-  console.log(token.name);
+  //console.log(token.name);
   add_inebriation_points(token, num_points);
 }
 
 export function decrease_inebriation_macro(token, num_points){
-  console.log(token.name);
+  //console.log(token.name);
   decrease_inebriation_points(token, num_points);
 }
 
 export function reset_inebriation_macro(token){
-  console.log(token.name);
+  //console.log(token.name);
   reset_inebriation(token);
 }
 

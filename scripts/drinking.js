@@ -3,7 +3,7 @@ import { decrease_inebriation_points, add_inebriation_points } from "./inebriati
 
 
 // Fast forward application of alcoholic effects?
-Hooks.on("dnd5e.postActivityConsumption", async (activity) => {
+Hooks.on("dnd5e.postActivityConsumption", async (activity, _, chatmsgdata) => {
     //console.log(activity);
     let actor = activity.actor;
     let alco_effects = activity.effects.filter(effect => 
@@ -13,37 +13,29 @@ Hooks.on("dnd5e.postActivityConsumption", async (activity) => {
         return;
     }
     let alco_effect = alco_effects[0].effect;
-    console.log(alco_effect);
 
     actor.createEmbeddedDocuments("ActiveEffect", [alco_effect]);
+
+
+    // Exit if this is not drinking a potion?
+    if (chatmsgdata.data.flags.dnd5e.activity.type != "utility"){return;}
+    if (chatmsgdata.data.flags.dnd5e.item.type != "consumable"){return;}
+    if (chatmsgdata.data.flags.dnd5e.imessageType != "usage"){return;}
+
+    // We are sort of replacing the old chatmessage with our own, so we want to stop the default one.
+    // This data is passed to the chatmessage creation, we hook into that below
+    chatmsgdata.data.flags.delchatmessage = true;
+    console.log(chatmsgdata);
 });
 
 
 // Stop initial chatmessage from system for drinking a drink
 Hooks.on("preCreateChatMessage", (chatMessage) => {
-    console.log(chatMessage);
-    // Escape earliy if needed parts are missing
-    let dnd_flags = chatMessage.flags.dnd5e;
-    if (dnd_flags === undefined){return;}
-    if (dnd_flags.item === undefined){return;}
-    let item_uuid = dnd_flags.item.uuid;
-    // If item is destroyed on usage, it cannot be found by uuid anymore?
-    if (item_uuid === undefined){return;}
-    console.log(item_uuid);
-    let item = fromUuidSync(item_uuid);
-    console.log(item);
-    if (item.effects === undefined){return;}
-    if (item.effects.length === 0){return;}
-    let alco_effects = item.effects.filter(effect => 
-        effect.name.toLowerCase().startsWith("alcohol -")
-    );
-    if (alco_effects.length === 0){
-        return;
+    //console.log(chatMessage);
+    let delchatflag = chatMessage?.flags?.delchatmessage;
+    if (delchatflag === true){
+        return false;
     }
-    console.log("Stopping initial auto-chatmessage in favor of our own. Found:");
-    console.log(alco_effects[0]);
-
-    return false;
     
 });
 
@@ -52,29 +44,17 @@ Hooks.on("preCreateChatMessage", (chatMessage) => {
 Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
     let effectName = effect.name.toLowerCase();
     let actor = effect.parent;
-    console.log(effectName);
-    console.log(effect);
-    console.log(options);
+    //console.log(effectName);
+    //console.log(effect);
+    //console.log(options);
 
     if (!effectName.startsWith("alcohol -")) {
         console.log("Not an alcohol effect. Exiting.");
         return;  // Stops execution but allows the system to proceed normally.
     }
-    // Extract potency and properties
-    let potency = 0;
-    let properties = [];
+    
 
-    // Remove "Alcohol -" prefix and split the rest
-    let parts = effectName.replace("alcohol -", "").trim().split(" - ");
-
-    for (let i = 0; i < parts.length; i++) {
-        if (parts[i].startsWith("potency ")) {
-            let potencyValue = parts[i].replace("potency ", "").trim();
-            potency = parseInt(potencyValue, 10) || 0; // Ensure a valid number, default to 0
-        } else {
-            properties.push(parts[i]); // Collect the rest as properties
-        }
-    }
+    let [potency, properties] = extract_potency_properties_from_name(effectName);
 
     create_alcohol_chat_message_for_actor(actor, potency, properties);
 
@@ -83,8 +63,27 @@ Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
     
 });
 
+export function extract_potency_properties_from_name(effectName){
+    // Extract potency and properties
+    let potency = 0;
+    let properties = [];
 
-function create_alcohol_chat_message_for_actor(actor, potency, properties){
+    // Remove "Alcohol -" prefix and split the rest
+    let parts = effectName.toLowerCase().replace("alcohol -", "").trim().split(" - ");
+
+    for (let i = 0; i < parts.length; i++) {
+        if (parts[i].toLowerCase().startsWith("potency ")) {
+            let potencyValue = parts[i].toLowerCase().replace("potency ", "").trim();
+            potency = parseInt(potencyValue, 10) || 0; // Ensure a valid number, default to 0
+        } else {
+            properties.push(parts[i]); // Collect the rest as properties
+        }
+    }
+    return [potency, properties];
+}
+
+
+export function create_alcohol_chat_message_for_actor(actor, potency, properties){
     let inebriation_points = actor.getFlag("dnd5e-alcohol", "inebriation");
     let dc = 10 + potency + Math.floor(inebriation_points / 2);
 
@@ -163,8 +162,8 @@ function create_alcohol_chat_message_for_actor(actor, potency, properties){
 
 
 async function apply_alcohol_properties_to_actor(actor, properties){
-    console.log("Trying to apply extra properties:");
-    console.log(properties);
+    //console.log("Trying to apply extra properties:");
+    //console.log(properties);
     // If the actor already has one of the traits active, remove it first
     let effectsToDelete = actor.effects.filter(effect => 
         effect.name.toLowerCase().startsWith("alcohol property -")
@@ -188,36 +187,44 @@ async function apply_alcohol_properties_to_actor(actor, properties){
     if (properties.map(p => p.toLowerCase()).includes("dangerous")){
         let changes = [
             {
-              "key": "system.damage.parts",
-              "mode": 3,
-              "value": "[\"1d4\", \"bludgeoning\"]",
+              "key": "system.bonuses.mwak.damage",
+              "mode": 2,
+              "value": "2",
               "priority": 20
             }
           ];
-          await add_empty_effect_actor(actor, "Alcohol Property - Dangerous", changes);
+          await add_empty_effect_actor(
+            actor, 
+            "Alcohol Property - Dangerous", 
+            "Dangerous adds a +2 bonus to your melee weapon damage.",
+            changes);
     }
     // Disarming
     if (properties.map(p => p.toLowerCase()).includes("disarming")){
-        console.log("Want to apply disarming");
+        //console.log("Want to apply disarming");
         // Look for Racial
         let race = extract_race_from_racial_property(properties);
-        console.log(race);
+        //console.log(race);
         if (race != null){
             // Check i actor has same race (only impose disadvantage if racial does not match actor)
             let race_name = actor.system.details.race.name;
-            console.log(race_name);
+            //console.log(race_name);
             if (!(race_name.toLowerCase().includes(race.toLowerCase()))) {
                 // Disadvantage on perception 
                 console.log("Making changes.");
                 let changes = [
                     {
-                      "key": "system.skills.prc.value",
+                      "key": "system.skills.prc.bonuses.check",
                       "mode": 2,
-                      "value": "1",
+                      "value": "-5",
                       "priority": 20
                     }
                   ];
-                  await add_empty_effect_actor(actor, "Alcohol Property - disarming", changes);
+                  await add_empty_effect_actor(
+                    actor,
+                    "Alcohol Property - disarming",
+                    "Disarming gives a -5 bonus to your perception checks while active.",
+                    changes);
             }
         }
     }
@@ -228,19 +235,23 @@ async function apply_alcohol_properties_to_actor(actor, properties){
         if (!actor.items.some(item => item.name === "Fey Ancestry")){
             let changes = [
                 {
-                  "key": "system.abilities.cha.save",
+                  "key": "system.abilities.cha.bonuses.save",
                   "mode": 2,
-                  "value": "1",
+                  "value": "-2",
                   "priority": 20
                 },
                 {
-                  "key": "system.abilities.wis.save",
+                  "key": "system.abilities.wis.bonuses.save",
                   "mode": 2,
-                  "value": "1",
+                  "value": "-2",
                   "priority": 20
                 }
               ];
-            await add_empty_effect_actor(actor, "Alcohol Property - Infatuating", changes);
+            await add_empty_effect_actor(
+                actor, 
+                "Alcohol Property - Infatuating", 
+                "Infatuating gives a -2 to charisma and wisdom saves.",
+                changes);
         } else {
             console.log("Wont apply Infatuating, because of Fey Ancestry.");
         }
@@ -248,19 +259,21 @@ async function apply_alcohol_properties_to_actor(actor, properties){
 
     //  Wild Magic
     if (properties.map(p => p.toLowerCase()).includes("wild magic")){
-        await add_empty_effect_actor(actor, "Alcohol Property - Wild Magic")
         let content = `Characters with the Alcohol Property - Wild Magic trait, must roll on the Wild Magic table whenever they sneeze, vomit, or otherwise at the DM's discretion.`;
+        await add_empty_effect_actor(actor, "Alcohol Property - Wild Magic", content);
         let chatData = {
             user: game.user._id,
             speaker: ChatMessage.getSpeaker(),
             content: content 
         };
         ChatMessage.create(chatData, {});
+
+        // Autoroll on the Wild Magic table and show the GM only?
     }
 }
 
 
-async function add_empty_effect_actor(actor, effectName, changes = []){
+async function add_empty_effect_actor(actor, effectName, description = "", changes = []){
     let existingEffect = actor.effects.find(e => e.name === effectName);
     if (existingEffect) return; // Prevent duplicates
 
@@ -271,6 +284,7 @@ async function add_empty_effect_actor(actor, effectName, changes = []){
         disabled: false,
         duration: {},
         changes: changes,
+        description: description,
     }]);
 }
 
