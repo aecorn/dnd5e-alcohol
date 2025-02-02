@@ -1,0 +1,69 @@
+name: Liquid Talent
+type: feat
+_id: pQWs8VHFF4xmhPgN
+img: icons/consumables/drinks/tea-jug-gourd-brown.webp
+system:
+  activities: {}
+  uses:
+    spent: 0
+    recovery: []
+    max: ''
+  description:
+    value: >-
+      <ul><li>Increase either your Strength score or Dexterity score by 1, to a
+      maximum of 20.</li><li>Choose two skills. While you have the tipsy
+      condition, you are proficient in those skills.</li></ul>
+    chat: ''
+  identifier: new-item
+  source:
+    revision: 1
+    rules: '2024'
+  enchant: {}
+  type:
+    value: feat
+    subtype: general
+  prerequisites:
+    level: null
+  properties: []
+  requirements: ''
+  advancement:
+    - _id: VI27HxKjMVYPyE1m
+      type: AbilityScoreImprovement
+      configuration:
+        cap: null
+        fixed:
+          str: 0
+          dex: 0
+          con: 0
+          int: 0
+          wis: 0
+          cha: 0
+        locked:
+          - con
+          - int
+          - wis
+          - cha
+        points: 1
+      value:
+        type: asi
+      level: 0
+      title: Add 1 to either Strength or Dexterity
+      hint: ''
+effects: []
+folder: null
+sort: 0
+ownership:
+  default: 0
+  4DestKlpiBDHIre4: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.2.2
+  createdTime: 1737401623835
+  modifiedTime: 1738528293216
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!items!pQWs8VHFF4xmhPgN'
+

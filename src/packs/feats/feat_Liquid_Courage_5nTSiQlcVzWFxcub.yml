@@ -1,0 +1,70 @@
+name: Liquid Courage
+type: feat
+img: icons/skills/social/thumbsup-approval-like.webp
+system:
+  description:
+    value: >-
+      <ul><li>Increase either your Wisdom score or your Constitution score by 1,
+      to a maximum of 20.</li><li>While you have the tipsy condition, you are
+      immune to the Frightened condition. You have a heightened resistance to
+      Intimidation and effects that would give you the Charmed condition, giving
+      you advantage to resist.</li><li>You receive an additional +4 to Charisma
+      (Persuasion) checks to deal with humanoids who have a lower Alcohol Level
+      than you. This is in addition to any other bonus you have to skill checks
+      due to your Alcohol Level.</li></ul>
+    chat: ''
+  activities: {}
+  uses:
+    spent: 0
+    recovery: []
+    max: ''
+  identifier: iron-liver
+  source:
+    revision: 1
+    rules: '2024'
+  enchant: {}
+  type:
+    value: feat
+    subtype: general
+  prerequisites:
+    level: null
+  properties: []
+  requirements: ''
+  advancement:
+    - _id: 6ROqottgHE9BEqww
+      type: AbilityScoreImprovement
+      configuration:
+        cap: null
+        fixed:
+          str: 0
+          dex: 0
+          con: 1
+          int: 0
+          wis: 0
+          cha: 0
+        locked: []
+        points: 0
+      value:
+        type: asi
+      level: 0
+      title: ''
+      hint: ''
+_id: 5nTSiQlcVzWFxcub
+effects: []
+folder: null
+sort: 0
+ownership:
+  default: 0
+  4DestKlpiBDHIre4: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.2.2
+  createdTime: 1737399683912
+  modifiedTime: 1738528245801
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!items!5nTSiQlcVzWFxcub'
+

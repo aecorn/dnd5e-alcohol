@@ -1,14 +1,21 @@
+import { calculate_thresholds } from "./conditions";
+
+
 Hooks.on("renderActorSheet", (_sheet, html) => {
     let con_mod = _sheet.object.system.abilities.con.mod;
     let con_score = _sheet.object.system.abilities.con.value;
 
-    let inebriation_max = con_score;
+    let thres = calculate_thresholds(_sheet.object);
+
+    let inebriation_max = thres.incapacitated;
     let inebriation_points = _sheet.object.getFlag("dnd5e-alcohol", "inebriation") || 0;
     let inebriation_percent = Math.floor((inebriation_points / inebriation_max) * 100);
 
-    let tipsyThres = Math.floor((Math.max(1, con_mod) / inebriation_max) * 100);
-    let drunkThres = Math.floor(((con_score / 2) / inebriation_max) * 100);
-    let wastedThres = Math.floor(((10 + con_mod) / inebriation_max) * 100);
+    
+
+    let tipsyThres = Math.floor((thres.tipsy / inebriation_max) * 100);
+    let drunkThres = Math.floor((thres.drunk / inebriation_max) * 100);
+    let wastedThres = Math.floor((thres.wasted / inebriation_max) * 100);
     
     let progressBarArea = `
     <div class="meter-group">

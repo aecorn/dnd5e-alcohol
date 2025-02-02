@@ -1,0 +1,76 @@
+name: Barroom Knucks
+type: equipment
+_id: L34ZPtyvu3tsmkz9
+img: icons/equipment/hand/glove-cuffed-studded-red.webp
+system:
+  activities: {}
+  uses:
+    spent: 0
+    recovery: []
+    max: ''
+  description:
+    value: >-
+      <p>Wondrous item, rare (requires attunement)</p><p>These gloves are made
+      of brass that used to be part of a pair of tankards that wrap around the
+      knuckles of the wearer, as well as the hanging cloth from tavern
+      advertisements from days gone. Although useful in any fight, they're
+      particularly nasty in the bar fights that broke the tankards and ripped
+      the banners that they were made from.</p><p>While fighting without holding
+      a conventional weapon and you have the drunk condition, your unarmed
+      strikes do 1d6 bludgeoning damage unless they would otherwise deal more.
+      Additionally, improvised weapons deal 1d8 damage.</p>
+    chat: ''
+  identifier: new-item
+  source:
+    revision: 1
+    rules: '2024'
+  identified: true
+  unidentified:
+    description: ''
+  container: null
+  quantity: 1
+  weight:
+    value: 0
+    units: lb
+  price:
+    value: 0
+    denomination: gp
+  rarity: rare
+  attunement: ''
+  attuned: false
+  equipped: false
+  armor:
+    value: null
+    magicalBonus: null
+    dex: null
+  cover: null
+  crewed: false
+  hp:
+    value: null
+    max: null
+    dt: null
+    conditions: ''
+  type:
+    value: light
+    baseItem: ''
+  properties: []
+  strength: null
+  proficient: null
+effects: []
+folder: null
+sort: 0
+ownership:
+  default: 0
+  4DestKlpiBDHIre4: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.0.4
+  createdTime: 1737403478249
+  modifiedTime: 1737403570054
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!items!L34ZPtyvu3tsmkz9'
+

@@ -22,7 +22,7 @@ Hooks.on("dnd5e.shortRest", async (actor, data) => {
 Hooks.on("dnd5e.longRest", async (actor) => {
     if (!actor) return;
   
-    console.log(`Long rest completed for ${actor.name}. Removing alcohol effects.`);
+    //console.log(`Long rest completed for ${actor.name}. Removing alcohol effects.`);
   
     await reset_inebriation(actor);
   
@@ -31,13 +31,15 @@ Hooks.on("dnd5e.longRest", async (actor) => {
 
   Hooks.on("dnd5e.preLongRest", async (actor) => {
     let isWasted = actor.getFlag("dnd5e-alcohol", "wasted_active") || false;
-    console.log(`Pre-rest hook for ${actor.name}. Checking for wasted state: ${isWasted}`);
+    //console.log(`Pre-rest hook for ${actor.name}. Checking for wasted state: ${isWasted}`);
     if (!isWasted) return;
+    // If actor has the Deep Gut feat, they cannot fail this: exit
+    if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){return;}
 
     let alcoholLevel = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
     let roll = await new Roll(`1d20 + @abilities.con.save`, actor.getRollData()).evaluate();
-    console.log(roll);
+    //console.log(roll);
     await roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor }),
         flavor: `<b>Wasted - Long Rest Constitution Save</b>: DC ${alcoholLevel} to gain benefits`
@@ -60,8 +62,8 @@ Hooks.on("dnd5e.longRest", async (actor) => {
 Hooks.on("dnd5e.preRestCompleted", async (actor, data) => {
     if (actor.getFlag("dnd5e-alcohol", "failed_rest")) {
 
-        console.log("Rest failed");
-        console.log(data);
+        //console.log("Rest failed");
+        //console.log(data);
 
         // Prevent HP Recovery
         data.deltas.hitPoints = 0;

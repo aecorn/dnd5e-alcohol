@@ -1,0 +1,160 @@
+name: Common Wine
+type: consumable
+img: icons/consumables/drinks/wine-bottle-glass-white.webp
+system:
+  description:
+    value: |-
+      <p><b>Potency:</b> 1</p>
+                              <p><b>Properties:</b> None</p>
+    chat: ''
+  rarity: common
+  weight:
+    value: 2
+    units: lb
+  price:
+    value: 5
+    denomination: gp
+  uses:
+    max: '1'
+    autoDestroy: true
+    spent: 0
+    recovery: []
+  type:
+    value: potion
+    subtype: ''
+  activities:
+    5nSNAlVtBdsujUyq:
+      type: utility
+      _id: 5nSNAlVtBdsujUyq
+      sort: 0
+      activation:
+        type: action
+        value: null
+        override: false
+        condition: ''
+      consumption:
+        scaling:
+          allowed: false
+        spellSlot: true
+        targets:
+          - type: itemUses
+            value: '1'
+            target: ''
+            scaling: {}
+      description:
+        chatFlavor: ''
+      duration:
+        units: inst
+        concentration: false
+        override: false
+      effects:
+        - _id: 8G1QmnotbGtjYkSJ
+      range:
+        override: false
+        units: self
+        special: ''
+      target:
+        template:
+          contiguous: false
+          units: ft
+          type: ''
+        affects:
+          choice: false
+          count: ''
+          type: ''
+        override: false
+        prompt: true
+      uses:
+        spent: 0
+        recovery: []
+        max: '1'
+      roll:
+        prompt: false
+        visible: false
+        name: ''
+        formula: ''
+      name: Drink
+      img: ''
+      appliedEffects: []
+  identifier: common-wine
+  source:
+    revision: 1
+    rules: '2024'
+  identified: true
+  unidentified:
+    description: ''
+  container: null
+  quantity: 1
+  attunement: ''
+  attuned: false
+  equipped: false
+  damage:
+    base:
+      number: null
+      denomination: null
+      types: []
+      custom:
+        enabled: false
+      scaling:
+        number: 1
+    replace: false
+  magicalBonus: null
+  properties: []
+effects:
+  - name: Alcohol - Potency 1
+    img: icons/consumables/drinks/wine-bottle-glass-white.webp
+    origin: Compendium.dnd5e-alcohol.drinks.Item.oRzVrJvXDISYmECQ
+    transfer: false
+    _id: 8G1QmnotbGtjYkSJ
+    type: base
+    system: {}
+    changes: []
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737703671373
+      modifiedTime: 1737703689352
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!items.effects!oRzVrJvXDISYmECQ.8G1QmnotbGtjYkSJ'
+flags:
+  dnd5e-alcohol:
+    potency: 1
+    properties: []
+  dnd5e:
+    riders:
+      activity: []
+      effect: []
+_id: oRzVrJvXDISYmECQ
+folder: PwmNrhU8U5Ilg5Fw
+sort: 125000
+ownership:
+  default: 0
+  4DestKlpiBDHIre4: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.0.4
+  createdTime: 1737399683525
+  modifiedTime: 1737703671395
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!items!oRzVrJvXDISYmECQ'
+

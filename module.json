@@ -19,8 +19,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "2.3.0",
-          "verified": "2.3.1"
+          "minimum": "4.2.0",
+          "verified": "4.2.0"
         }
       }
     ],
@@ -66,6 +66,15 @@
       "system": "dnd5e",
       "path": "packs/monsters.db",
       "module": "dnd5e-alcohol"
+    },
+    {
+      "name": "alcohol-rollable",
+      "label": "Alcohol Rollable Tables",
+      "entity": "RollTable",
+      "type": "RollTable",
+      "system": "dnd5e",
+      "path": "packs/rollable.db",
+      "module": "dnd5e-alcohol"
     }
     
   ],
@@ -75,14 +84,13 @@
     "scripts/conditions.js", 
     "scripts/rest.js",
     "scripts/sheet.js",
-    "scripts/drinking.js"
+    "scripts/drinking.js",
+    "scripts/monsters/trail.js",
+    "scripts/monsters/sight.js",
+    "scripts/monsters/aura.js"
   ],
   "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
+    
   ],
   "styles": [
     "styles/alcohol.css"
