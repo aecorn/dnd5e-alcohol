@@ -1,27 +1,18 @@
-function highest_potency_effect_in_inventory(actor){
-    let max_potency = 0;
-    let max_drink = "Alcohol - Potency 0";
-    for (const item_index in actor.items.contents){
-        let actor_item = actor.items.contents[item_index]
-        //console.log(actor_item);
-        let effects = actor_item?.effects;
-        //console.log(effects);
-        if (effects != undefined){
-            console.log(effects[0]);
-            if(effects.contents.length === 0){continue;}
-            let effectName = effects.contents[0]?.name;
-            //console.log(effectName);
-            let match = effectName.match(/Potency (\d+)/);
-            let potency = match ? parseInt(match[1], 10) : null;
-            if (potency > max_potency){
-                max_potency = potency;
-                max_drink = effectName;
-            }
-        }
-    }
-    return max_drink;
-}
+async function TrailChatMessage(actor) {
+    let chatContent =`
+            <p><b>${actor.name} walked over a <span style="color:red">Slippery trail</span>.</b></p>
+            <p>You must succeed on a <b>[[/save ability=dex dc=12]]</b> Dexterity saving throw or fall prone.</p>
+            <button class="apply-condition" data-actor-id="${actor.id}" data-condition="prone">Apply Prone Condition</button>
+            `;
 
+    if (chatContent) {
+        await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor }),
+            content: chatContent,
+            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+        });
+    }
+}
 
 
 function sortRectangleCorners(rect) {
@@ -37,7 +28,7 @@ function sortRectangleCorners(rect) {
     });
 }
 
-function isOverlapping(rect1, rect2, epsilon = 10) {
+export function isOverlapping(rect1, rect2, epsilon = 10) {
     function getEdges(rect) {
         return [
             [rect[1][0] - rect[0][0], rect[1][1] - rect[0][1]], // Edge 1
@@ -211,15 +202,6 @@ Hooks.on('preUpdateToken', async function (token, update) {
     let [px1, py1, px2, py2, x, y, height, width] = calculate_line(move, false);
     let movedArea = corners_from_points([px1, py1, px2, py2, x, y, tokenWidth]);
 
-
-    // visualize for testing
-    let data = {author: game.user, x, y,  
-        shape: {type:"p", points: [px1, py1, px2, py2], height, width}, 
-        strokeWidth: tokenWidth,
-        strokeColor: "#00ffff",
-        strokeAlpha: 0.5}
-    await canvas.scene.createEmbeddedDocuments("Drawing", [data]);
-
     //console.log(open_tap_token);
 
     let drawing_ids_in_canvas = canvas.drawings.objects.children.map(drawing => drawing.document._id);
@@ -238,7 +220,8 @@ Hooks.on('preUpdateToken', async function (token, update) {
             console.log("path corner", path.corners);
             console.log("movedArea", movedArea);
             if (isOverlapping(movedArea, path.corners)){
-                console.log("Token passed over trail?")
+                console.log("Token passed over trail?");
+                await TrailChatMessage(token.actor);
             }
         }
     }

@@ -127,7 +127,27 @@ export async function refresh_conditions(actor, inebriation = null) {
 
 
 
+Hooks.on("renderChatMessage", (message, html, data) => {
+    html.find(".apply-condition").click(async (event) => {
+        event.preventDefault();
+        
+        // Extract actor ID and potency from button attributes
+        let actorId = event.currentTarget.dataset.actorId;
+        let condition = event.currentTarget.dataset.condition;
+        let actor = game.actors.get(actorId);
 
+        // Disable button after use
+        event.currentTarget.disabled = true;
+
+        if (!actor) {
+            console.error("Actor not found.");
+            return;
+        }
+
+        actor.toggleStatusEffect(condition, {active: true});
+
+    });
+});
 
 Hooks.once("init", () => {
     //console.log("Registering Alcohol Status Effects");
