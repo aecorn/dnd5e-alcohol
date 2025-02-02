@@ -87,11 +87,22 @@ export function create_alcohol_chat_message_for_actor(actor, potency, properties
     let inebriation_points = actor.getFlag("dnd5e-alcohol", "inebriation");
     let dc = 10 + potency + Math.floor(inebriation_points / 2);
 
+    let save = `[[/save ability=con dc=${dc}]]`;
+
+    // If actor has feat Temperance of Mind, we will see if wisdom is a better ability to save with
+    if (actor.items.some(item => item.name.toLowerCase() == "temperance of mind")){
+        let wisBest = false;
+        if (actor.system.abilities.wis.mod > actor.system.abilities.con.mod){
+            wisBest = true;
+        }
+        save = `[[/save ability=wis dc=${dc}]] (wis because of Temperance of Mind)`;
+    }
+
     let content = `${prefix}
         Potency of drink: <strong>${potency}</strong><br>
         Extra properties: ${properties.join(", ")}<br>
         Pre-existing inebriation level: <strong>${inebriation_points}</strong><br>
-        <b>${actor.name}</b> make a [[/save ability=con dc=${dc}]] save to avoid inebriation.<br><br>
+        <b>${actor.name}</b> make a ${save} save to avoid inebriation.<br><br>
         You can choose to fail the test automatically.<br>
         If you fail the test, apply the inebriation points and effects (Sobering drinks will subtract inebriation points):
         <button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency}" data-properties="${properties.join(' - ')}">Apply Inebriation</button>

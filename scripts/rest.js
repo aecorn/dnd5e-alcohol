@@ -33,6 +33,8 @@ Hooks.on("dnd5e.longRest", async (actor) => {
     let isWasted = actor.getFlag("dnd5e-alcohol", "wasted_active") || false;
     //console.log(`Pre-rest hook for ${actor.name}. Checking for wasted state: ${isWasted}`);
     if (!isWasted) return;
+    // If actor has the Deep Gut feat, they cannot fail this: exit
+    if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){return;}
 
     let alcoholLevel = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 

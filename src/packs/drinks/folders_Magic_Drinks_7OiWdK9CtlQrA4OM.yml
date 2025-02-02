@@ -1,0 +1,20 @@
+name: Magic Drinks
+sorting: a
+folder: null
+type: Item
+_id: 7OiWdK9CtlQrA4OM
+description: ''
+sort: 100000
+color: null
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.0.4
+  createdTime: 1737404887924
+  modifiedTime: 1737792428009
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!folders!7OiWdK9CtlQrA4OM'
+

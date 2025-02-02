@@ -1,0 +1,1719 @@
+name: Keg Golem
+type: npc
+_id: 2zEx4oJnMsn8ZUX8
+img: icons/containers/barrels/barrel-oak-gold.webp
+system:
+  currency:
+    pp: 0
+    gp: 0
+    ep: 0
+    sp: 0
+    cp: 0
+  abilities:
+    str:
+      value: 21
+      proficient: 1
+      max: null
+      bonuses:
+        check: ''
+        save: ''
+    dex:
+      value: 7
+      proficient: 0
+      max: null
+      bonuses:
+        check: ''
+        save: ''
+    con:
+      value: 20
+      proficient: 1
+      max: null
+      bonuses:
+        check: ''
+        save: ''
+    int:
+      value: 3
+      proficient: 0
+      max: null
+      bonuses:
+        check: ''
+        save: ''
+    wis:
+      value: 10
+      proficient: 0
+      max: null
+      bonuses:
+        check: ''
+        save: ''
+    cha:
+      value: 10
+      proficient: 0
+      max: null
+      bonuses:
+        check: ''
+        save: ''
+  bonuses:
+    mwak:
+      attack: ''
+      damage: ''
+    rwak:
+      attack: ''
+      damage: ''
+    msak:
+      attack: ''
+      damage: ''
+    rsak:
+      attack: ''
+      damage: ''
+    abilities:
+      check: ''
+      save: ''
+      skill: ''
+    spell:
+      dc: ''
+  skills:
+    acr:
+      ability: dex
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    ani:
+      ability: wis
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    arc:
+      ability: int
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    ath:
+      ability: str
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 1
+      bonuses:
+        check: ''
+        passive: ''
+    dec:
+      ability: cha
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    his:
+      ability: int
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    ins:
+      ability: wis
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    itm:
+      ability: cha
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    inv:
+      ability: int
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    med:
+      ability: wis
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    nat:
+      ability: int
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    prc:
+      ability: wis
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    prf:
+      ability: cha
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    per:
+      ability: cha
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    rel:
+      ability: int
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    slt:
+      ability: dex
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    ste:
+      ability: dex
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+    sur:
+      ability: wis
+      roll:
+        min: null
+        max: null
+        mode: 0
+      value: 0
+      bonuses:
+        check: ''
+        passive: ''
+  tools: {}
+  spells:
+    spell1:
+      value: 0
+      override: null
+    spell2:
+      value: 0
+      override: null
+    spell3:
+      value: 0
+      override: null
+    spell4:
+      value: 0
+      override: null
+    spell5:
+      value: 0
+      override: null
+    spell6:
+      value: 0
+      override: null
+    spell7:
+      value: 0
+      override: null
+    spell8:
+      value: 0
+      override: null
+    spell9:
+      value: 0
+      override: null
+    pact:
+      value: 0
+      override: null
+  attributes:
+    init:
+      ability: ''
+      roll:
+        min: null
+        max: null
+        mode: 0
+      bonus: ''
+    movement:
+      burrow: null
+      climb: null
+      fly: null
+      swim: null
+      walk: 25
+      units: null
+      hover: false
+    attunement:
+      max: 3
+    senses:
+      darkvision: 60
+      blindsight: null
+      tremorsense: null
+      truesight: null
+      units: null
+      special: ''
+    spellcasting: str
+    exhaustion: 0
+    concentration:
+      ability: ''
+      roll:
+        min: null
+        max: null
+        mode: 0
+      bonuses:
+        save: ''
+      limit: 1
+    ac:
+      flat: 16
+      calc: natural
+    hd:
+      spent: 0
+    hp:
+      value: 147
+      max: 147
+      temp: 0
+      tempmax: 0
+      formula: ''
+    death:
+      ability: ''
+      roll:
+        min: null
+        max: null
+        mode: 0
+      success: 0
+      failure: 0
+  details:
+    biography:
+      value: ''
+      public: ''
+    alignment: ''
+    ideal: ''
+    bond: ''
+    flaw: ''
+    race: null
+    type: {}
+    environment: ''
+    cr: 8
+    spellLevel: 0
+  resources:
+    legact:
+      value: 0
+      max: 0
+    legres:
+      value: 0
+      max: 0
+    lair:
+      value: false
+      initiative: null
+  source:
+    revision: 1
+    rules: '2024'
+  traits:
+    size: lg
+    di:
+      bypasses: []
+      value:
+        - poison
+      custom: ''
+    dr:
+      bypasses:
+        - mgc
+      value:
+        - bludgeoning
+        - piercing
+        - slashing
+      custom: ''
+    dv:
+      bypasses: []
+      value: []
+      custom: ''
+    dm:
+      amount: {}
+      bypasses: []
+    ci:
+      value:
+        - blinded
+        - charmed
+        - deafened
+        - exhaustion
+        - frightened
+        - petrified
+        - poisoned
+      custom: ''
+    languages:
+      value:
+        - dwarvish
+      custom: ''
+prototypeToken:
+  name: Keg Golem
+  displayName: 0
+  actorLink: false
+  appendNumber: false
+  prependAdjective: false
+  width: 2
+  height: 2
+  texture:
+    src: icons/containers/barrels/barrel-oak-gold.webp
+    anchorX: 0.5
+    anchorY: 0.5
+    offsetX: 0
+    offsetY: 0
+    fit: contain
+    scaleX: 1
+    scaleY: 1
+    rotation: 0
+    tint: '#ffffff'
+    alphaThreshold: 0.75
+  hexagonalShape: 0
+  lockRotation: false
+  rotation: 0
+  alpha: 1
+  disposition: -1
+  displayBars: 0
+  bar1:
+    attribute: attributes.hp
+  bar2:
+    attribute: null
+  light:
+    negative: false
+    priority: 0
+    alpha: 0.5
+    angle: 360
+    bright: 0
+    color: null
+    coloration: 1
+    dim: 0
+    attenuation: 0.5
+    luminosity: 0.5
+    saturation: 0
+    contrast: 0
+    shadows: 0
+    animation:
+      type: null
+      speed: 5
+      intensity: 5
+      reverse: false
+    darkness:
+      min: 0
+      max: 1
+  sight:
+    enabled: false
+    range: 0
+    angle: 360
+    visionMode: basic
+    color: null
+    attenuation: 0.1
+    brightness: 0
+    saturation: 0
+    contrast: 0
+  detectionModes: []
+  occludable:
+    radius: 0
+  ring:
+    enabled: false
+    colors:
+      ring: null
+      background: null
+    effects: 1
+    subject:
+      scale: 1
+      texture: null
+  flags: {}
+  randomImg: false
+items:
+  - name: Common Ale
+    type: consumable
+    img: icons/consumables/drinks/alcohol-beer-mug-yellow.webp
+    system:
+      description:
+        value: |-
+          <p><b>Potency:</b> 1</p>
+                                  <p><b>Properties:</b> None</p>
+        chat: ''
+      rarity: common
+      weight:
+        value: 1
+        units: lb
+      price:
+        value: 2
+        denomination: gp
+      uses:
+        max: '1'
+        autoDestroy: true
+        spent: 0
+        recovery: []
+      type:
+        value: potion
+        subtype: ''
+      activities:
+        W0X61oQKrpX74rRg:
+          type: utility
+          _id: W0X61oQKrpX74rRg
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+            condition: ''
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets:
+              - type: itemUses
+                value: '1'
+                target: ''
+                scaling: {}
+          description:
+            chatFlavor: ''
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects:
+            - _id: JVKp43iyvQFPakX1
+          range:
+            override: false
+            units: self
+            special: ''
+          target:
+            template:
+              contiguous: false
+              units: ft
+              type: ''
+            affects:
+              choice: false
+              count: ''
+              type: ''
+            override: false
+            prompt: true
+          uses:
+            spent: 0
+            recovery: []
+            max: '1'
+          roll:
+            prompt: false
+            visible: false
+            name: ''
+            formula: ''
+          name: Drink
+      identifier: common-ale
+      source:
+        revision: 1
+        rules: '2024'
+      identified: true
+      unidentified:
+        description: ''
+      container: null
+      quantity: 50
+      attunement: ''
+      damage:
+        base:
+          number: null
+          denomination: null
+          types: []
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+        replace: false
+      magicalBonus: null
+      properties: []
+      attuned: false
+      equipped: false
+    effects:
+      - name: Alcohol - Potency 1
+        img: icons/consumables/drinks/alcohol-beer-mug-yellow.webp
+        origin: Compendium.dnd5e-alcohol.drinks.Item.ftP1wX2DsAz3oz0V
+        transfer: false
+        _id: JVKp43iyvQFPakX1
+        type: base
+        system: {}
+        changes: []
+        disabled: false
+        duration:
+          startTime: null
+          seconds: null
+          combat: null
+          rounds: null
+          turns: null
+          startRound: null
+          startTurn: null
+        description: ''
+        tint: '#ffffff'
+        statuses: []
+        sort: 0
+        flags: {}
+        _stats:
+          compendiumSource: null
+          duplicateSource: null
+          coreVersion: '12.331'
+          systemId: dnd5e
+          systemVersion: 4.0.4
+          createdTime: null
+          modifiedTime: null
+          lastModifiedBy: null
+        _key: >-
+          !actors.items.effects!2zEx4oJnMsn8ZUX8.JMjDnWhjFi96vF7v.JVKp43iyvQFPakX1
+    flags:
+      dnd5e-alcohol:
+        potency: 1
+        properties: []
+      dnd5e:
+        riders:
+          activity: []
+          effect: []
+    _id: JMjDnWhjFi96vF7v
+    folder: PwmNrhU8U5Ilg5Fw
+    sort: 150000
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    _stats:
+      compendiumSource: Compendium.dnd5e-alcohol.drinks.Item.ftP1wX2DsAz3oz0V
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737997648290
+      modifiedTime: 1737998372669
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.JMjDnWhjFi96vF7v'
+  - name: Dwarven Ale
+    type: consumable
+    img: icons/consumables/drinks/alcohol-beer-stein-wooden-metal-brown.webp
+    system:
+      description:
+        value: |-
+          <p><b>Potency:</b> 3</p>
+                                  <p><b>Properties:</b> Racial (Dwarf)</p>
+                                  <p><b>Description:</b> Dwarven Ale. Known primarily to Mountain Dwarves and communities friendly to them, Dwarven Ale is renown for being the strongest brews known to the civilized races. There is a strong, almost bitter taste that bites the throat and punches the stomach of the weaker races.</p>
+        chat: ''
+      rarity: common
+      weight:
+        value: 1.5
+        units: lb
+      price:
+        value: 6
+        denomination: gp
+      uses:
+        max: '1'
+        autoDestroy: true
+        spent: 0
+        recovery: []
+      type:
+        value: potion
+        subtype: ''
+      activities:
+        1vz7ZhjyfsIhAvD2:
+          type: utility
+          _id: 1vz7ZhjyfsIhAvD2
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+            condition: ''
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets:
+              - type: itemUses
+                value: '1'
+                target: ''
+                scaling: {}
+          description:
+            chatFlavor: ''
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects:
+            - _id: 2Xb4mLbCu8JtLkQ4
+          range:
+            override: false
+            units: self
+            special: ''
+          target:
+            template:
+              contiguous: false
+              units: ft
+              type: ''
+            affects:
+              choice: false
+              count: ''
+              type: ''
+            override: false
+            prompt: true
+          uses:
+            spent: 0
+            recovery: []
+            max: '1'
+          roll:
+            prompt: false
+            visible: false
+            name: ''
+            formula: ''
+          name: Drink
+      identifier: dwarven-ale
+      source:
+        revision: 1
+        rules: '2024'
+      identified: true
+      unidentified:
+        description: ''
+      container: null
+      quantity: 50
+      attunement: ''
+      damage:
+        base:
+          number: null
+          denomination: null
+          types: []
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+        replace: false
+      magicalBonus: null
+      properties: []
+      attuned: false
+      equipped: false
+    effects:
+      - name: Alcohol - Potency 3 - Racial (Dwarf)
+        img: icons/consumables/drinks/alcohol-beer-stein-wooden-metal-brown.webp
+        origin: Compendium.dnd5e-alcohol.drinks.Item.DUq4mJ38Ky8NiRtg
+        transfer: false
+        _id: 2Xb4mLbCu8JtLkQ4
+        type: base
+        system: {}
+        changes: []
+        disabled: false
+        duration:
+          startTime: null
+          seconds: null
+          combat: null
+          rounds: null
+          turns: null
+          startRound: null
+          startTurn: null
+        description: ''
+        tint: '#ffffff'
+        statuses: []
+        sort: 0
+        flags: {}
+        _stats:
+          compendiumSource: null
+          duplicateSource: null
+          coreVersion: '12.331'
+          systemId: dnd5e
+          systemVersion: 4.0.4
+          createdTime: null
+          modifiedTime: null
+          lastModifiedBy: null
+        _key: >-
+          !actors.items.effects!2zEx4oJnMsn8ZUX8.9PrMNyUBLX1MME9Y.2Xb4mLbCu8JtLkQ4
+    flags:
+      dnd5e-alcohol:
+        potency: 3
+        properties:
+          - Racial (Dwarf)
+      dnd5e:
+        riders:
+          activity: []
+          effect: []
+    _id: 9PrMNyUBLX1MME9Y
+    folder: PwmNrhU8U5Ilg5Fw
+    sort: 106250
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    _stats:
+      compendiumSource: Compendium.dnd5e-alcohol.drinks.Item.DUq4mJ38Ky8NiRtg
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737997650350
+      modifiedTime: 1737998366619
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.9PrMNyUBLX1MME9Y'
+  - name: Stout Ale
+    type: consumable
+    img: icons/consumables/drinks/alcohol-beer-stein-wooden-brown.webp
+    system:
+      description:
+        value: |-
+          <p><b>Potency:</b> 2</p>
+                                  <p><b>Properties:</b> None</p>
+        chat: ''
+      rarity: common
+      weight:
+        value: 1
+        units: lb
+      price:
+        value: 4
+        denomination: gp
+      uses:
+        max: '1'
+        autoDestroy: true
+        spent: 0
+        recovery: []
+      type:
+        value: potion
+        subtype: ''
+      activities:
+        eagKZK24NOlmaRBR:
+          type: utility
+          _id: eagKZK24NOlmaRBR
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+            condition: ''
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets:
+              - type: itemUses
+                value: '1'
+                target: ''
+                scaling: {}
+          description:
+            chatFlavor: ''
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects:
+            - _id: r88uMwiwVjQeDtHc
+          range:
+            override: false
+            units: self
+            special: ''
+          target:
+            template:
+              contiguous: false
+              units: ft
+              type: ''
+            affects:
+              choice: false
+              count: ''
+              type: ''
+            override: false
+            prompt: true
+          uses:
+            spent: 0
+            recovery: []
+            max: '1'
+          roll:
+            prompt: false
+            visible: false
+            name: ''
+            formula: ''
+          name: Drink
+      identifier: stout-ale
+      source:
+        revision: 1
+        rules: '2024'
+      identified: true
+      unidentified:
+        description: ''
+      container: null
+      quantity: 50
+      attunement: ''
+      damage:
+        base:
+          number: null
+          denomination: null
+          types: []
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+        replace: false
+      magicalBonus: null
+      properties: []
+      attuned: false
+      equipped: false
+    effects:
+      - name: Alcohol - Potency 2
+        img: icons/consumables/drinks/alcohol-beer-stein-wooden-brown.webp
+        origin: Compendium.dnd5e-alcohol.drinks.Item.QRngY1mkAJtDaWj1
+        transfer: false
+        _id: r88uMwiwVjQeDtHc
+        type: base
+        system: {}
+        changes: []
+        disabled: false
+        duration:
+          startTime: null
+          seconds: null
+          combat: null
+          rounds: null
+          turns: null
+          startRound: null
+          startTurn: null
+        description: ''
+        tint: '#ffffff'
+        statuses: []
+        sort: 0
+        flags: {}
+        _stats:
+          compendiumSource: null
+          duplicateSource: null
+          coreVersion: '12.331'
+          systemId: dnd5e
+          systemVersion: 4.0.4
+          createdTime: null
+          modifiedTime: null
+          lastModifiedBy: null
+        _key: >-
+          !actors.items.effects!2zEx4oJnMsn8ZUX8.alWnZaiinX9QCFzl.r88uMwiwVjQeDtHc
+    flags:
+      dnd5e-alcohol:
+        potency: 2
+        properties: []
+      dnd5e:
+        riders:
+          activity: []
+          effect: []
+    _id: alWnZaiinX9QCFzl
+    folder: PwmNrhU8U5Ilg5Fw
+    sort: 100049
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    _stats:
+      compendiumSource: Compendium.dnd5e-alcohol.drinks.Item.QRngY1mkAJtDaWj1
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737997655380
+      modifiedTime: 1737998363668
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.alWnZaiinX9QCFzl'
+  - name: Common Wine
+    type: consumable
+    img: icons/consumables/drinks/wine-bottle-glass-white.webp
+    system:
+      description:
+        value: |-
+          <p><b>Potency:</b> 1</p>
+                                  <p><b>Properties:</b> None</p>
+        chat: ''
+      rarity: common
+      weight:
+        value: 2
+        units: lb
+      price:
+        value: 5
+        denomination: gp
+      uses:
+        max: '1'
+        autoDestroy: true
+        spent: 0
+        recovery: []
+      type:
+        value: potion
+        subtype: ''
+      activities:
+        5nSNAlVtBdsujUyq:
+          type: utility
+          _id: 5nSNAlVtBdsujUyq
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+            condition: ''
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets:
+              - type: itemUses
+                value: '1'
+                target: ''
+                scaling: {}
+          description:
+            chatFlavor: ''
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects:
+            - _id: 8G1QmnotbGtjYkSJ
+          range:
+            override: false
+            units: self
+            special: ''
+          target:
+            template:
+              contiguous: false
+              units: ft
+              type: ''
+            affects:
+              choice: false
+              count: ''
+              type: ''
+            override: false
+            prompt: true
+          uses:
+            spent: 0
+            recovery: []
+            max: '1'
+          roll:
+            prompt: false
+            visible: false
+            name: ''
+            formula: ''
+          name: Drink
+      identifier: common-wine
+      source:
+        revision: 1
+        rules: '2024'
+      identified: true
+      unidentified:
+        description: ''
+      container: null
+      quantity: 50
+      attunement: ''
+      damage:
+        base:
+          number: null
+          denomination: null
+          types: []
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+        replace: false
+      magicalBonus: null
+      properties: []
+      attuned: false
+      equipped: false
+    effects:
+      - name: Alcohol - Potency 1
+        img: icons/consumables/drinks/wine-bottle-glass-white.webp
+        origin: Compendium.dnd5e-alcohol.drinks.Item.oRzVrJvXDISYmECQ
+        transfer: false
+        _id: 8G1QmnotbGtjYkSJ
+        type: base
+        system: {}
+        changes: []
+        disabled: false
+        duration:
+          startTime: null
+          seconds: null
+          combat: null
+          rounds: null
+          turns: null
+          startRound: null
+          startTurn: null
+        description: ''
+        tint: '#ffffff'
+        statuses: []
+        sort: 0
+        flags: {}
+        _stats:
+          compendiumSource: null
+          duplicateSource: null
+          coreVersion: '12.331'
+          systemId: dnd5e
+          systemVersion: 4.0.4
+          createdTime: null
+          modifiedTime: null
+          lastModifiedBy: null
+        _key: >-
+          !actors.items.effects!2zEx4oJnMsn8ZUX8.XU14FDnS3f3fHhO3.8G1QmnotbGtjYkSJ
+    flags:
+      dnd5e-alcohol:
+        potency: 1
+        properties: []
+      dnd5e:
+        riders:
+          activity: []
+          effect: []
+    _id: XU14FDnS3f3fHhO3
+    folder: PwmNrhU8U5Ilg5Fw
+    sort: 125000
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    _stats:
+      compendiumSource: Compendium.dnd5e-alcohol.drinks.Item.oRzVrJvXDISYmECQ
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737997667217
+      modifiedTime: 1737998369753
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.XU14FDnS3f3fHhO3'
+  - name: Aged Wine
+    type: consumable
+    img: icons/consumables/drinks/wine-amphora-cup-gray.webp
+    system:
+      description:
+        value: |-
+          <p><b>Potency:</b> 2</p>
+                                  <p><b>Properties:</b> None</p>
+        chat: ''
+      rarity: common
+      weight:
+        value: 2.5
+        units: lb
+      price:
+        value: 12
+        denomination: gp
+      uses:
+        max: '1'
+        autoDestroy: true
+        spent: 0
+        recovery: []
+      type:
+        value: potion
+        subtype: ''
+      activities:
+        dTA1vawi4O3Uj79h:
+          type: utility
+          _id: dTA1vawi4O3Uj79h
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+            condition: ''
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets:
+              - type: itemUses
+                value: '1'
+                target: ''
+                scaling: {}
+          description:
+            chatFlavor: ''
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects:
+            - _id: GtF037JF8dx4HoH9
+          range:
+            override: false
+            units: spec
+            special: ''
+          target:
+            template:
+              contiguous: false
+              units: ft
+              type: ''
+            affects:
+              choice: false
+              count: ''
+              type: ''
+            override: false
+            prompt: false
+          uses:
+            spent: 0
+            recovery: []
+            max: '1'
+          roll:
+            prompt: false
+            visible: false
+            name: ''
+            formula: ''
+          name: Drink
+      identifier: aged-wine
+      source:
+        revision: 1
+        rules: '2024'
+      identified: true
+      unidentified:
+        description: ''
+      container: null
+      quantity: 50
+      attunement: ''
+      damage:
+        base:
+          number: null
+          denomination: null
+          types: []
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+        replace: false
+      magicalBonus: null
+      properties: []
+      attuned: false
+      equipped: false
+    effects:
+      - name: Alcohol - Potency 2
+        img: icons/consumables/drinks/wine-amphora-cup-gray.webp
+        origin: Compendium.dnd5e-alcohol.drinks.Item.gwGOiArnBy4vtyIQ
+        transfer: false
+        _id: GtF037JF8dx4HoH9
+        type: base
+        system: {}
+        changes: []
+        disabled: true
+        duration:
+          startTime: null
+          seconds: null
+          combat: null
+          rounds: null
+          turns: null
+          startRound: null
+          startTurn: null
+        description: ''
+        tint: '#ffffff'
+        statuses: []
+        sort: 0
+        flags: {}
+        _stats:
+          compendiumSource: null
+          duplicateSource: null
+          coreVersion: '12.331'
+          systemId: dnd5e
+          systemVersion: 4.0.4
+          createdTime: null
+          modifiedTime: null
+          lastModifiedBy: null
+        _key: >-
+          !actors.items.effects!2zEx4oJnMsn8ZUX8.SmZJCUxE1LpBvv0l.GtF037JF8dx4HoH9
+    flags:
+      dnd5e-alcohol:
+        potency: 2
+        properties: []
+      dnd5e:
+        riders:
+          activity: []
+          effect: []
+    _id: SmZJCUxE1LpBvv0l
+    folder: PwmNrhU8U5Ilg5Fw
+    sort: 100000
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    _stats:
+      compendiumSource: Compendium.dnd5e-alcohol.drinks.Item.gwGOiArnBy4vtyIQ
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737997674518
+      modifiedTime: 1737998359440
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.SmZJCUxE1LpBvv0l'
+  - name: Magic Resistance
+    type: feat
+    _id: OSHKTqxaly4SM8ss
+    img: icons/sundries/gaming/rune-card.webp
+    system:
+      activities: {}
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      description:
+        value: >-
+          <p><span style="font-family:ScalySans">The keg golem has advantage on
+          saving throws against spells and other magical effects.</span></p>
+        chat: ''
+      identifier: new-item
+      source:
+        revision: 1
+        rules: '2024'
+      enchant: {}
+      type:
+        value: monster
+        subtype: ''
+      prerequisites:
+        level: null
+      properties: []
+      requirements: ''
+    effects: []
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737998308824
+      modifiedTime: 1738525473703
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.OSHKTqxaly4SM8ss'
+  - name: Slam
+    type: weapon
+    _id: b3GbQGPZlmwpULYZ
+    img: icons/creatures/abilities/paw-print-orange.webp
+    system:
+      activities:
+        egvKSo9EB6IFZ6xN:
+          _id: egvKSo9EB6IFZ6xN
+          type: attack
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets: []
+          description: {}
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects: []
+          range:
+            override: false
+          target:
+            template:
+              contiguous: false
+              units: ft
+            affects:
+              choice: false
+            override: false
+            prompt: true
+          uses:
+            spent: 0
+            recovery: []
+          attack:
+            critical:
+              threshold: null
+            flat: false
+            type: {}
+          damage:
+            critical: {}
+            includeBase: true
+            parts: []
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      description:
+        value: ''
+        chat: ''
+      identifier: new-item
+      source:
+        revision: 1
+        rules: '2024'
+      identified: true
+      unidentified:
+        description: ''
+      container: null
+      quantity: 1
+      weight:
+        value: 0
+        units: lb
+      price:
+        value: 0
+        denomination: gp
+      rarity: ''
+      attunement: ''
+      attuned: false
+      equipped: true
+      armor:
+        value: null
+      cover: null
+      crewed: false
+      hp:
+        value: null
+        max: null
+        dt: null
+        conditions: ''
+      type:
+        value: simpleM
+        baseItem: ''
+      ammunition: {}
+      damage:
+        base:
+          number: 2
+          denomination: 8
+          types:
+            - bludgeoning
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+          bonus: '5'
+        versatile:
+          number: null
+          denomination: null
+          types: []
+          custom:
+            enabled: false
+          scaling:
+            number: 1
+      magicalBonus: null
+      properties: []
+      proficient: null
+      range:
+        value: null
+        long: null
+        reach: null
+        units: ''
+      mastery: ''
+    effects: []
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737998384735
+      modifiedTime: 1738525449616
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.b3GbQGPZlmwpULYZ'
+  - name: MultiAttack
+    type: feat
+    _id: hK7bLB6hg84MwckU
+    img: icons/svg/upgrade.svg
+    system:
+      activities: {}
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      description:
+        value: >-
+          <p><span style="font-family:ScalySans">The keg golem makes two slam
+          attacks</span></p>
+        chat: ''
+      identifier: new-item
+      source:
+        revision: 1
+        rules: '2024'
+      enchant: {}
+      type:
+        value: monster
+        subtype: ''
+      prerequisites:
+        level: null
+      properties: []
+      requirements: ''
+    effects: []
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737998469194
+      modifiedTime: 1737998501731
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.hK7bLB6hg84MwckU'
+  - name: Alcoholic Fumes
+    type: feat
+    _id: HdOMnu6493wvHDdS
+    img: icons/magic/air/fog-gas-smoke-dense-green.webp
+    system:
+      activities: {}
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      description:
+        value: >-
+          <p>Creatures within 5 feet of the golem must make a Constitution
+          saving throw at the start of each turn as though they had just drank
+          the highest potency ale in any of the golem's kegs. This increases as
+          normal for drink rules.</p>
+        chat: ''
+      identifier: new-item
+      source:
+        revision: 1
+        rules: '2024'
+      enchant: {}
+      type:
+        value: monster
+        subtype: ''
+      prerequisites:
+        level: null
+      properties: []
+      requirements: ''
+    effects: []
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1738517020383
+      modifiedTime: 1738517098620
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.HdOMnu6493wvHDdS'
+  - name: Open Tap
+    type: feat
+    _id: ut7c2pOBkD6DW3kN
+    img: icons/svg/waterfall.svg
+    system:
+      activities:
+        v61kaCUCyMHSteMq:
+          type: utility
+          _id: v61kaCUCyMHSteMq
+          sort: 0
+          activation:
+            type: action
+            value: null
+            override: false
+            condition: ''
+          consumption:
+            scaling:
+              allowed: false
+            spellSlot: true
+            targets: []
+          description:
+            chatFlavor: ''
+          duration:
+            units: inst
+            concentration: false
+            override: false
+          effects:
+            - _id: f6mCddLKxp0wTUJa
+          range:
+            override: false
+            units: self
+            special: ''
+          target:
+            template:
+              contiguous: false
+              units: ft
+              type: ''
+            affects:
+              choice: false
+              count: ''
+              type: self
+            override: false
+            prompt: true
+          uses:
+            spent: 0
+            recovery: []
+            max: ''
+          roll:
+            prompt: false
+            visible: false
+            name: ''
+            formula: ''
+          name: Open Tap
+          img: ''
+          appliedEffects:
+            - f6mCddLKxp0wTUJa
+      uses:
+        spent: 0
+        recovery: []
+        max: ''
+      description:
+        value: ''
+        chat: ''
+      identifier: new-item
+      source:
+        revision: 1
+        rules: '2024'
+      enchant: {}
+      type:
+        value: monster
+        subtype: ''
+      prerequisites:
+        level: null
+      properties: []
+      requirements: ''
+    effects:
+      - name: Open Tap
+        img: icons/svg/waterfall.svg
+        origin: >-
+          Compendium.dnd5e-alcohol.monsters.Actor.2zEx4oJnMsn8ZUX8.Item.ut7c2pOBkD6DW3kN
+        transfer: false
+        _id: f6mCddLKxp0wTUJa
+        type: base
+        system: {}
+        changes: []
+        disabled: false
+        duration:
+          startTime: null
+          seconds: null
+          combat: null
+          rounds: null
+          turns: null
+          startRound: null
+          startTurn: null
+        description: ''
+        tint: '#ffffff'
+        statuses: []
+        sort: 0
+        flags: {}
+        _stats:
+          compendiumSource: null
+          duplicateSource: null
+          coreVersion: '12.331'
+          systemId: dnd5e
+          systemVersion: 4.0.4
+          createdTime: 1738525293646
+          modifiedTime: 1738525386981
+          lastModifiedBy: 4DestKlpiBDHIre4
+        _key: >-
+          !actors.items.effects!2zEx4oJnMsn8ZUX8.ut7c2pOBkD6DW3kN.f6mCddLKxp0wTUJa
+    folder: null
+    sort: 0
+    ownership:
+      default: 0
+      4DestKlpiBDHIre4: 3
+    flags:
+      dnd5e:
+        riders:
+          activity: []
+          effect: []
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1738525276422
+      modifiedTime: 1738525379127
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.items!2zEx4oJnMsn8ZUX8.ut7c2pOBkD6DW3kN'
+effects:
+  - name: Open Tap
+    img: icons/svg/waterfall.svg
+    _id: VeuGwFybWkZwD3R4
+    type: base
+    system: {}
+    changes: []
+    disabled: true
+    duration:
+      startTime: 0
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    tint: '#ffffff'
+    transfer: false
+    statuses: []
+    sort: 0
+    flags: {}
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.331'
+      systemId: dnd5e
+      systemVersion: 4.0.4
+      createdTime: 1737997328421
+      modifiedTime: 1737997412976
+      lastModifiedBy: 4DestKlpiBDHIre4
+    _key: '!actors.effects!2zEx4oJnMsn8ZUX8.VeuGwFybWkZwD3R4'
+folder: null
+sort: 0
+ownership:
+  default: 0
+  4DestKlpiBDHIre4: 3
+flags:
+  dnd5e:
+    showTokenPortrait: false
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.0.4
+  createdTime: 1737402002150
+  modifiedTime: 1737997608029
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!actors!2zEx4oJnMsn8ZUX8'
+

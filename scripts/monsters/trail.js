@@ -233,8 +233,6 @@ Hooks.on('preUpdateToken', async function (token, update) {
 
 // Making a trail, thanks @Xaukael
 Hooks.on('preUpdateToken', async function (token, update) {
-    if (token.actor.name != "Keg Golem"){return;}
-
     // Check that actor has "open tap"-effect active
     let open_tap = false;
     for (const effect_index in token.actor.effects.contents){

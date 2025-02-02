@@ -1,0 +1,70 @@
+name: Head Cleaner
+type: consumable
+_id: BhBxMoVEGv5sGAMs
+img: icons/consumables/potions/bottle-round-flask-fumes-purple.webp
+system:
+  activities: {}
+  uses:
+    spent: 0
+    recovery: []
+    autoDestroy: false
+    max: ''
+  description:
+    value: >-
+      <p>Wondrous item, rare</p><p>This vial is full of a dark red, very bitter
+      alchemical liquid. When enough is dripped into a glass, the drink inside
+      has the Sobering trait. This vial has enough to affect up to 10 Potency of
+      alcohol.</p>
+    chat: ''
+  identifier: new-item
+  source:
+    revision: 1
+    rules: '2024'
+  identified: true
+  unidentified:
+    description: ''
+  container: null
+  quantity: 1
+  weight:
+    value: 0
+    units: lb
+  price:
+    value: 0
+    denomination: gp
+  rarity: rare
+  attunement: ''
+  attuned: false
+  equipped: false
+  type:
+    value: potion
+    subtype: ''
+  damage:
+    base:
+      number: null
+      denomination: null
+      types: []
+      custom:
+        enabled: false
+      scaling:
+        number: 1
+    replace: false
+  magicalBonus: null
+  properties: []
+effects: []
+folder: null
+sort: 0
+ownership:
+  default: 0
+  4DestKlpiBDHIre4: 3
+flags: {}
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.331'
+  systemId: dnd5e
+  systemVersion: 4.0.4
+  createdTime: 1737403934374
+  modifiedTime: 1737403991143
+  lastModifiedBy: 4DestKlpiBDHIre4
+_key: '!items!BhBxMoVEGv5sGAMs'
+

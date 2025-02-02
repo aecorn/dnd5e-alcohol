@@ -58,12 +58,32 @@ const ALCOHOL_EFFECTS = {
 };
 
 
+
+
+export async function calculate_thresholds(actor){
+    let con_mod = actor.system.abilities.con.mod;
+    let con_score = actor.system.abilities.con.value;
+
+    let bonus = 0;
+    if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
+        bonus += actor.system.attributes.prof;
+    }
+
+    let condition_thresholds = {
+        tipsy: con_mod + bonus,
+        drunk: Math.floor(con_score / 2) + bonus,
+        wasted: 10 + con_mod + bonus,
+        incapacitated: con_score+ bonus,
+
+    }
+    return condition_thresholds;
+}
+
+
 export async function refresh_conditions(actor, inebriation = null) {
     console.log("Refreshing conditions");
 
     let curr_ineb = inebriation || actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
-    let con_mod = actor.system.abilities.con.mod;
-    let con_score = actor.system.abilities.con.value;
 
     let addEffects = new Set();
     let removeEffects = new Set();
@@ -72,30 +92,34 @@ export async function refresh_conditions(actor, inebriation = null) {
     let isWasted = false;
     let incapacitated = false;
 
+    let thres = await calculate_thresholds(actor);
+
+
+
     /* Inebriation >= Constitution modfier -> Tipsy */
-    if (curr_ineb >= con_mod && curr_ineb !== 0) addEffects.add("Tipsy");
-    if (curr_ineb < con_mod || curr_ineb === 0) removeEffects.add("Tipsy");
+    if (curr_ineb >= thres.tipsy && curr_ineb !== 0) {addEffects.add("Tipsy")};
+    if (curr_ineb < thres.tipsy || curr_ineb === 0) {removeEffects.add("Tipsy")};
 
     /* Inebriation >= Half of constitution score (rounded down) -> Drunk */
-    if (curr_ineb >= Math.floor(con_score / 2)) addEffects.add("Drunk");
-    if (curr_ineb < Math.floor(con_score / 2)) removeEffects.add("Drunk");
+    if (curr_ineb >= thres.drunk){ addEffects.add("Drunk")};
+    if (curr_ineb < thres.drunk){removeEffects.add("Drunk")};
 
     /* If inebriation >= 10 + Constitution modifier -> Wasted (+ poisoned) */
-    if (curr_ineb >= (10 + con_mod)) {
+    if (curr_ineb >= thres.wasted) {
         addEffects.add("Wasted");
         isWasted = true;
     }
-    if (curr_ineb < (10 + con_mod)) {
+    if (curr_ineb < thres.wasted) {
         removeEffects.add("Wasted");
         actor.unsetFlag("dnd5e-alcohol", "wasted_active");
     }
 
     /* If inebriation points equals Constitution -> Incapacitated */
-    if (curr_ineb >= con_score) {
+    if (curr_ineb >= thres.incapacitated) {
         addEffects.add("Incapacitated");
         incapacitated = true;
     }
-    if (curr_ineb < con_score) removeEffects.add("Incapacitated");
+    if (curr_ineb < thres.incapacitated) removeEffects.add("Incapacitated");
 
     // Apply additions
     for (const effect of addEffects) {
@@ -169,6 +193,15 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
     
     let effectData = ALCOHOL_EFFECTS[condition.toLowerCase()];
 
+    // If actor has deep gut, reduce skill penalties with half
+    if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
+        for (change of effectData.changes){
+            if (change.key.includes("skills") && change.value.startsWith("-")){
+                change.value = Math.floor(parseInt(change.value)/2).toString()
+            }
+        }
+    }
+
     // Check if effect already exists
     let existingEffect = actor.effects.find(e => e.name === effectData.name);
     if (existingEffect) return; // Prevent duplicates
@@ -199,15 +232,20 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
             <p>Another creature can make a Medicine check to stabilize you as normal.</p>
         `;
     } else if (isWasted) {
-        chatContent = `
-            <p><b>${actor.name} is <span style="color:purple">Wasted</span> from excessive alcohol consumption.</b></p>
-            <p><b>Severe Intoxication Effect:</b> While Wasted, you must make a <b>DC [[/save ability=con dc=10]]</b> Constitution saving throw once per hour while awake.</p>
+        chatContent = `<p><b>${actor.name} is <span style="color:purple">Wasted</span> from excessive alcohol consumption.</b></p>`;
+
+        // If the actor has the feat 
+        if (!actor.items.some(item => item.name.toLowerCase() == "deep gut")){
+            chatContent += `<p>${actor.name} has the feat Deep Gut, and will not have to spend time vomiting while wasted.</p>`;
+        } else {
+            chatContent += `<p><b>Severe Intoxication Effect:</b> While Wasted, you must make a <b>DC [[/save ability=con dc=10]]</b> Constitution saving throw once per hour while awake.</p>
             <p>On a failed save, you spend one minute vomiting. While vomiting:</p>
             <ul>
                 <li>You cannot take any actions.</li>
                 <li>You automatically fail all saving throws.</li>
             </ul>
         `;
+        }
     } else {
         if (addedConditions.length > 0) {
             chatContent += `<p><b>Drunken effects you have:</b> ${addedConditions.join(", ")}</p>`;
