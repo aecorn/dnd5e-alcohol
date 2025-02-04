@@ -206,6 +206,16 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
     let existingEffect = actor.effects.find(e => e.name === effectData.name);
     if (existingEffect) return; // Prevent duplicates
 
+    if (["tipsy", "drunk", "wasted"].includes(effectData.name.toLowerCase())){
+        if (actor.items.some(item => item.name.toLowerCase() == "drunkard's third leg")){
+            for (speed of actor.system.attributes.movement){
+                if (speed.isInteger() & speed > 0){
+                    speed += 5;
+                }
+            }
+        }
+    }
+
     await actor.createEmbeddedDocuments("ActiveEffect", [{
         name: effectData.name,
         icon: effectData.icon,
@@ -272,6 +282,16 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
 
     let existingEffect = actor.effects.getName(condition) || false; 
+
+    if (["tipsy", "drunk", "wasted"].includes(condition.toLowerCase())){
+        if (actor.items.some(item => item.name.toLowerCase() == "drunkard's third leg")){
+            for (speed of actor.system.attributes.movement){
+                if (speed.isInteger() & speed > 0){
+                    speed -= 5;
+                }
+            }
+        }
+    }
 
     if (existingEffect) {
         existingEffect.delete();
