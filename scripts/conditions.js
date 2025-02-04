@@ -41,7 +41,6 @@ const ALCOHOL_EFFECTS = {
         description: "A wasted creature must make a Constitution saving throw at once an hour they are awake or spend one minute vomiting. While vomiting, they cannot perform any other actions and automatically fail all saving throws. Once a wasted creature begins a long rest, they must make a Constitution saving throw or fail to gain any benefit from the rest. Both saving throw DCs are equal to their Alcohol Level.",
         changes: [
             { key: "system.conditions.prone", mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE, value: "true", priority: 50 },
-            { key: "system.conditions.poisoned", mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE, value: "true", priority: 50 },
             { key: "flags.dnd5e-alcohol.wasted_active", mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE, value: "true" } // Custom flag to track state
         ],
         statuses: ["wasted", "poisoned"],
@@ -52,7 +51,6 @@ const ALCOHOL_EFFECTS = {
         icon: "icons/svg/paralysis.svg",
         statuses: ["incapacitated"],
         changes: [
-            { key: "system.conditions.incapacitated", mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE, value: "true", priority: 60 }
         ]
     }
 };
@@ -216,6 +214,13 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
         }
     }
 
+    if (effectData.name.toLowerCase() === "incapacitated"){
+        await actor.toggleStatusEffect("incapacitated", {active: true});
+    }
+    if (effectData.name.toLowerCase() === "wasted"){
+        await actor.toggleStatusEffect("poisoned", {active: true});
+    }
+
     await actor.createEmbeddedDocuments("ActiveEffect", [{
         name: effectData.name,
         icon: effectData.icon,
@@ -291,6 +296,13 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
                 }
             }
         }
+    }
+
+    if (condition.toLowerCase() === "wasted"){
+        await actor.toggleStatusEffect("poisoned", {active: false});
+    }
+    if (condition.toLowerCase() === "incapacitated"){
+        await actor.toggleStatusEffect("incapacitated", {active: false});
     }
 
     if (existingEffect) {
