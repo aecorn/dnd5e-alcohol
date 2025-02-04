@@ -7,20 +7,42 @@ Inspired by this [ruleset by CupidFaust on GMBinder](https://www.gmbinder.com/sh
 Many changes have been made to better fit the base dnd5e system in FoundryVTT.
 
 
+If you have ideas for enhancements or errors to report, use the "issues" on this repo.
+
+# Todo:
+- make sure poisoned condition is added along Wasted
+
+
+
 ## Inebriation "points"
 The characters now have a numeric flag of how many "inebriation points" they have. Consuming alcohol will prompt for a Save, if the save is failed, the potency of the drink is applied to the character.
 
 ### Inebriation meter in character sheet
-![Inebriation bar](imgs/inebriation_bar.png)
+![Inebriation bar](imgs/inebriation_bar.png) \
 There is a bar / meter in the character sheet that shows the current inebriation points.
 
 ### Thresholds for new conditions
-![Conditions token](imgs/conditions_token.png)
+![Conditions token](imgs/conditions_token.png) \
 When the inebriation points reach certain thresholds (decided by your constitution score), you will get increasing worse alcohol-induced conditions. Tipsy > Drunk > Wasted > Incapacitated.
 ![Conditions effects](imgs/conditions_effects.png)
 
+#### Tipsy
+- +2 to persuasion
+- -2 to insight
+- -2 to wisdom saves
+
+### Drunk
+- -2 to all attacks
+- -2 to int and wisdom checks and saves
+
+### Wasted
+- Poisoned condition
+- May vomit uncontrollably
+- May fail regaining hp, hit dice and spell slots on first long rest
+
+
 ## 3 Macros for the DM
-![Macros](imgs/macros.png)
+![Macros](imgs/macros.png) \
 By selecting tokens, the GM can manipulate the inebriation points with these 3 macros.
 
 ## Rest
@@ -28,33 +50,47 @@ Taking a short rest will reduce the inebriation points on a character by 1.
 Taking a long rest will reduce inebriation to 0, but going to bed with the Wasted condition might ruin your sleep, and hinder you from regaining spell slots, hp and hit dice (constitution save).
 
 # Compendiums
-![Compendiums](imgs/compendiums.png)
+![Compendiums](imgs/compendiums.png) \
 
 ## Alcoholic Drinks
 
 ### Extra Properties and Traits / Effects
 
-
-
 #### Dangerous
+Upgrade unarmed strikes to 1d4.
 
 #### Disarming
+-5 to perception checks
 
 #### Infatuating
+-2 to charisma and wisdom saves
 
 #### Racial
+Can choose to fail if matching race / species, and gain 1 less potency from drink.
 
 #### Sobering
+Subtracts inebriation points, instead of adding them.
 
 #### Wild Magic
+Rolls on a Wild Magic table, with effects on the drinker.
 
 
 ## Alcoholic Monsters
+- Booze Drake
+- Rum Gremlin
+- Swarm of Rum Gremlins
+- Keg Golem
 
 ## Alcohol-Themed Items
+- Barroom Knucks
+- Drunkard's third leg
+- Head Cleaner
 
 ## Alcohol-Themed Feats
-
+- Deep Gut
+- Liquid Courage
+- Liquid Talent
+- Temperance of Mind
 
 
 
