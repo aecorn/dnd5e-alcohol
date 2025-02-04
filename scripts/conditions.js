@@ -65,7 +65,7 @@ export async function calculate_thresholds(actor){
     let con_score = actor.system.abilities.con.value;
 
     let bonus = 0;
-    if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
+    if (await actor.items.some(item => item.name.toLowerCase() == "deep gut")){
         bonus += actor.system.attributes.prof;
     }
 
