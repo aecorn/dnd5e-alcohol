@@ -5,7 +5,7 @@ import { isOverlapping} from "./trail.js";
 
 // Keg golems have an aura of 5 feet of intoxicating fumes (triggers on start of turn)
 Hooks.on("combatTurnChange", async (combat) => {
-    console.log(combat);
+    //console.log(combat);
     // Find Keg Golems in combat
     let featureName = "alcoholic fumes";
     let fume_combatants = combat.turns.filter(combatant => 
@@ -54,11 +54,11 @@ Hooks.on("combatTurnChange", async (combat) => {
             ];
         }
         if (isOverlapping(fumeArea, tokenArea, 0)){
-            console.log(`${token.name} is inside a ${enemy.name}'s fume area!`);
+            //console.log(`${token.name} is inside a ${enemy.name}'s fume area!`);
             let drink = random_alcohol_effect_in_inventory(enemy.actor);
-            console.log(`Applying highest potency drink effect:`, drink);
+            //console.log(`Applying highest potency drink effect:`, drink);
             let [potency, properties] = extract_potency_properties_from_name(drink);
-            console.log(combatant.actor);
+            //console.log(combatant.actor);
             create_alcohol_chat_message_for_actor(combatant.actor, potency, properties, 
                 `${token.name} started their turn in the ${enemy.name}'s fume area! <span style="color:red">They are subject to one of the boozes its carrying!</span> <br>`);
         }
@@ -70,9 +70,9 @@ function random_alcohol_effect_in_inventory(actor){
     let alcoholItems = actor.items.contents.filter(
         item => item?.effects.contents?.some(
             cont => cont.name.toLowerCase().startsWith("alcohol -")));
-    console.log(alcoholItems);
+    //console.log(alcoholItems);
     let alcoholEffects = alcoholItems.map(item => item?.effects.contents[0]?.name);
-    console.log(alcoholEffects);
+    //console.log(alcoholEffects);
     let pickedName = alcoholEffects[Math.floor(Math.random() * alcoholEffects.length)];
     return pickedName;
 }
