@@ -1,0 +1,201 @@
+{
+  "name": "Common Ale",
+  "type": "consumable",
+  "img": "icons/consumables/drinks/alcohol-beer-mug-yellow.webp",
+  "system": {
+    "description": {
+      "value": "<p><b>Potency:</b> 1</p>\n                        <p><b>Properties:</b> None</p>",
+      "chat": ""
+    },
+    "rarity": "common",
+    "weight": {
+      "value": 1,
+      "units": "lb"
+    },
+    "price": {
+      "value": 2,
+      "denomination": "gp"
+    },
+    "uses": {
+      "max": "1",
+      "autoDestroy": true,
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "potion",
+      "subtype": ""
+    },
+    "activities": {
+      "W0X61oQKrpX74rRg": {
+        "type": "utility",
+        "_id": "W0X61oQKrpX74rRg",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "JVKp43iyvQFPakX1"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": "1"
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "name": "Drink",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "common-ale",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "identified": true,
+    "unidentified": {
+      "description": ""
+    },
+    "container": null,
+    "quantity": 1,
+    "attunement": "",
+    "attuned": false,
+    "equipped": false,
+    "damage": {
+      "base": {
+        "number": null,
+        "denomination": null,
+        "types": [],
+        "custom": {
+          "enabled": false
+        },
+        "scaling": {
+          "number": 1
+        }
+      },
+      "replace": false
+    },
+    "magicalBonus": null,
+    "properties": []
+  },
+  "effects": [
+    {
+      "name": "Alcohol - Potency 1",
+      "img": "icons/consumables/drinks/alcohol-beer-mug-yellow.webp",
+      "origin": "Compendium.dnd5e-alcohol.drinks.Item.ftP1wX2DsAz3oz0V",
+      "transfer": false,
+      "_id": "JVKp43iyvQFPakX1",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1737703619069,
+        "modifiedTime": 1737703635566,
+        "lastModifiedBy": "4DestKlpiBDHIre4"
+      },
+      "_key": "!items.effects!ftP1wX2DsAz3oz0V.JVKp43iyvQFPakX1"
+    }
+  ],
+  "flags": {
+    "dnd5e-alcohol": {
+      "potency": 1,
+      "properties": []
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_id": "ftP1wX2DsAz3oz0V",
+  "folder": "PwmNrhU8U5Ilg5Fw",
+  "sort": 150000,
+  "ownership": {
+    "default": 0,
+    "4DestKlpiBDHIre4": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1737399683400,
+    "modifiedTime": 1737703619089,
+    "lastModifiedBy": "4DestKlpiBDHIre4"
+  },
+  "_key": "!items!ftP1wX2DsAz3oz0V"
+}

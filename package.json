@@ -1,9 +1,5 @@
 {
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^1.0.4"
-  },
-  "scripts": {
-  "pushLDBtoYML": "node ./tools/pushLDBtoYML.mjs",
-  "pullYMLtoLDB": "node ./tools/pullYMLtoLDB.mjs",
-}
+  }
 }

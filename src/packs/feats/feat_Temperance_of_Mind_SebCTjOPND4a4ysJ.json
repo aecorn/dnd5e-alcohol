@@ -1,0 +1,77 @@
+{
+  "name": "Temperance of Mind",
+  "type": "feat",
+  "_id": "SebCTjOPND4a4ysJ",
+  "img": "icons/magic/control/control-influence-crown-gold.webp",
+  "system": {
+    "activities": {},
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p>Do not rename this feat</p><ul><li>Increase your Wisdom score by 1, to a maximum of 20.</li><li>You may use Wisdom instead of Constitution to resist the effects of drinks.</li><li>You may spend one minute performing a personal ritual, centering yourself and clearing your mind, to remove the cumulative penalty for amount of drinks you have had before your next one.</li><li>You may make a DC 15 Wisdom saving throw to resist the secondary effect of an alcohol drink you consume.</li></ul>",
+      "chat": ""
+    },
+    "identifier": "new-item",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "enchant": {},
+    "type": {
+      "value": "feat",
+      "subtype": "general"
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [],
+    "requirements": "Wisdom 13 or more",
+    "advancement": [
+      {
+        "_id": "U8kJ5yF9nAuY76KT",
+        "type": "AbilityScoreImprovement",
+        "configuration": {
+          "cap": null,
+          "fixed": {
+            "str": 0,
+            "dex": 0,
+            "con": 0,
+            "int": 0,
+            "wis": 1,
+            "cha": 0
+          },
+          "locked": [],
+          "points": 0
+        },
+        "value": {
+          "type": "asi"
+        },
+        "level": 0,
+        "title": "",
+        "hint": ""
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "4DestKlpiBDHIre4": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.2.2",
+    "createdTime": 1737401800520,
+    "modifiedTime": 1738528905263,
+    "lastModifiedBy": "4DestKlpiBDHIre4"
+  },
+  "_key": "!items!SebCTjOPND4a4ysJ"
+}
