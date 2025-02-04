@@ -38,9 +38,9 @@ Hooks.on("combatTurnChange", async (combat) => {
     // Check if the actor can see each of the terrors
     for (let terrorToken of terrorTokens) {
         // Check if updated token sees 
-        console.log(terrorToken);
-        console.log(token);
-        console.log(canvas.visibility.testVisibility(terrorToken, {object: token}));
+        //console.log(terrorToken);
+        //console.log(token);
+        //console.log(canvas.visibility.testVisibility(terrorToken, {object: token}));
         if (canvas.visibility.testVisibility(terrorToken, {object: token})){
             await SightChatMessage(token.actor);
             return;

@@ -142,22 +142,22 @@ function corners_from_points([px1, py1, px2, py2, x, y, tokenWidth]){
     // Compute direction vector
     let dx = x2 - x1;
     let dy = y2 - y1;
-    console.log("dx, dy", dx, dy);
+    //console.log("dx, dy", dx, dy);
 
     // Compute length of the direction vector
     let length = Math.sqrt(dx ** 2 + dy ** 2);
-    console.log("length", length);
+    //console.log("length", length);
 
     // Compute perpendicular unit vector
     let perp_x = -dy / length;
     let perp_y = dx / length;
-    console.log("perp", perp_x, perp_y);
+    //console.log("perp", perp_x, perp_y);
     
 
     // Compute perpendicular offset
     let offset_x = Math.floor(perp_x * tokenWidth/2);
     let offset_y = Math.floor(perp_y * tokenWidth/2);
-    console.log("offset", offset_x, offset_y);
+    //console.log("offset", offset_x, offset_y);
 
     // Compute the four corners of the rectangle
     let corner1 = [x1 + offset_x, y1 + offset_y];
@@ -165,7 +165,7 @@ function corners_from_points([px1, py1, px2, py2, x, y, tokenWidth]){
     let corner3 = [x2 + offset_x, y2 + offset_y];
     let corner4 = [x2 - offset_x, y2 - offset_y];
 
-    console.log({ corner1, corner2, corner3, corner4 });
+    //console.log({ corner1, corner2, corner3, corner4 });
 
     return [corner1, corner2, corner3, corner4 ];
 
@@ -197,7 +197,7 @@ Hooks.on('preUpdateToken', async function (token, update) {
     // Calculate area below characters move
     let tokenWidth = token.width*canvas.dimensions.size;
     move.push(tokenWidth);
-    console.log(move);
+    //console.log(move);
     //console.log(move);
     let [px1, py1, px2, py2, x, y, height, width] = calculate_line(move, false);
     let movedArea = corners_from_points([px1, py1, px2, py2, x, y, tokenWidth]);
@@ -214,19 +214,19 @@ Hooks.on('preUpdateToken', async function (token, update) {
         // Update the flag with only valid drawings on canvas
         await open_tap_token.document.setFlag("dnd5e-alcohol", "path", updated_paths);
 
-        console.log("updated drawings", updated_paths);
+        //console.log("updated drawings", updated_paths);
         for (let path of updated_paths){
             
-            console.log("path corner", path.corners);
-            console.log("movedArea", movedArea);
+            //console.log("path corner", path.corners);
+            //console.log("movedArea", movedArea);
             if (isOverlapping(movedArea, path.corners)){
-                console.log("Token passed over trail?");
+                //console.log("Token passed over trail?");
                 await TrailChatMessage(token.actor);
             }
         }
     }
 
-    console.log("Open tap tokens", open_tap_tokens);
+    //console.log("Open tap tokens", open_tap_tokens);
 
 });
 
@@ -237,7 +237,7 @@ Hooks.on('preUpdateToken', async function (token, update) {
     let open_tap = false;
     for (const effect_index in token.actor.effects.contents){
         let effect = token.actor.effects.contents[effect_index];
-        console.log(effect);
+        //console.log(effect);
         if (effect.name == "Open Tap" & effect.active){
             open_tap = true;
         }
@@ -269,7 +269,7 @@ Hooks.on('preUpdateToken', async function (token, update) {
         corners: corners_from_points([px1, py1, px2, py2, x, y, tokenWidth])
 
     }
-    console.log(drawing_obj);
+    //console.log(drawing_obj);
 
     await drawings.push(drawing_obj);
     //console.log(drawings);

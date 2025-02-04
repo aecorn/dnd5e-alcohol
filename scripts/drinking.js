@@ -25,7 +25,7 @@ Hooks.on("dnd5e.postActivityConsumption", async (activity, _, chatmsgdata) => {
     // We are sort of replacing the old chatmessage with our own, so we want to stop the default one.
     // This data is passed to the chatmessage creation, we hook into that below
     chatmsgdata.data.flags.delchatmessage = true;
-    console.log(chatmsgdata);
+    //console.log(chatmsgdata);
 });
 
 
@@ -49,7 +49,7 @@ Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
     //console.log(options);
 
     if (!effectName.startsWith("alcohol -")) {
-        console.log("Not an alcohol effect. Exiting.");
+        //console.log("Not an alcohol effect. Exiting.");
         return;  // Stops execution but allows the system to proceed normally.
     }
     
@@ -190,7 +190,7 @@ async function apply_alcohol_properties_to_actor(actor, properties){
     // If the Actor does not have the Drunk condition, they do not get the special properties / traits
     // Better to calculate Drunk threshold, because of async nature?
     if (!(actor.effects.some(effect => effect.name === "Drunk"))){
-        console.log("The character is not drunk?");
+        //console.log("The character is not drunk?");
         return;
     };
 
@@ -222,7 +222,7 @@ async function apply_alcohol_properties_to_actor(actor, properties){
             //console.log(race_name);
             if (!(race_name.toLowerCase().includes(race.toLowerCase()))) {
                 // Disadvantage on perception 
-                console.log("Making changes.");
+                //console.log("Making changes.");
                 let changes = [
                     {
                       "key": "system.skills.prc.bonuses.check",
