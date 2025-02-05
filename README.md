@@ -1,4 +1,8 @@
 # dnd5e-alcohol
+![](https://img.shields.io/badge/Foundry-v12-informational)
+![Latest Release Download Count](https://img.shields.io/github/downloads/aecorn/dnd5e-alcohol/latest/module.zip)
+<!--![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fdnd5e-alcohol&colorB=4aa94a)
+-->
 
 > DISCLAIMER (shortened):
 > dnd5e-alcohol is a fantasy roleplaying module for FoundryVTT and does not promote or encourage real-life alcohol consumption. This is purely fictional and should not be interpreted as endorsing drinking, especially underage drinking or alcohol use during pregnancy. I seek no financial gain from this module. Please play and drink responsibly, and remember that real-world alcohol consumption carries risks. (See full disclaimer at bottom of Readme.)
@@ -54,7 +58,7 @@ Taking a long rest will reduce inebriation to 0, but going to bed with the Waste
 
 ## Alcoholic Drinks
 
-### Extra Properties and Traits / Effects
+The drinks have an active effect they apply, this is replaced with potentially added inebriation points and other properties if the character fails a save. This means you can add new items that add inebriation points and the properties available in the module by following the naming convention on the ActiveEffect: "Alcohol - Potency 1 - Dangerous - Disarming" for example. Swap the number for the potency of the drink, and add as many of the properties as you want seperated by dashes.
 
 #### Dangerous
 Upgrade unarmed strikes to 1d4.
