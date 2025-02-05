@@ -1,7 +1,7 @@
 {
   "id": "dnd5e-alcohol",
   "title": "Alcohol system for DnD 5e",
-  "version": "0.0.1",
+  "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
