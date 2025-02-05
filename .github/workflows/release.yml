@@ -70,9 +70,17 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      
+      - name: Install Foundry CLI
+        run: npm install @foundryvtt/foundryvtt-cli --save-dev
+
       - name: Build Packs
         run: |
-          npm run pullYMLtoLDB --if-present
+          node ./tools/pullYMLtoLDB.mjs --if-present
 
       # Create a "module.zip" archive containing all the module's required files.
       # If you have other directories or files that will need to be added to
