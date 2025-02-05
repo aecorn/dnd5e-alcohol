@@ -37,7 +37,7 @@
       "entity": "Item",
       "type": "Item",
       "system": "dnd5e",
-      "path": "packs/drinks.db",
+      "path": "packs/drinks",
       "module": "dnd5e-alcohol"
     },
     {
