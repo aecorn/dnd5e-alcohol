@@ -46,7 +46,7 @@
       "entity": "Item",
       "type": "Item",
       "system": "dnd5e",
-      "path": "packs/feats.db",
+      "path": "packs/feats",
       "module": "dnd5e-alcohol"
     },
     {
@@ -55,7 +55,7 @@
       "entity": "Item",
       "type": "Item",
       "system": "dnd5e",
-      "path": "packs/items.db",
+      "path": "packs/items",
       "module": "dnd5e-alcohol"
     },
     {
@@ -64,7 +64,7 @@
       "entity": "Actor",
       "type": "Actor",
       "system": "dnd5e",
-      "path": "packs/monsters.db",
+      "path": "packs/monsters",
       "module": "dnd5e-alcohol"
     },
     {
@@ -73,12 +73,11 @@
       "entity": "RollTable",
       "type": "RollTable",
       "system": "dnd5e",
-      "path": "packs/rollable.db",
+      "path": "packs/rollable",
       "module": "dnd5e-alcohol"
     }
     
   ],
-  "url": "https://github.com/aecorn/foundryvtt-module-alcohol",
   "esmodules": [
     "scripts/main.js",
     "scripts/conditions.js", 
@@ -94,5 +93,9 @@
   ],
   "styles": [
     "styles/alcohol.css"
-  ]
+  ],
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "readme": "README.md"
 }
