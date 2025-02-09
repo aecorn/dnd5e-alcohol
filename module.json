@@ -4,7 +4,7 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "12",
-    "verified": "12"
+    "verified": "13"
   },
   "authors": [
     {
@@ -30,6 +30,13 @@
     ]
   
   },
+  "packFolders": [{
+    "name": "Alcohol Packs",
+    "sorting": "a",
+    "color": "#4ba14a",
+    "packs": ["drinks", "feats", "items", "monsters", "alcohol-rollable"],
+    "folders": []
+  }],
   "packs": [
     {
       "name": "drinks",
