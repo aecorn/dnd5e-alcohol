@@ -84,7 +84,8 @@ export function extract_potency_properties_from_name(effectName){
 
 
 export function create_alcohol_chat_message_for_actor(actor, potency, properties, prefix=""){
-    let inebriation_points = actor.getFlag("dnd5e-alcohol", "inebriation");
+    let inebriation_points = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    
     let dc = 10 + potency + Math.floor(inebriation_points / 2);
 
     let save = `[[/save ability=con dc=${dc}]]`;

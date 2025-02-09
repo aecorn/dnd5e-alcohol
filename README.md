@@ -13,13 +13,17 @@ Many changes have been made to better fit the base dnd5e system in FoundryVTT.
 
 If you have ideas for enhancements or errors to report, use the "issues" on this repo.
 
+
+> When the module is updated, items you have already imported from the compendiums will remain unchanged. Unless you import them from the compendiums again.
+
+
 # Todo:
 - make sure poisoned condition is added along Wasted
 
 
 
 ## Inebriation "points"
-The characters now have a numeric flag of how many "inebriation points" they have. Consuming alcohol will prompt for a Save, if the save is failed, the potency of the drink is applied to the character.
+The characters now have a numeric flag of how many "inebriation points" they have. Consuming alcohol will prompt for a Save, if the save is failed, the potency and properties from the drink can be manually applied to the character from the chatcard.
 
 ### Inebriation meter in character sheet
 ![Inebriation bar](imgs/inebriation_bar.png) \
@@ -27,7 +31,7 @@ There is a bar / meter in the character sheet that shows the current inebriation
 
 ### Thresholds for new conditions
 ![Conditions token](imgs/conditions_token.png) \
-When the inebriation points reach certain thresholds (decided by your constitution score), you will get increasing worse alcohol-induced conditions. Tipsy > Drunk > Wasted > Incapacitated.
+When the inebriation points reach certain thresholds (decided by your constitution score), you will get increasing worse alcohol-induced conditions. Tipsy > Drunk > Wasted (+Poisoned) > Incapacitated.
 ![Conditions effects](imgs/conditions_effects.png)
 
 #### Tipsy
@@ -80,15 +84,26 @@ Rolls on a Wild Magic table, with effects on the drinker.
 
 
 ## Alcoholic Monsters
-- Booze Drake
-- Rum Gremlin
-- Swarm of Rum Gremlins
-- Keg Golem
+
+### Booze Drake
+- Has a breath weapon that can add inebriation points to characters.
+
+### Rum Gremlin
+- Drunk characters might be frightened by the sight of a Rum Gremlin.
+
+### Swarm of Rum Gremlins
+- Drunk characters might be frightened by the sight of the Swarm of Rum Gremlins.
+- The swarm might make characters in their space affected by a drink
+- Their Tequila spitup can add inebriation points to characters.
+
+### Keg Golem
+- Can use an action to "open tap" and make a slippery trail, that characters might slip on if they cross it.
+
 
 ## Alcohol-Themed Items
-- Barroom Knucks
-- Drunkard's third leg
-- Head Cleaner
+- Barroom Knucks: Improves unarmed strikes and improved weapon damage while drunk.
+- Drunkard's third leg: Adds extra movement when gaining alcoholic conditions.
+- Head Cleaner: 10 sobering points in one bottle.
 
 ## Alcohol-Themed Feats
 - Deep Gut
