@@ -166,7 +166,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
             return;
         }
 
-        actor.toggleStatusEffect(condition, {active: true});
+        //actor.toggleStatusEffect(condition, {active: true});
 
     });
 });
@@ -215,10 +215,10 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
     }
 
     if (effectData.name.toLowerCase() === "incapacitated"){
-        await actor.toggleStatusEffect("incapacitated", {active: true});
+        //await actor.toggleStatusEffect("incapacitated", {active: true});
     }
     if (effectData.name.toLowerCase() === "wasted"){
-        await actor.toggleStatusEffect("poisoned", {active: true});
+        //await actor.toggleStatusEffect("poisoned", {active: true});
     }
 
     await actor.createEmbeddedDocuments("ActiveEffect", [{
@@ -250,7 +250,7 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
         chatContent = `<p><b>${actor.name} is <span style="color:purple">Wasted</span> from excessive alcohol consumption.</b></p>`;
 
         // If the actor has the feat 
-        if (!actor.items.some(item => item.name.toLowerCase() == "deep gut")){
+        if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
             chatContent += `<p>${actor.name} has the feat Deep Gut, and will not have to spend time vomiting while wasted.</p>`;
         } else {
             chatContent += `<p><b>Severe Intoxication Effect:</b> While Wasted, you must make a <b>DC [[/save ability=con dc=10]]</b> Constitution saving throw once per hour while awake.</p>
@@ -275,7 +275,7 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
         await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: chatContent,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            //type: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
     }
 }
@@ -299,10 +299,10 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
     }
 
     if (condition.toLowerCase() === "wasted"){
-        await actor.toggleStatusEffect("poisoned", {active: false});
+        //await actor.toggleStatusEffect("poisoned", {active: false});
     }
     if (condition.toLowerCase() === "incapacitated"){
-        await actor.toggleStatusEffect("incapacitated", {active: false});
+        //await actor.toggleStatusEffect("incapacitated", {active: false});
     }
 
     if (existingEffect) {
