@@ -250,7 +250,7 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
         chatContent = `<p><b>${actor.name} is <span style="color:purple">Wasted</span> from excessive alcohol consumption.</b></p>`;
 
         // If the actor has the feat 
-        if (!actor.items.some(item => item.name.toLowerCase() == "deep gut")){
+        if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
             chatContent += `<p>${actor.name} has the feat Deep Gut, and will not have to spend time vomiting while wasted.</p>`;
         } else {
             chatContent += `<p><b>Severe Intoxication Effect:</b> While Wasted, you must make a <b>DC [[/save ability=con dc=10]]</b> Constitution saving throw once per hour while awake.</p>
