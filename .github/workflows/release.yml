@@ -158,6 +158,19 @@ jobs:
     permissions:
       contents: read
     steps:
+      - name: Extract Version From Tag
+        id: get_version
+        uses: battila7/get-version-action@v2
+      
+      - name: Check Version Format
+        id: check-version
+        run: |
+          VERSION="${{ steps.get_version.outputs.version-without-v }}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid version format for publishing to  foundry.com: $VERSION"
+            exit 1
+          fi
+
       - name: Publish Module to FoundryVTT Website
         id: publish-to-foundry-website
         uses: cs96and/FoundryVTT-release-package@v1
