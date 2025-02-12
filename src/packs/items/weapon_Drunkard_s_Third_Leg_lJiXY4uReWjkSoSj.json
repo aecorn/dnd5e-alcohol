@@ -143,7 +143,8 @@
       "reach": null,
       "units": ""
     },
-    "mastery": ""
+    "mastery": "",
+    "actionType": ""
   },
   "effects": [],
   "folder": null,
@@ -154,14 +155,12 @@
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "3.1.2",
     "createdTime": 1737403609694,
-    "modifiedTime": 1737403800000,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739363042067,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!lJiXY4uReWjkSoSj"
 }

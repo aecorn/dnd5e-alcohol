@@ -527,18 +527,13 @@
     "height": 1,
     "texture": {
       "src": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
-      "anchorX": 0.5,
-      "anchorY": 0.5,
       "offsetX": 0,
       "offsetY": 0,
-      "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
       "rotation": 0,
-      "tint": "#ffffff",
-      "alphaThreshold": 0.75
+      "tint": "#ffffff"
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -551,8 +546,6 @@
       "attribute": null
     },
     "light": {
-      "negative": false,
-      "priority": 0,
       "alpha": 0.5,
       "angle": 360,
       "bright": 0,
@@ -587,21 +580,6 @@
       "contrast": 0
     },
     "detectionModes": [],
-    "occludable": {
-      "radius": 0
-    },
-    "ring": {
-      "enabled": false,
-      "colors": {
-        "ring": null,
-        "background": null
-      },
-      "effects": 0,
-      "subject": {
-        "scale": 1,
-        "texture": null
-      }
-    },
     "flags": {},
     "randomImg": false
   },
@@ -1281,14 +1259,12 @@
     }
   },
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "3.1.2",
     "createdTime": 1737399683862,
-    "modifiedTime": 1738524674737,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739363058367,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!actors!dOBxbguGvDqMMv2v"
 }

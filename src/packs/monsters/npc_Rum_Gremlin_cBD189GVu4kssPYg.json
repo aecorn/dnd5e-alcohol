@@ -27,8 +27,8 @@
       "hp": {
         "value": 9,
         "max": 9,
-        "temp": 0,
-        "tempmax": 0,
+        "temp": null,
+        "tempmax": null,
         "formula": ""
       },
       "ac": {
@@ -951,9 +951,9 @@
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "4.2.2",
     "createdTime": 1737399683803,
-    "modifiedTime": 1738511378371,
+    "modifiedTime": 1739129760035,
     "lastModifiedBy": "4DestKlpiBDHIre4"
   },
   "_key": "!actors!cBD189GVu4kssPYg"

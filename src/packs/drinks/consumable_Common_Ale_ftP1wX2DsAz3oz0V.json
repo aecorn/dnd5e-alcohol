@@ -8,10 +8,7 @@
       "chat": ""
     },
     "rarity": "common",
-    "weight": {
-      "value": 1,
-      "units": "lb"
-    },
+    "weight": 1,
     "price": {
       "value": 2,
       "denomination": "gp"
@@ -20,7 +17,9 @@
       "max": "1",
       "autoDestroy": true,
       "spent": 0,
-      "recovery": []
+      "recovery": [],
+      "per": "charges",
+      "value": 1
     },
     "type": {
       "value": "potion",
@@ -128,44 +127,48 @@
       "replace": false
     },
     "magicalBonus": null,
-    "properties": []
+    "properties": [],
+    "actionType": "other",
+    "activation": {
+      "type": "action",
+      "cost": null
+    },
+    "target": {
+      "type": "self"
+    },
+    "range": {
+      "units": "self"
+    },
+    "consume": {
+      "type": "charges",
+      "amount": 1,
+      "target": ""
+    },
+    "ability": ""
   },
   "effects": [
     {
       "name": "Alcohol - Potency 1",
-      "img": "icons/consumables/drinks/alcohol-beer-mug-yellow.webp",
+      "icon": "icons/consumables/drinks/alcohol-beer-mug-yellow.webp",
       "origin": "Compendium.dnd5e-alcohol.drinks.Item.ftP1wX2DsAz3oz0V",
-      "transfer": false,
-      "_id": "JVKp43iyvQFPakX1",
-      "type": "base",
-      "system": {},
-      "changes": [],
-      "disabled": false,
       "duration": {
+        "rounds": 1,
         "startTime": null,
         "seconds": null,
         "combat": null,
-        "rounds": null,
         "turns": null,
         "startRound": null,
         "startTurn": null
       },
+      "disabled": false,
+      "_id": "jHo5RodKBoPBDSrM",
+      "changes": [],
       "description": "",
-      "tint": "#ffffff",
+      "transfer": false,
       "statuses": [],
-      "sort": 0,
       "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.0.4",
-        "createdTime": 1737703619069,
-        "modifiedTime": 1737703635566,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
-      },
-      "_key": "!items.effects!ftP1wX2DsAz3oz0V.JVKp43iyvQFPakX1"
+      "tint": null,
+      "_key": "!items.effects!ftP1wX2DsAz3oz0V.jHo5RodKBoPBDSrM"
     }
   ],
   "flags": {
@@ -188,14 +191,12 @@
     "4DestKlpiBDHIre4": 3
   },
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "3.1.2",
     "createdTime": 1737399683400,
-    "modifiedTime": 1737703619089,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739346653064,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!ftP1wX2DsAz3oz0V"
 }

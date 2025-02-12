@@ -53,7 +53,8 @@
         "title": "",
         "hint": ""
       }
-    ]
+    ],
+    "actionType": ""
   },
   "effects": [],
   "folder": null,
@@ -64,14 +65,12 @@
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.2.2",
+    "systemVersion": "3.1.2",
     "createdTime": 1737401800520,
-    "modifiedTime": 1738528905263,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739363025416,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!SebCTjOPND4a4ysJ"
 }

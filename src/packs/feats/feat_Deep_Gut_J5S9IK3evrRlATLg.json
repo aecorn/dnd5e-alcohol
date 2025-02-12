@@ -52,7 +52,8 @@
         "title": "",
         "hint": ""
       }
-    ]
+    ],
+    "actionType": ""
   },
   "_id": "J5S9IK3evrRlATLg",
   "effects": [],
@@ -64,14 +65,12 @@
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.2.2",
+    "systemVersion": "3.1.2",
     "createdTime": 1737399683901,
-    "modifiedTime": 1738528217323,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739362998990,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!J5S9IK3evrRlATLg"
 }

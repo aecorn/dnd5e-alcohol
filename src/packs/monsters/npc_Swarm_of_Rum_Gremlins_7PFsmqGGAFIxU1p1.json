@@ -534,18 +534,13 @@
     "height": 2,
     "texture": {
       "src": "icons/sundries/gaming/chess-pawn-white-pink.webp",
-      "anchorX": 0.5,
-      "anchorY": 0.5,
       "offsetX": 0,
       "offsetY": 0,
-      "fit": "contain",
       "scaleX": 1,
       "scaleY": 1,
       "rotation": 0,
-      "tint": "#ffffff",
-      "alphaThreshold": 0.75
+      "tint": "#ffffff"
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -558,8 +553,6 @@
       "attribute": null
     },
     "light": {
-      "negative": false,
-      "priority": 0,
       "alpha": 0.5,
       "angle": 360,
       "bright": 0,
@@ -594,21 +587,6 @@
       "contrast": 0
     },
     "detectionModes": [],
-    "occludable": {
-      "radius": 0
-    },
-    "ring": {
-      "enabled": false,
-      "colors": {
-        "ring": null,
-        "background": null
-      },
-      "effects": 1,
-      "subject": {
-        "scale": 1,
-        "texture": null
-      }
-    },
     "flags": {},
     "randomImg": false
   },
@@ -1410,14 +1388,12 @@
     }
   },
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "3.1.2",
     "createdTime": 1737401987699,
-    "modifiedTime": 1738516970630,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739363083765,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!actors!7PFsmqGGAFIxU1p1"
 }

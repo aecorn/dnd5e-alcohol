@@ -5,7 +5,7 @@
   "description": "<p>The effects on this table (if they are not instantaneous) last until the drinker looses the Wild Magic Effect. Or are no longer Drunk.</p>",
   "results": [
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         1,
@@ -20,7 +20,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.pXshAQBV2AArjZck"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         2,
@@ -35,7 +35,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.EiVe5F0Z33SJRhmo"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         3,
@@ -50,7 +50,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.JcOQMqUs0vGzfncw"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         4,
@@ -65,7 +65,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.htJVGzSHlZEpbwJH"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         5,
@@ -80,7 +80,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.2pyLUIGqC0QAiQEJ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         6,
@@ -95,7 +95,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.DHSMcxuronigDyxE"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         7,
@@ -110,7 +110,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.fUZU7QI2l99NSVOQ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         8,
@@ -125,7 +125,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Xub7ZfXN739CZt3p"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         9,
@@ -140,7 +140,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.jzJKcmxW8hCvPVHk"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         10,
@@ -155,7 +155,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.pxgioVGYTfgXTF4k"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         11,
@@ -170,7 +170,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.R8Y2N5iVSRqgbFKp"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         12,
@@ -185,7 +185,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.pNKkDl6IieDTzUiW"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         13,
@@ -200,7 +200,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Lx4AqXKcvEr5PrIb"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         14,
@@ -215,7 +215,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.BbFgsFLYBMuagfdl"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         15,
@@ -230,7 +230,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.ZZaBSFASDI1wq1C1"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         16,
@@ -245,7 +245,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.hxGeb6Wl0dZaDuOv"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         17,
@@ -260,7 +260,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.o3AGkfJKDfGrrT0B"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         18,
@@ -275,7 +275,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.XwNhWe7J0omWeiam"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         19,
@@ -290,7 +290,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.2ZSRFYafrSXvmTsP"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         20,
@@ -305,7 +305,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.mnCSQLtT5hAKQrfO"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         21,
@@ -320,7 +320,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.ZrIvKH4OWtEcklqf"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         22,
@@ -335,7 +335,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Ck4DRs6luof82qcI"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         23,
@@ -350,7 +350,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.asmmnHb7eFVbZ4na"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         24,
@@ -365,7 +365,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.ZB7zfUAuntk5k5VA"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         25,
@@ -380,7 +380,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.63lWCCYrw7na1YoR"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         26,
@@ -395,7 +395,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.it0rWVACIcPX5waQ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         27,
@@ -410,7 +410,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.EmDEcPKFFc4QSpz4"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         28,
@@ -425,7 +425,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.q82F6nEONGUJaVyn"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         30,
@@ -440,7 +440,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.ONGOrXrBQ5bgExY2"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         29,
@@ -455,7 +455,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.xpxWOo3Q5iyXW5DJ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         31,
@@ -470,7 +470,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.XkhOOhPRz7YUCGTt"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         32,
@@ -485,7 +485,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.EaRuKEfIg4zhh8oy"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         33,
@@ -500,7 +500,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.B32bMSAJmT5T6IbD"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         34,
@@ -515,7 +515,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.6s5moMkGEvw5lC0R"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         35,
@@ -530,7 +530,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.2IrOnh2uCpqNhw4w"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         40,
@@ -545,7 +545,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.0qPkt1ZSWbXWZ2Wa"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         36,
@@ -560,7 +560,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.q64UpM30FiIRNulH"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         41,
@@ -575,7 +575,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.KJdygMp0wVVU66MQ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         42,
@@ -590,7 +590,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.LQEO5lNqlrNuoE8d"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         43,
@@ -605,7 +605,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.nRCfXVzHzAyYXJXi"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         44,
@@ -620,7 +620,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.hSo74YiyhJJU13t6"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         45,
@@ -635,7 +635,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Io9Ostg03LHCJ5Tt"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         46,
@@ -650,7 +650,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.SL77Cm4MvpGk0IVv"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         47,
@@ -665,7 +665,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.qa4orJsX8IkM0ArZ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         48,
@@ -680,7 +680,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.MxQvnvqe9hGj0PFj"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         49,
@@ -695,7 +695,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.fkVv2eSPzwz6vWum"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         50,
@@ -710,7 +710,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.3ODI8JudZx5goN0D"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         51,
@@ -725,7 +725,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.lcHnLtaVV00G1L6W"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         52,
@@ -740,7 +740,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.GSm705S4DXUhyd5c"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         53,
@@ -755,7 +755,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Crot3jw2rSFbJSRK"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         54,
@@ -770,7 +770,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.mYbvETCGCsx71Qjb"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         55,
@@ -785,7 +785,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.KQdmttiO8jW3n1sx"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         56,
@@ -800,7 +800,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.qWAZTiD7LMcxa2Qr"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         57,
@@ -815,7 +815,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.dmKSnirPOQkMixZM"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         58,
@@ -830,7 +830,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.uuyEOqKMNoAG9iAM"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         59,
@@ -845,7 +845,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.iT5Mjr6Bsv9joonu"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         60,
@@ -860,7 +860,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.MvzPmYKripxQ4HzW"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         61,
@@ -875,7 +875,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.IwZi5TYjb8c7GZ8L"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         62,
@@ -890,7 +890,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Ef1zgmvOaPItMjT5"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         63,
@@ -905,7 +905,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.53UFU2mHYvYFhpjc"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         64,
@@ -920,7 +920,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.tuQ4Q7zu4r37nwWB"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         66,
@@ -935,7 +935,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.9GzqcOHaA8brRKp1"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         65,
@@ -950,7 +950,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.LXw0Farvq9YaUpa5"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         67,
@@ -965,7 +965,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.CzDigBOaeFbv6GB5"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         68,
@@ -980,7 +980,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.ZbFDwWbfzK8SQNw8"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         69,
@@ -995,7 +995,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.qpw4Zc22Bwnbkf5b"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         70,
@@ -1010,7 +1010,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.oeGjDhoAx6xr9LEF"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         71,
@@ -1025,7 +1025,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.unriK1BuYwweRidb"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         72,
@@ -1040,7 +1040,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.rKcERA08nOdL3xxK"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         73,
@@ -1055,7 +1055,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.FyznbvptJ4rweWKj"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         74,
@@ -1070,7 +1070,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.ow9ktqTBkC3bFO3Z"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         75,
@@ -1085,7 +1085,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.83tImvpvtiaCCWqR"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         76,
@@ -1100,7 +1100,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.HWHSr2e6Esy93rUy"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         77,
@@ -1115,7 +1115,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.EBMyK7BOCtZJYF8E"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         78,
@@ -1130,7 +1130,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.8xnsQs3eugDrw0wb"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         79,
@@ -1145,7 +1145,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.AWLOkRlfYFcYrQ7G"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         80,
@@ -1160,7 +1160,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.7eS8t8kuu3Lijltx"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         81,
@@ -1175,7 +1175,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.LfgXaajSb3uIPn0O"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         82,
@@ -1190,7 +1190,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.LA5sBAHvpSwDE4jP"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         83,
@@ -1205,7 +1205,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.PUo4s8cRQdbtvNTs"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         84,
@@ -1220,7 +1220,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.zOjKNdzNEyPLzc1N"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         85,
@@ -1235,7 +1235,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.5rB4HaOSOBsYgWZi"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         86,
@@ -1250,7 +1250,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.kv9iP3YNa7fA4Zkf"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         87,
@@ -1265,7 +1265,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Ir1QEq9gnGonLMi2"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         88,
@@ -1280,7 +1280,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Y2lBMUctIurVYND6"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         89,
@@ -1295,7 +1295,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.e0vEk8RbEXel4ccw"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         90,
@@ -1310,7 +1310,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.hyk65ThNpuZ48sXk"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         91,
@@ -1325,7 +1325,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.XmSgU6r05UGCW6HI"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         92,
@@ -1340,7 +1340,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.g7U2wCeTY6EWLriJ"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         93,
@@ -1355,7 +1355,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.Fqi0nzpTLgpEqRXK"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         94,
@@ -1370,7 +1370,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.N2Xl8nbWfcJ2QJTF"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         95,
@@ -1385,7 +1385,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.rgfQuVtuWjIx4xLB"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         96,
@@ -1400,7 +1400,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.uXuCdRJLTyjMpWXm"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         97,
@@ -1415,7 +1415,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.o0a3LELZ4f9yRFQW"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         98,
@@ -1430,7 +1430,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.cMwiytOfqSWmNnYS"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         99,
@@ -1445,7 +1445,7 @@
       "_key": "!tables.results!RQFzDZ09f5dFJgEI.hXQgB8l38QlD2uMb"
     },
     {
-      "type": "text",
+      "type": 0,
       "weight": 1,
       "range": [
         100,
@@ -1470,14 +1470,12 @@
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "3.1.2",
     "createdTime": 1737793407592,
-    "modifiedTime": 1738530940253,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739362952443,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "formula": "1d100",
   "_key": "!tables!RQFzDZ09f5dFJgEI"

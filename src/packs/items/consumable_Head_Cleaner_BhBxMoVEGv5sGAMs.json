@@ -130,7 +130,8 @@
       "replace": false
     },
     "magicalBonus": null,
-    "properties": []
+    "properties": [],
+    "actionType": ""
   },
   "effects": [
     {
@@ -185,14 +186,12 @@
     }
   },
   "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "11.315",
     "systemId": "dnd5e",
-    "systemVersion": "4.2.2",
+    "systemVersion": "3.1.2",
     "createdTime": 1737403934374,
-    "modifiedTime": 1738697322853,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "modifiedTime": 1739363048463,
+    "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!BhBxMoVEGv5sGAMs"
 }
