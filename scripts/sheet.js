@@ -1,14 +1,19 @@
 import { calculate_thresholds } from "./conditions.js";
 
+/**
+ * @param {object} app           - The sheet instance
+ * @param {HTMLElement[]} jquery - The rendered html
+ * @param {object} context       - Context constructed in getData
+ */
 
-Hooks.on("renderActorSheet", async (_sheet, html) => {
-    console.log(_sheet);
-    console.log(typeof _sheet);
-    if (!_sheet.id.startsWith("ActorSheet5eCharacter2")) return;
-    let thres = await calculate_thresholds(_sheet.object);
+
+Hooks.on("renderActorSheet5eCharacter2", renderActorSheet5eCharacter2)
+
+async function renderActorSheet5eCharacter2(app, [html], context) {
+    let thres = await calculate_thresholds(app.object);
 
     let inebriation_max = thres.incapacitated;
-    let inebriation_points = _sheet.object.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let inebriation_points = app.object.getFlag("dnd5e-alcohol", "inebriation") || 0;
     let inebriation_percent = Math.floor((inebriation_points / inebriation_max) * 100);
 
 
@@ -16,7 +21,8 @@ Hooks.on("renderActorSheet", async (_sheet, html) => {
     let drunkThres = Math.floor((thres.drunk / inebriation_max) * 100);
     let wastedThres = Math.floor((thres.wasted / inebriation_max) * 100);
     
-    let progressBarArea = `
+    let progressBarArea = document.createElement("div");
+    progressBarArea.innerHTML = `
     <div class="meter-group">
     <div class="label roboto-condensed-upper"><span>Inebriation Points</span></div>
     <div class="meter inebriation progress" role="meter" aria-valuemin="0" aria-valuenow="${inebriation_points}" aria-valuemax="${inebriation_max}" style="--bar-percentage: ${inebriation_percent}%">
@@ -38,12 +44,6 @@ Hooks.on("renderActorSheet", async (_sheet, html) => {
     </div>
     </div>`
     
-    let counterArea = ""
-    if (_sheet.options.classes.includes("dnd5e2")) {
-        counterArea = $(html).find(".card .stats").children().last();
-      } else {
-        counterArea = $(html).find(".counters");
-      }
-    
+    let counterArea = html.querySelector(".card .stats")?.lastElementChild;
     counterArea.after(progressBarArea);
-  });
+  };
