@@ -2,6 +2,9 @@ import { calculate_thresholds } from "./conditions.js";
 
 
 Hooks.on("renderActorSheet", async (_sheet, html) => {
+    console.log(_sheet);
+    console.log(typeof _sheet);
+    if (!_sheet.id.startsWith("ActorSheet5eCharacter2")) return;
     let thres = await calculate_thresholds(_sheet.object);
 
     let inebriation_max = thres.incapacitated;
