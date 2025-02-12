@@ -167,7 +167,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
         }
 
         //actor.toggleStatusEffect(condition, {active: true});
-
+        
     });
 });
 
@@ -214,22 +214,28 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
         }
     }
 
-    if (effectData.name.toLowerCase() === "incapacitated"){
-        //await actor.toggleStatusEffect("incapacitated", {active: true});
-    }
+    
     if (effectData.name.toLowerCase() === "wasted"){
         //await actor.toggleStatusEffect("poisoned", {active: true});
+        let effect = await game.system.documents.ActiveEffect5e.fromStatusEffect("poisoned");
+        await actor.createEmbeddedDocuments("ActiveEffect", [effect]);
     }
 
-    await actor.createEmbeddedDocuments("ActiveEffect", [{
-        name: effectData.name,
-        icon: effectData.icon,
-        origin: `dnd5e-alcohol-${effectData.id}`,
-        disabled: false,
-        duration: {},
-        changes: effectData.changes,
-        statuses: [effectData.id]
-    }]);
+    if (effectData.name.toLowerCase() === "incapacitated"){
+        //await actor.toggleStatusEffect("incapacitated", {active: true});
+        let effect = await game.system.documents.ActiveEffect5e.fromStatusEffect("incapacitated");
+        await actor.createEmbeddedDocuments("ActiveEffect", [effect]);
+    } else {
+        await actor.createEmbeddedDocuments("ActiveEffect", [{
+            name: effectData.name,
+            icon: effectData.icon,
+            origin: `dnd5e-alcohol-${effectData.id}`,
+            disabled: false,
+            duration: {},
+            changes: effectData.changes,
+            statuses: [effectData.id]
+        }]);
+    }
     if (chatMessage){
         await AlcoholChatMessage(actor, condition, "add");
     }
@@ -300,10 +306,20 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
 
     if (condition.toLowerCase() === "wasted"){
         //await actor.toggleStatusEffect("poisoned", {active: false});
+        console.log("Removing wasted.");
+        let existingPoisoned = actor.effects.getName("Poisoned") || false; 
+        if (existingPoisoned) {
+            console.log("Poisoned effect found.");
+            existingPoisoned.delete();
+        }
     }
+    /*
     if (condition.toLowerCase() === "incapacitated"){
         //await actor.toggleStatusEffect("incapacitated", {active: false});
-    }
+        for (let effect of actor.effects){
+            if (effect.data.label.toLowerCase() === "incapacitated"){
+                await effect.delete();
+    }}}*/
 
     if (existingEffect) {
         existingEffect.delete();

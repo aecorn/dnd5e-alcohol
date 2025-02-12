@@ -3,40 +3,23 @@ import { decrease_inebriation_points, add_inebriation_points } from "./inebriati
 
 
 // Fast forward application of alcoholic effects?
-Hooks.on("dnd5e.postActivityConsumption", async (activity, _, chatmsgdata) => {
+Hooks.on("dnd5e.itemUsageConsumption", async (item, _, configurediag) => {
     //console.log(activity);
-    let actor = activity.actor;
-    let alco_effects = activity.effects.filter(effect => 
-        effect.effect.name.toLowerCase().startsWith("alcohol -")
+
+    let alco_effects = item.effects.filter(effect => 
+        effect.name.toLowerCase().startsWith("alcohol -")
     );
+    console.log(alco_effects);
     if (alco_effects.length === 0){
         return;
     }
-    let alco_effect = alco_effects[0].effect;
-
-    actor.createEmbeddedDocuments("ActiveEffect", [alco_effect]);
-
-
-    // Exit if this is not drinking a potion?
-    if (chatmsgdata.data.flags.dnd5e.activity.type != "utility"){return;}
-    if (chatmsgdata.data.flags.dnd5e.item.type != "consumable"){return;}
-    if (chatmsgdata.data.flags.dnd5e.imessageType != "usage"){return;}
+    let alco_effect = alco_effects[0];
+    
+    await item.actor.createEmbeddedDocuments("ActiveEffect", [alco_effect]);
 
     // We are sort of replacing the old chatmessage with our own, so we want to stop the default one.
     // This data is passed to the chatmessage creation, we hook into that below
-    chatmsgdata.data.flags.delchatmessage = true;
-    //console.log(chatmsgdata);
-});
-
-
-// Stop initial chatmessage from system for drinking a drink
-Hooks.on("preCreateChatMessage", (chatMessage) => {
-    //console.log(chatMessage);
-    let delchatflag = chatMessage?.flags?.delchatmessage;
-    if (delchatflag === true){
-        return false;
-    }
-    
+    configurediag.createMessage = false;
 });
 
 
