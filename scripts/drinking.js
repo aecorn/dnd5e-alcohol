@@ -263,11 +263,11 @@ async function apply_alcohol_properties_to_actor(actor, properties){
           };
         let { results } = await tableWild.draw(drawOptions);
         let result_text = results[0].text
-        let content = "<strong>Wild Magic results:</strong><br>" + result_text + `<br><br>Characters with the Alcohol Property - Wild Magic trait, roll on the Wild Magic table, and will keep the effect they roll as long as they have the wild magic effect..`;
+        let content = 'Wild Magic results:<br><strong><p style="color: red;">' + result_text + `</p></strong><br><br>Characters with the Alcohol Property - Wild Magic trait, roll on the Wild Magic table, and will keep the effect they roll as long as they have the wild magic effect. (As long as it has a duration / applies some physical change (damage, summons are not reversed for example).)`;
         await add_empty_effect_actor(
             actor, 
             "Alcohol Property - Wild Magic", 
-            `Drinker has effect from Wild magic table: ${result_text}`,
+            `Drinker has effect from Wild magic table: <strong><p style="color: red;">${result_text}</p></strong>`,
             undefined
             );
         let chatData = {
@@ -282,7 +282,7 @@ async function apply_alcohol_properties_to_actor(actor, properties){
 }
 
 
-async function add_empty_effect_actor(actor, effectName, description = "", changes = undefined){
+export async function add_empty_effect_actor(actor, effectName, description = "", changes = undefined){
     let existingEffect = actor.effects.find(e => e.name === effectName);
     if (existingEffect) return; // Prevent duplicates
 

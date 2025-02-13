@@ -1,3 +1,5 @@
+import {update_drunkards_third_leg} from "./items.js";
+
 const ALCOHOL_EFFECTS = {
     tipsy: {
         name: "Tipsy",
@@ -125,6 +127,8 @@ export async function refresh_conditions(actor, inebriation = null) {
         messages.add.push(effect);
     }
 
+    update_drunkards_third_leg(actor, addEffects);
+
     // Apply removals
     for (const effect of removeEffects) {
         await removeAlcoholEffect(actor, effect, false);
@@ -175,12 +179,14 @@ Hooks.once("init", () => {
     //console.log("Registering Alcohol Status Effects");
 
     for (const effect of Object.values(ALCOHOL_EFFECTS)) {
-        CONFIG.statusEffects.push({
-            id: effect.id,
-            name: effect.name,
-            icon: effect.icon,
-            statuses: [effect.id]
-        });
+        if (effect.name.toLowerCase() !== "incapacitated") {
+            CONFIG.statusEffects.push({
+                id: effect.id,
+                name: effect.name,
+                icon: effect.icon,
+                statuses: [effect.id]
+            });
+        }
     }
 });
 
@@ -203,24 +209,15 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
     let existingEffect = actor.effects.find(e => e.name === effectData.name);
     if (existingEffect) return; // Prevent duplicates
 
-    if (["tipsy", "drunk", "wasted"].includes(effectData.name.toLowerCase())){
-        if (actor.items.some(item => item.name.toLowerCase() == "drunkard's third leg")){
-            for (speed of actor.system.attributes.movement){
-                if (speed.isInteger() & speed > 0){
-                    speed += 5;
-                }
-            }
-        }
-    }
-
-    
-    if (effectData.name.toLowerCase() === "wasted"){
+    // Only add poisoned, if actor is now wasted, but not already poisoned.
+    if (effectData.name.toLowerCase() === "wasted" && !actor.effects.some(e => e.name.toLowerCase() === "poisoned")){
         //await actor.toggleStatusEffect("poisoned", {active: true});
         let effect = await game.system.documents.ActiveEffect5e.fromStatusEffect("poisoned");
         await actor.createEmbeddedDocuments("ActiveEffect", [effect]);
     }
 
-    if (effectData.name.toLowerCase() === "incapacitated"){
+    // Only add incapacitated, if actor is now at incapacitated threshold, but not already incapacitated.
+    if (effectData.name.toLowerCase() === "incapacitated" && !actor.effects.some(e => e.name.toLowerCase() === "incapacitated")){
         //await actor.toggleStatusEffect("incapacitated", {active: true});
         let effect = await game.system.documents.ActiveEffect5e.fromStatusEffect("incapacitated");
         await actor.createEmbeddedDocuments("ActiveEffect", [effect]);
@@ -293,17 +290,9 @@ async function removeAlcoholEffect(actor, condition, chatMessage = true) {
 
     let existingEffect = actor.effects.getName(condition) || false; 
 
-    if (["tipsy", "drunk", "wasted"].includes(condition.toLowerCase())){
-        if (actor.items.some(item => item.name.toLowerCase() == "drunkard's third leg")){
-            for (speed of actor.system.attributes.movement){
-                if (speed.isInteger() & speed > 0){
-                    speed -= 5;
-                }
-            }
-        }
-    }
-
-    if (condition.toLowerCase() === "wasted"){
+    // Only remove poisoned effect if wasted is removed
+    let hasWasted = actor.effects.some(e => e.name.toLowerCase() === "wasted");
+    if (condition.toLowerCase() === "wasted" && hasWasted){
         //await actor.toggleStatusEffect("poisoned", {active: false});
         console.log("Removing wasted.");
         let existingPoisoned = actor.effects.getName("Poisoned") || false; 
