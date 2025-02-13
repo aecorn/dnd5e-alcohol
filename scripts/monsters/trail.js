@@ -9,7 +9,7 @@ async function TrailChatMessage(actor) {
         await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: chatContent,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            //type: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
     }
 }

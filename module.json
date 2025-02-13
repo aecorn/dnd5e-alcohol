@@ -91,10 +91,7 @@
     "scripts/rest.js",
     "scripts/sheet.js",
     "scripts/drinking.js",
-    "scripts/items.js",
-    "scripts/monsters/trail.js",
-    "scripts/monsters/sight.js",
-    "scripts/monsters/aura.js"
+    "scripts/items.js"
   ],
   "languages": [
     

@@ -15,9 +15,10 @@ async function SightChatMessage(actor) {
 }
 
 
-Hooks.on("combatTurnChange", async (combat) => {
+Hooks.on("combatTurn", async (combat) => {
     let token = combat.turns[combat.turn].token;
 
+    console.log(token);
     // if token is not drunk, exit
     let isDrunk = token.actor.effects.some(effect => effect.name.toLowerCase() == "drunk");
     if (!isDrunk){return;}
