@@ -18,7 +18,8 @@
       "autoDestroy": true,
       "spent": 0,
       "recovery": [],
-      "per": "charges"
+      "per": "charges",
+      "value": 1
     },
     "type": {
       "value": "potion",
@@ -196,7 +197,7 @@
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "createdTime": 1737399683729,
-    "modifiedTime": 1739359477673,
+    "modifiedTime": 1739381230847,
     "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!wzLpV5hWBkjf6GuK"

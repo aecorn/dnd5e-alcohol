@@ -192,16 +192,13 @@
     },
     "container": null,
     "quantity": 1,
-    "weight": {
-      "value": 0,
-      "units": "lb"
-    },
+    "weight": 1,
     "price": {
-      "value": 0,
+      "value": 500,
       "denomination": "gp"
     },
     "rarity": "rare",
-    "attunement": "required",
+    "attunement": 1,
     "attuned": false,
     "equipped": false,
     "armor": {
@@ -226,7 +223,17 @@
     ],
     "strength": null,
     "proficient": null,
-    "actionType": ""
+    "actionType": "mwak",
+    "ability": "",
+    "damage": {
+      "parts": [
+        [
+          "1d6",
+          "bludgeoning"
+        ]
+      ]
+    },
+    "chatFlavor": "Unarmed attack with barrom knucks!"
   },
   "effects": [],
   "folder": null,
@@ -248,7 +255,7 @@
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "createdTime": 1737403478249,
-    "modifiedTime": 1739363035010,
+    "modifiedTime": 1739460461961,
     "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!L34ZPtyvu3tsmkz9"

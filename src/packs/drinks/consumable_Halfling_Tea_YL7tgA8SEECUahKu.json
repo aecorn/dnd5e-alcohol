@@ -18,7 +18,8 @@
       "autoDestroy": true,
       "spent": 0,
       "recovery": [],
-      "per": "charges"
+      "per": "charges",
+      "value": 1
     },
     "type": {
       "value": "potion",
@@ -165,7 +166,7 @@
       "_id": "6EEH9wuMsb8EN8F6",
       "changes": [],
       "description": "",
-      "transfer": true,
+      "transfer": false,
       "statuses": [],
       "flags": {},
       "tint": null,
@@ -199,7 +200,7 @@
     "systemId": "dnd5e",
     "systemVersion": "3.1.2",
     "createdTime": 1737399683677,
-    "modifiedTime": 1739359602064,
+    "modifiedTime": 1739427693812,
     "lastModifiedBy": "nO2nkrqUAk3iAbLS"
   },
   "_key": "!items!YL7tgA8SEECUahKu"
