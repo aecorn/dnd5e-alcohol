@@ -96,7 +96,8 @@ export function create_alcohol_chat_message_for_actor(actor, potency, properties
     let race = extract_race_from_racial_property(properties);
     if (race != null){
         // Check i actor has same race
-        let race_name = actor.system.details.race.name;
+        console.log(actor);
+        let race_name = actor.system.details?.race?.name || "Human";  // Sad human default
         if (race_name.toLowerCase().includes(race.toLowerCase())) {
             content += `<button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency-1}" data-properties="${properties.join(' - ')}">Fail on Purpose (1 less inebriation points because of racial property)</button>`;
         }
@@ -267,7 +268,7 @@ async function apply_alcohol_properties_to_actor(actor, properties){
             actor, 
             "Alcohol Property - Wild Magic", 
             `Drinker has effect from Wild magic table: ${result_text}`,
-            [{}]
+            undefined
             );
         let chatData = {
             user: game.user._id,
@@ -281,11 +282,13 @@ async function apply_alcohol_properties_to_actor(actor, properties){
 }
 
 
-async function add_empty_effect_actor(actor, effectName, description = "", changes = []){
+async function add_empty_effect_actor(actor, effectName, description = "", changes = undefined){
     let existingEffect = actor.effects.find(e => e.name === effectName);
     if (existingEffect) return; // Prevent duplicates
 
-    await actor.createEmbeddedDocuments("ActiveEffect", [{
+    //console.log(effectName, description, changes);
+
+    let effect ={
         name: effectName,
         icon: "icons/svg/down.svg",
         origin: `dnd5e-alcohol-${effectName.toLowerCase()}`,
@@ -293,7 +296,13 @@ async function add_empty_effect_actor(actor, effectName, description = "", chang
         duration: {},
         changes: changes,
         description: description,
-    }]);
+    }
+    // undefined + empty object causes error in v11
+    if (changes === undefined){
+        delete effect.changes;
+    }
+
+    await actor.createEmbeddedDocuments("ActiveEffect", [effect]);
 }
 
 

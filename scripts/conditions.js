@@ -186,14 +186,13 @@ Hooks.once("init", () => {
 
 
 async function addAlcoholEffect(actor, condition, chatMessage = true) {
-    //console.log(`Adding alcohol effect: ${condition}`);
+    console.log(`Adding alcohol effect: ${condition}`);
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
     
     let effectData = ALCOHOL_EFFECTS[condition.toLowerCase()];
-
     // If actor has deep gut, reduce skill penalties with half
     if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
-        for (change of effectData.changes){
+        for (let change of effectData.changes){
             if (change.key.includes("skills") && change.value.startsWith("-")){
                 change.value = Math.floor(parseInt(change.value)/2).toString()
             }
