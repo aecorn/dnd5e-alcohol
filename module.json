@@ -34,7 +34,7 @@
     "name": "Alcohol Packs",
     "sorting": "a",
     "color": "#4ba14a",
-    "packs": ["drinks", "feats", "items", "monsters", "alcohol-rollable"],
+    "packs": ["drinks", "feats", "items", "alcohol-rollable"],
     "folders": []
   }],
   "packs": [
@@ -63,15 +63,6 @@
       "type": "Item",
       "system": "dnd5e",
       "path": "packs/items",
-      "module": "dnd5e-alcohol"
-    },
-    {
-      "name": "monsters",
-      "label": "Alcoholic Monsters",
-      "entity": "Actor",
-      "type": "Actor",
-      "system": "dnd5e",
-      "path": "packs/monsters",
       "module": "dnd5e-alcohol"
     },
     {
