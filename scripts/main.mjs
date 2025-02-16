@@ -1,4 +1,4 @@
-import { increase_inebriation_macro, decrease_inebriation_macro, reset_inebriation_macro } from "./macros.js";
+import { increase_inebriation_macro, decrease_inebriation_macro, reset_inebriation_macro } from "./macros.mjs";
 
 
 Hooks.once("ready", () => {

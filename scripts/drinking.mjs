@@ -1,4 +1,4 @@
-import { decrease_inebriation_points, add_inebriation_points } from "./inebriation_points.js";
+import { decrease_inebriation_points, add_inebriation_points } from "./inebriation_points.mjs";
 
 
 
@@ -41,7 +41,7 @@ Hooks.on("preCreateChatMessage", (chatMessage) => {
 
 
 
-Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
+Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
     let effectName = effect.name.toLowerCase();
     let actor = effect.parent;
     //console.log(effectName);
@@ -56,7 +56,7 @@ Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
 
     let [potency, properties] = extract_potency_properties_from_name(effectName);
 
-    create_alcohol_chat_message_for_actor(actor, potency, properties);
+    await create_alcohol_chat_message_for_actor(actor, potency, properties);
 
     // Stops effect from applying to actor?, we have what we need in the BUTTONS?
     return false;
@@ -83,8 +83,8 @@ export function extract_potency_properties_from_name(effectName){
 }
 
 
-export function create_alcohol_chat_message_for_actor(actor, potency, properties, prefix=""){
-    let inebriation_points = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+export async function create_alcohol_chat_message_for_actor(actor, potency, properties, prefix=""){
+    let inebriation_points = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
     
     let dc = 10 + potency + Math.floor(inebriation_points / 2);
 

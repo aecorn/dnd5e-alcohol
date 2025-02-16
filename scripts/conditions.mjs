@@ -81,7 +81,7 @@ export async function calculate_thresholds(actor){
 export async function refresh_conditions(actor, inebriation = null) {
     console.log("Refreshing conditions");
 
-    let curr_ineb = inebriation || actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let curr_ineb = inebriation || await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
     let addEffects = new Set();
     let removeEffects = new Set();
@@ -188,7 +188,7 @@ Hooks.once("init", () => {
 async function addAlcoholEffect(actor, condition, chatMessage = true) {
     //console.log(`Adding alcohol effect: ${condition}`);
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
-    
+    console.log(actor);
     let effectData = ALCOHOL_EFFECTS[condition.toLowerCase()];
 
     // If actor has deep gut, reduce skill penalties with half
@@ -237,7 +237,7 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
 }
 
 async function AlcoholChatMessage(actor, addedConditions = [], removedConditions = [], isIncapacitated = false, isWasted = false) {
-    let alcoholLevel = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let alcoholLevel = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
     let chatContent = "";
 
     if (isIncapacitated) {

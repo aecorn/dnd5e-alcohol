@@ -1,5 +1,5 @@
-import { extract_potency_properties_from_name, create_alcohol_chat_message_for_actor} from "../drinking.js";
-import { isOverlapping} from "./trail.js";
+import { extract_potency_properties_from_name, create_alcohol_chat_message_for_actor} from "../drinking.mjs";
+import { isOverlapping} from "./trail.mjs";
 
 
 
@@ -59,7 +59,7 @@ Hooks.on("combatTurnChange", async (combat) => {
             //console.log(`Applying highest potency drink effect:`, drink);
             let [potency, properties] = extract_potency_properties_from_name(drink);
             //console.log(combatant.actor);
-            create_alcohol_chat_message_for_actor(combatant.actor, potency, properties, 
+            await create_alcohol_chat_message_for_actor(combatant.actor, potency, properties, 
                 `${token.name} started their turn in the ${enemy.name}'s fume area! <span style="color:red">They are subject to one of the boozes its carrying!</span> <br>`);
         }
     }

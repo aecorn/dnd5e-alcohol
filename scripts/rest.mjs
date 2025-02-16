@@ -1,8 +1,8 @@
-import { reset_inebriation } from "./inebriation_points.js";
-import { refresh_conditions } from "./conditions.js";
+import { reset_inebriation } from "./inebriation_points.mjs";
+import { refresh_conditions } from "./conditions.mjs";
 
 Hooks.on("dnd5e.shortRest", async (actor, data) => {
-    let inebriation = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let inebriation = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
     if (inebriation > 0) {
         let newInebriation = Math.max(0, inebriation - 1);
@@ -30,13 +30,13 @@ Hooks.on("dnd5e.longRest", async (actor) => {
 
 
   Hooks.on("dnd5e.preLongRest", async (actor) => {
-    let isWasted = actor.getFlag("dnd5e-alcohol", "wasted_active") || false;
+    let isWasted = await actor.getFlag("dnd5e-alcohol", "wasted_active") || false;
     //console.log(`Pre-rest hook for ${actor.name}. Checking for wasted state: ${isWasted}`);
     if (!isWasted) return;
     // If actor has the Deep Gut feat, they cannot fail this: exit
     if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){return;}
 
-    let alcoholLevel = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let alcoholLevel = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
     let roll = await new Roll(`1d20 + @abilities.con.save`, actor.getRollData()).evaluate();
     //console.log(roll);
@@ -60,7 +60,7 @@ Hooks.on("dnd5e.longRest", async (actor) => {
 });
 
 Hooks.on("dnd5e.preRestCompleted", async (actor, data) => {
-    if (actor.getFlag("dnd5e-alcohol", "failed_rest")) {
+    if (await actor.getFlag("dnd5e-alcohol", "failed_rest")) {
 
         //console.log("Rest failed");
         //console.log(data);

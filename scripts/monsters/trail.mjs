@@ -208,7 +208,7 @@ Hooks.on('preUpdateToken', async function (token, update) {
     // Reset the flag with deleted drawings
 
     for (let open_tap_token of open_tap_tokens) {
-        let token_paths = open_tap_token.document.getFlag("dnd5e-alcohol", "path") || [];
+        let token_paths = await open_tap_token.document.getFlag("dnd5e-alcohol", "path") || [];
         // Filter out drawings that are no longer in the canvas
         let updated_paths = token_paths.filter(path => drawing_ids_in_canvas.includes(path.id));
         // Update the flag with only valid drawings on canvas

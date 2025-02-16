@@ -86,14 +86,14 @@
     
   ],
   "esmodules": [
-    "scripts/main.js",
-    "scripts/conditions.js", 
-    "scripts/rest.js",
-    "scripts/sheet.js",
-    "scripts/drinking.js",
-    "scripts/monsters/trail.js",
-    "scripts/monsters/sight.js",
-    "scripts/monsters/aura.js"
+    "scripts/main.mjs",
+    "scripts/conditions.mjs", 
+    "scripts/rest.mjs",
+    "scripts/sheet.mjs",
+    "scripts/drinking.mjs",
+    "scripts/monsters/trail.mjs",
+    "scripts/monsters/sight.mjs",
+    "scripts/monsters/aura.mjs"
   ],
   "languages": [
     

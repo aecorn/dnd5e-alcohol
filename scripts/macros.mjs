@@ -1,4 +1,4 @@
-import { add_inebriation_points, decrease_inebriation_points, reset_inebriation} from "./inebriation_points.js";
+import { add_inebriation_points, decrease_inebriation_points, reset_inebriation} from "./inebriation_points.mjs";
 
 
 export function increase_inebriation_macro(token, num_points){
