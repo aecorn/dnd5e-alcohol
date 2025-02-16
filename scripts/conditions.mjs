@@ -7,13 +7,13 @@ const ALCOHOL_EFFECTS = {
         description: "You are slightly inebriated. Gain +2 to Persuasion but suffer -2 to Insight skill rolls and Wisdom saving throws.",
         changes: [
             // +2 to Persuasion (CHA Skill)
-            { key: "system.skills.per.mod", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "2" },
+            { key: "system.skills.per.bonuses.check", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "2" },
 
             // -2 to resisting Persuasion and Deception (Affects Wisdom (Insight))
-            { key: "system.skills.ins.mod", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2" },
+            { key: "system.skills.ins.bonuses.check", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2" },
 
             // -2 to Saving Throws against Persuasion/Deception effects
-            { key: "system.abilities.wis.save.value", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2" }
+            { key: "system.abilities.wis.bonuses.save", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2" }
         ]
     },
     drunk: {
@@ -23,14 +23,14 @@ const ALCOHOL_EFFECTS = {
         icon: "icons/svg/down.svg",
         description: "Drunk characters have a -2 penalty to both Intelligence and Wisdom checks and saving throws. Drunk characters suffer a -2 penalty to spell and weapon attacks.",
         changes: [
-            { key: "system.bonuses.mwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.bonuses.msak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.bonuses.rwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.bonuses.rsak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.int.save.value", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.wis.save.value", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.int.checkBonus", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.wis.checkBonus", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 20 }
+            { key: "system.bonuses.mwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.bonuses.msak.attack", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.bonuses.rwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.bonuses.rsak.attack", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.abilities.int.bonuses.save", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.abilities.wis.bonuses.save", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.abilities.int.bonuses.check", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 30 },
+            { key: "system.abilities.wis.bonuses.check", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2", priority: 20 }
         ]
     },
     wasted: {
