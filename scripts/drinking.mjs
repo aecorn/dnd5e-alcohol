@@ -1,4 +1,4 @@
-import { decrease_inebriation_points, add_inebriation_points } from "./inebriation_points.js";
+import { decrease_inebriation_points, add_inebriation_points } from "./inebriation_points.mjs";
 
 
 

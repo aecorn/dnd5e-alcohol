@@ -1,4 +1,4 @@
-import { calculate_thresholds } from "./conditions.js";
+import { calculate_thresholds } from "./conditions.mjs";
 
 /**
  * @param {object} app           - The sheet instance

@@ -77,12 +77,12 @@
     
   ],
   "esmodules": [
-    "scripts/main.js",
-    "scripts/conditions.js", 
-    "scripts/rest.js",
-    "scripts/sheet.js",
-    "scripts/drinking.js",
-    "scripts/items.js"
+    "scripts/main.mjs",
+    "scripts/conditions.mjs", 
+    "scripts/rest.mjs",
+    "scripts/sheet.mjs",
+    "scripts/drinking.mjs",
+    "scripts/items.mjs"
   ],
   "languages": [
     

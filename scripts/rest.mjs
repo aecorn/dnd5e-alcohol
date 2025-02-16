@@ -1,5 +1,5 @@
-import { reset_inebriation } from "./inebriation_points.js";
-import { refresh_conditions } from "./conditions.js";
+import { reset_inebriation } from "./inebriation_points.mjs";
+import { refresh_conditions } from "./conditions.mjs";
 
 Hooks.on("dnd5e.shortRest", async (actor, data) => {
     let inebriation = actor.getFlag("dnd5e-alcohol", "inebriation") || 0;

@@ -1,4 +1,4 @@
-import {add_empty_effect_actor} from "./drinking.js";
+import {add_empty_effect_actor} from "./drinking.mjs";
 
 export async function update_drunkards_third_leg(actor, addEffects) {
     if (!actor.items.some(item => item.name.toLowerCase() === "drunkard's third leg")) {

@@ -1,4 +1,4 @@
-import {update_drunkards_third_leg} from "./items.js";
+import {update_drunkards_third_leg} from "./items.mjs";
 
 const ALCOHOL_EFFECTS = {
     tipsy: {

@@ -1,6 +1,6 @@
-import { DRINKS } from "./drinks.js";
-import { MONSTERS } from "./monsters.js";
-import { FEATS } from "./feats.js";
+import { DRINKS } from "./drinks.mjs";
+import { MONSTERS } from "./monsters.mjs";
+import { FEATS } from "./feats.mjs";
 
 
 Hooks.once("ready", async () => {

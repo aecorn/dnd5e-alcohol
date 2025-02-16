@@ -1,4 +1,4 @@
-import { refresh_conditions } from "./conditions.js";
+import { refresh_conditions } from "./conditions.mjs";
 
 
 
