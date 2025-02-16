@@ -10,10 +10,10 @@ const ALCOHOL_EFFECTS = {
             { key: "system.skills.per.mod", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "2" },
 
             // -2 to resisting Persuasion and Deception (Affects Wisdom (Insight))
-            { key: "system.skills.ins.mod", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2" },
+            { key: "system.skills.ins.mod", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2" },
 
             // -2 to Saving Throws against Persuasion/Deception effects
-            { key: "system.abilities.wis.save", mode: CONST.ACTIVE_EFFECT_MODES.ADD, value: "-2" }
+            { key: "system.abilities.wis.save.value", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2" }
         ]
     },
     drunk: {
@@ -27,10 +27,10 @@ const ALCOHOL_EFFECTS = {
             { key: "system.bonuses.msak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
             { key: "system.bonuses.rwak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
             { key: "system.bonuses.rsak.attack", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.int.save", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.wis.save", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.int.check", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
-            { key: "system.abilities.wis.check", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 20 }
+            { key: "system.abilities.int.save.value", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+            { key: "system.abilities.wis.save.value", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+            { key: "system.abilities.int.checkBonus", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 30 },
+            { key: "system.abilities.wis.checkBonus", mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE, value: "2", priority: 20 }
         ]
     },
     wasted: {
@@ -188,7 +188,6 @@ Hooks.once("init", () => {
 async function addAlcoholEffect(actor, condition, chatMessage = true) {
     //console.log(`Adding alcohol effect: ${condition}`);
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
-    console.log(actor);
     let effectData = ALCOHOL_EFFECTS[condition.toLowerCase()];
 
     // If actor has deep gut, reduce skill penalties with half
@@ -224,7 +223,7 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
     await actor.createEmbeddedDocuments("ActiveEffect", [{
         name: effectData.name,
         icon: effectData.icon,
-        origin: `dnd5e-alcohol-${effectData.id}`,
+        origin: effectData.id,
         disabled: false,
         duration: {},
         changes: effectData.changes,

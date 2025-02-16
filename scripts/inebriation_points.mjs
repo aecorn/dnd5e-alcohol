@@ -5,8 +5,7 @@ import { refresh_conditions } from "./conditions.mjs";
 
 
 export async function add_inebriation_points(target, num_points=1) {
-  const actor = target?.actor ?? target;
-
+  let actor = await target?.actor ?? target;
       // Get current inebriation level, default to 0 if undefined
       let inebriation = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
