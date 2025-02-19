@@ -1,17 +1,17 @@
 import {add_empty_effect_actor} from "./drinking.mjs";
 
 export async function update_drunkards_third_leg(actor, addEffects) {
+    let existingEffect = actor.effects.find(e => e.name.toLowerCase() === "drunkard's third leg");
+   
     if (!actor.items.some(item => item.name.toLowerCase() === "drunkard's third leg")) {
+        existingEffect?.delete();
         return;
     }
 
     let item = actor.items.find(item => item.name.toLowerCase() === "drunkard's third leg");
 
-    // Item must be attuned and equipped
-    if (item.system.attunement !== 2 || !item.system.equipped) {
-        return;
-    }
-
+ 
+    console.log("Drunkard's Third Leg is attuned and equipped.");
     // Calculate new speed value per movement
     let intoxicatedStates = new Set(["tipsy", "drunk", "wasted"]);
     let speed_bonus = 5 * ([...addEffects].filter(effect => 
@@ -20,8 +20,14 @@ export async function update_drunkards_third_leg(actor, addEffects) {
 
     console.log("Speed bonus is", speed_bonus);
 
-    let existingEffect = actor.effects.find(e => e.name.toLowerCase() === "drunkard's third leg");
-
+   // Item must be attuned and equipped
+   if ((item.system.attuned || item.system.attunement === 2) && item.system.equipped) {
+        // proceed
+    } else {
+        console.log("Drunkard's Third Leg is not attuned or equipped.");
+        if (existingEffect){existingEffect?.delete()};
+        return;
+    }
     // If speed bonus is 0, remove the effect if it exists
     if (speed_bonus === 0) {
         if (existingEffect) {

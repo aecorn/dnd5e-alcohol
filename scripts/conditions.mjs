@@ -127,7 +127,7 @@ export async function refresh_conditions(actor, inebriation = null) {
         messages.add.push(effect);
     }
 
-    update_drunkards_third_leg(actor, addEffects);
+    await update_drunkards_third_leg(actor, addEffects);
 
     // Apply removals
     for (const effect of removeEffects) {
