@@ -93,11 +93,9 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
 
     // If actor has feat Temperance of Mind, we will see if wisdom is a better ability to save with
     if (actor.items.some(item => item.name.toLowerCase() == "temperance of mind")){
-        let wisBest = false;
-        if (actor.system.abilities.wis.mod > actor.system.abilities.con.mod){
-            wisBest = true;
-        }
-        save = `[[/save ability=wis dc=${dc}]] (wis because of Temperance of Mind)`;
+        if (actor.system.abilities.wis.value > actor.system.abilities.con.value){
+            save = `[[/save ability=wis dc=${dc}]] (wis because of Temperance of Mind)`;
+        } 
     }
 
     let content = `${prefix}
