@@ -9,8 +9,6 @@ export async function add_inebriation_points(target, num_points=1) {
       // Get current inebriation level, default to 0 if undefined
       let inebriation = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
-      console.log(actor);
-
       // Increment inebriation by 1
       inebriation += num_points;
 

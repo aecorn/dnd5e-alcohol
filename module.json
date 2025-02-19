@@ -20,7 +20,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "4.2.0",
-          "verified": "4.2.0"
+          "verified": "4.3.1"
         }
       }
     ],
@@ -91,6 +91,7 @@
     "scripts/rest.mjs",
     "scripts/sheet.mjs",
     "scripts/drinking.mjs",
+    "scripts/items.mjs",
     "scripts/monsters/trail.mjs",
     "scripts/monsters/sight.mjs",
     "scripts/monsters/aura.mjs"

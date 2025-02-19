@@ -3,8 +3,8 @@ import { decrease_inebriation_points, add_inebriation_points } from "./inebriati
 
 
 // Fast forward application of alcoholic effects?
-Hooks.on("dnd5e.postActivityConsumption", async (activity, _, chatmsgdata) => {
-    //console.log(activity);
+Hooks.on("dnd5e.postActivityConsumption", async (activity, hm, chatmsgdata) => {
+
     let actor = activity.actor;
     let alco_effects = activity.effects.filter(effect => 
         effect.effect.name.toLowerCase().startsWith("alcohol -")
@@ -20,19 +20,18 @@ Hooks.on("dnd5e.postActivityConsumption", async (activity, _, chatmsgdata) => {
     // Exit if this is not drinking a potion?
     if (chatmsgdata.data.flags.dnd5e.activity.type != "utility"){return;}
     if (chatmsgdata.data.flags.dnd5e.item.type != "consumable"){return;}
-    if (chatmsgdata.data.flags.dnd5e.imessageType != "usage"){return;}
+    if (chatmsgdata.data.flags.dnd5e.messageType != "usage"){return;}
 
     // We are sort of replacing the old chatmessage with our own, so we want to stop the default one.
     // This data is passed to the chatmessage creation, we hook into that below
     chatmsgdata.data.flags.delchatmessage = true;
-    //console.log(chatmsgdata);
 });
 
 
 // Stop initial chatmessage from system for drinking a drink
 Hooks.on("preCreateChatMessage", (chatMessage) => {
-    //console.log(chatMessage);
-    let delchatflag = chatMessage?.flags?.delchatmessage;
+    //console.log("Trying to delete chatmessage", chatMessage);
+    let delchatflag = chatMessage.flags?.delchatmessage || false;
     if (delchatflag === true){
         return false;
     }
@@ -41,7 +40,7 @@ Hooks.on("preCreateChatMessage", (chatMessage) => {
 
 
 
-Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
+Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
     let effectName = effect.name.toLowerCase();
     let actor = effect.parent;
     //console.log(effectName);
@@ -56,12 +55,14 @@ Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
 
     let [potency, properties] = extract_potency_properties_from_name(effectName);
 
-    await create_alcohol_chat_message_for_actor(actor, potency, properties);
+    create_alcohol_chat_message_for_actor(actor, potency, properties);
 
-    // Stops effect from applying to actor?, we have what we need in the BUTTONS?
     return false;
     
 });
+
+
+
 
 export function extract_potency_properties_from_name(effectName){
     // Extract potency and properties
@@ -113,7 +114,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
     let race = extract_race_from_racial_property(properties);
     if (race != null){
         // Check i actor has same race
-        let race_name = actor.system.details.race.name;
+        let race_name = actor.system.details?.race?.name || "Human";  // Sad human default
         if (race_name.toLowerCase().includes(race.toLowerCase())) {
             content += `<button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency-1}" data-properties="${properties.join(' - ')}">Fail on Purpose (1 less inebriation points because of racial property)</button>`;
         }
@@ -279,12 +280,12 @@ async function apply_alcohol_properties_to_actor(actor, properties){
           };
         let { results } = await tableWild.draw(drawOptions);
         let result_text = results[0].text
-        let content = "<strong>Wild Magic results:</strong><br>" + result_text + `<br><br>Characters with the Alcohol Property - Wild Magic trait, roll on the Wild Magic table, and will keep the effect they roll as long as they have the wild magic effect..`;
+        let content = 'Wild Magic results:<br><strong><p style="color: red;">' + result_text + `</p></strong><br><br>Characters with the Alcohol Property - Wild Magic trait, roll on the Wild Magic table, and will keep the effect they roll as long as they have the wild magic effect. (As long as it has a duration / applies some physical change (damage, summons are not reversed for example).)`;
         await add_empty_effect_actor(
             actor, 
             "Alcohol Property - Wild Magic", 
-            `Drinker has effect from Wild magic table: ${result_text}`,
-            [{}]
+            `Drinker has effect from Wild magic table: <strong><p style="color: red;">${result_text}</p></strong>`,
+            undefined
             );
         let chatData = {
             user: game.user._id,
@@ -297,12 +298,11 @@ async function apply_alcohol_properties_to_actor(actor, properties){
     }
 }
 
-
-async function add_empty_effect_actor(actor, effectName, description = "", changes = []){
+export async function add_empty_effect_actor(actor, effectName, description = "", changes = undefined){
     let existingEffect = actor.effects.find(e => e.name === effectName);
     if (existingEffect) return; // Prevent duplicates
 
-    await actor.createEmbeddedDocuments("ActiveEffect", [{
+    let effect = {
         name: effectName,
         icon: "icons/svg/down.svg",
         origin: `dnd5e-alcohol-${effectName.toLowerCase()}`,
@@ -310,7 +310,13 @@ async function add_empty_effect_actor(actor, effectName, description = "", chang
         duration: {},
         changes: changes,
         description: description,
-    }]);
+    }
+    // undefined + empty object causes error in v11
+    if (changes === undefined){
+        delete effect.changes;
+    }
+
+    await actor.createEmbeddedDocuments("ActiveEffect", [effect]);
 }
 
 
