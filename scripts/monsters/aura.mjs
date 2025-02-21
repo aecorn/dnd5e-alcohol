@@ -5,7 +5,7 @@ import { isOverlapping} from "./trail.mjs";
 
 // Keg golems have an aura of 5 feet of intoxicating fumes (triggers on start of turn)
 Hooks.on("combatTurnChange", async (combat) => {
-    //console.log(combat);
+    console.log(combat);
     // Find Keg Golems in combat
     let featureName = "alcoholic fumes";
     let fume_combatants = combat.turns.filter(combatant => 
@@ -20,6 +20,7 @@ Hooks.on("combatTurnChange", async (combat) => {
 
     // Combatant with turns area
     let size = canvas.dimensions.size;
+    console.log("size", size);
     let token = combatant.token;
     let tokenArea = [
         [token.x, token.y],
@@ -27,32 +28,35 @@ Hooks.on("combatTurnChange", async (combat) => {
         [token.x + token.width, token.y + token.height],
         [token.x, token.y + token.height]
     ];
-
+    console.log(tokenArea);
     // Look if the combatant is next to each golem
     for (let enemy of fume_combatants) {
 
         // We are looking at neighbouring squares if not a swarm, if swarm just in the monsters square.
         let isSwarm = enemy.actor.items.filter(
             item => item.name.toLowerCase().startsWith("alcoholic fumes")).some(
-                item => item.name.includes("(in space)"));
+                item => item.name.toLowerCase().includes("(in space)"));
+        console.log(isSwarm);
+
         let fumeArea = [];
         if (isSwarm){
             fumeArea = [
                 [enemy.token.x, enemy.token.y],
-                [enemy.token.x + enemy.token.width, enemy.token.y],
-                [enemy.token.x + enemy.token.width, enemy.token.y + enemy.token.height],
-                [enemy.token.x, enemy.token.y + enemy.token.height]
+                [enemy.token.x + (enemy.token.width*size), enemy.token.y],
+                [enemy.token.x + (enemy.token.width*size), enemy.token.y + (enemy.token.height*size)],
+                [enemy.token.x, enemy.token.y + (enemy.token.height*size)]
 
             ];
         } else {
             fumeArea = [
                 [enemy.token.x-size, enemy.token.y-size],
-                [enemy.token.x + enemy.token.width+size, enemy.token.y-size],
-                [enemy.token.x + enemy.token.width+size, enemy.token.y + enemy.token.height + size],
-                [enemy.token.x - size, enemy.token.y + enemy.token.height + size]
+                [enemy.token.x + (enemy.token.width*size)+size, enemy.token.y-size],
+                [enemy.token.x + (enemy.token.width*size)+size, enemy.token.y + (enemy.token.height*size) + size],
+                [enemy.token.x - size, enemy.token.y + (enemy.token.height*size) + size]
 
             ];
         }
+        console.log(fumeArea);
         if (isOverlapping(fumeArea, tokenArea, 0)){
             //console.log(`${token.name} is inside a ${enemy.name}'s fume area!`);
             let drink = random_alcohol_effect_in_inventory(enemy.actor);
