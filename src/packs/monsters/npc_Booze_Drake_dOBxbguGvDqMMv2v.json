@@ -27,8 +27,8 @@
       "hp": {
         "value": 75,
         "max": 75,
-        "temp": 0,
-        "tempmax": 0,
+        "temp": null,
+        "tempmax": null,
         "formula": ""
       },
       "ac": {
@@ -1101,8 +1101,7 @@
                 {
                   "type": "itemUses",
                   "value": "1",
-                  "target": "",
-                  "scaling": {}
+                  "target": ""
                 }
               ]
             },
@@ -1155,7 +1154,7 @@
                 "value": "melee",
                 "classification": "spell"
               },
-              "ability": "",
+              "ability": "none",
               "bonus": ""
             },
             "damage": {
@@ -1170,6 +1169,62 @@
             "appliedEffects": [
               "8tU8rsICqXrdVgR7"
             ]
+          },
+          "9z6p46R0UcUmVnAX": {
+            "type": "cast",
+            "_id": "9z6p46R0UcUmVnAX",
+            "sort": 0,
+            "activation": {
+              "type": "action",
+              "value": null,
+              "override": false
+            },
+            "consumption": {
+              "scaling": {
+                "allowed": false
+              },
+              "spellSlot": true,
+              "targets": []
+            },
+            "description": {},
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false,
+              "prompt": true
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": []
+            },
+            "spell": {
+              "challenge": {
+                "attack": null,
+                "save": null,
+                "override": false
+              },
+              "level": null,
+              "properties": [
+                "vocal",
+                "somatic",
+                "material"
+              ],
+              "spellbook": true,
+              "uuid": null
+            }
           }
         },
         "uses": {
@@ -1260,9 +1315,9 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.4",
+        "systemVersion": "4.3.1",
         "createdTime": 1738520004698,
-        "modifiedTime": 1738525848213,
+        "modifiedTime": 1739999236986,
         "lastModifiedBy": "4DestKlpiBDHIre4"
       },
       "_key": "!actors.items!dOBxbguGvDqMMv2v.QqlOg7b8idUB7Q5n"
@@ -1285,9 +1340,9 @@
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "4.3.1",
     "createdTime": 1737399683862,
-    "modifiedTime": 1738524674737,
+    "modifiedTime": 1739999127237,
     "lastModifiedBy": "4DestKlpiBDHIre4"
   },
   "_key": "!actors!dOBxbguGvDqMMv2v"

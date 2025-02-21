@@ -89,7 +89,7 @@
       "denomination": "gp"
     },
     "rarity": "rare",
-    "attunement": "",
+    "attunement": "required",
     "attuned": false,
     "equipped": false,
     "armor": {
@@ -135,7 +135,9 @@
       }
     },
     "magicalBonus": null,
-    "properties": [],
+    "properties": [
+      "mgc"
+    ],
     "proficient": null,
     "range": {
       "value": null,
@@ -158,9 +160,9 @@
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "4.3.1",
     "createdTime": 1737403609694,
-    "modifiedTime": 1737403800000,
+    "modifiedTime": 1739997735923,
     "lastModifiedBy": "4DestKlpiBDHIre4"
   },
   "_key": "!items!lJiXY4uReWjkSoSj"

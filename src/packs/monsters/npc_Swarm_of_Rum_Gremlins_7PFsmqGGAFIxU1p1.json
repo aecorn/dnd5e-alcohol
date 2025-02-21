@@ -426,8 +426,8 @@
       "hp": {
         "value": 72,
         "max": 72,
-        "temp": 0,
-        "tempmax": 0,
+        "temp": null,
+        "tempmax": null,
         "formula": ""
       },
       "death": {
@@ -1414,9 +1414,9 @@
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "4.3.1",
     "createdTime": 1737401987699,
-    "modifiedTime": 1738516970630,
+    "modifiedTime": 1740119748958,
     "lastModifiedBy": "4DestKlpiBDHIre4"
   },
   "_key": "!actors!7PFsmqGGAFIxU1p1"

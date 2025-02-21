@@ -20,15 +20,15 @@
       "flaw": "",
       "race": null,
       "environment": "",
-      "cr": 0.2,
+      "cr": 0.125,
       "spellLevel": 0
     },
     "attributes": {
       "hp": {
         "value": 9,
         "max": 9,
-        "temp": 0,
-        "tempmax": 0,
+        "temp": null,
+        "tempmax": null,
         "formula": ""
       },
       "ac": {
@@ -513,7 +513,7 @@
   },
   "_id": "cBD189GVu4kssPYg",
   "prototypeToken": {
-    "name": "Drunken Ogre",
+    "name": "Rum Gremlin",
     "displayName": 0,
     "actorLink": false,
     "appendNumber": false,
@@ -521,7 +521,7 @@
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/creatures/mammals/bear-wine-barrel.webp",
+      "src": "icons/creatures/abilities/mouth-teeth-sharp.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -591,7 +591,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 1,
+      "effects": 0,
       "subject": {
         "scale": 1,
         "texture": null
@@ -942,18 +942,16 @@
     "4DestKlpiBDHIre4": 3
   },
   "flags": {
-    "dnd5e": {
-      "showTokenPortrait": false
-    }
+    "dnd5e": {}
   },
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
+    "systemVersion": "4.3.1",
     "createdTime": 1737399683803,
-    "modifiedTime": 1738511378371,
+    "modifiedTime": 1740119508195,
     "lastModifiedBy": "4DestKlpiBDHIre4"
   },
   "_key": "!actors!cBD189GVu4kssPYg"
