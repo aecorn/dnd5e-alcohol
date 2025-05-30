@@ -213,13 +213,14 @@ async function apply_alcohol_properties_to_actor(actor, properties){
     if (properties.map(p => p.toLowerCase()).includes("disarming")){
         //console.log("Want to apply disarming");
         // Look for Racial
-        let race = extract_race_from_racial_property(properties);
-        //console.log(race);
-        if (race != null){
+        let race_drink = extract_race_from_racial_property(properties);
+        let race_char = actor.system.details.race?.name;
+        if (race_drink != null & race_char != null){
             // Check i actor has same race (only impose disadvantage if racial does not match actor)
-            let race_name = actor.system.details.race.name;
+            console.log(actor);
+            
             //console.log(race_name);
-            if (!(race_name.toLowerCase().includes(race.toLowerCase()))) {
+            if (!(race_char.toLowerCase().includes(race_drink.toLowerCase()))) {
                 // Disadvantage on perception 
                 //console.log("Making changes.");
                 let changes = [
