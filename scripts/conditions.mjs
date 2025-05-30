@@ -211,6 +211,7 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
             name: effectData.name,
             icon: effectData.icon,
             origin: effectData.id,
+            description: effectData.description,
             disabled: false,
             duration: {},
             changes: effectData.changes,
