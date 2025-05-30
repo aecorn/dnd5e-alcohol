@@ -153,41 +153,28 @@ export async function refresh_conditions(actor, inebriation = null) {
 
 
 
-Hooks.on("renderChatMessage", (message, html, data) => {
-    html.find(".apply-condition").click(async (event) => {
-        event.preventDefault();
-        
-        // Extract actor ID and potency from button attributes
-        let actorId = event.currentTarget.dataset.actorId;
-        let condition = event.currentTarget.dataset.condition;
-        let actor = game.actors.get(actorId);
+Hooks.on("renderChatMessageHTML", (message, html, data) => {
+    // Use querySelectorAll since html is now a native HTMLElement
+    html.querySelectorAll(".apply-condition").forEach((button) => {
+        button.addEventListener("click", async (event) => {
+            event.preventDefault();
 
-        // Disable button after use
-        event.currentTarget.disabled = true;
+            // Extract actor ID and condition from data attributes
+            const actorId = event.currentTarget.dataset.actorId;
+            const condition = event.currentTarget.dataset.condition;
+            const actor = game.actors.get(actorId);
 
-        if (!actor) {
-            console.error("Actor not found.");
-            return;
-        }
+            // Disable the button to prevent re-use
+            event.currentTarget.disabled = true;
 
-        actor.toggleStatusEffect(condition, {active: true});
+            if (!actor) {
+                console.error("Actor not found.");
+                return;
+            }
 
+            actor.toggleStatusEffect(condition, { active: true });
+        });
     });
-});
-
-Hooks.once("init", () => {
-    //console.log("Registering Alcohol Status Effects");
-
-    for (const effect of Object.values(ALCOHOL_EFFECTS)) {
-        if (effect.name.toLowerCase() !== "incapacitated") {
-            CONFIG.statusEffects.push({
-                id: effect.id,
-                name: effect.name,
-                icon: effect.icon,
-                statuses: [effect.id]
-            });
-        }
-    }
 });
 
 
@@ -224,6 +211,7 @@ async function addAlcoholEffect(actor, condition, chatMessage = true) {
             name: effectData.name,
             icon: effectData.icon,
             origin: effectData.id,
+            description: effectData.description,
             disabled: false,
             duration: {},
             changes: effectData.changes,

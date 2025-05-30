@@ -141,35 +141,34 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
   }
 
 
-  Hooks.on("renderChatMessage", (message, html, data) => {
-    html.find(".apply-inebriation").click(async (event) => {
-        event.preventDefault();
-        
-        // Extract actor ID and potency from button attributes
-        let actorId = event.currentTarget.dataset.actorId;
-        let potency = parseInt(event.currentTarget.dataset.potency);
-        let properties = event.currentTarget.dataset.properties.split(" - ");
-        let actor = game.actors.get(actorId);
+  Hooks.on("renderChatMessageHTML", (message, html, data) => {
+    html.querySelectorAll(".apply-inebriation").forEach((button) => {
+        button.addEventListener("click", async (event) => {
+            event.preventDefault();
 
-        // Disable button after use
-        event.currentTarget.disabled = true;
+            const actorId = event.currentTarget.dataset.actorId;
+            const potency = parseInt(event.currentTarget.dataset.potency);
+            const properties = event.currentTarget.dataset.properties.split(" - ");
+            const actor = game.actors.get(actorId);
 
-        if (!actor) {
-            console.error("Actor not found.");
-            return;
-        }
+            event.currentTarget.disabled = true;
 
-         // Apply inebriation logic
-         if (properties.map(p => p.toLowerCase()).includes("sobering")) {
-            await decrease_inebriation_points(actor, potency);
-        } else {
-            await add_inebriation_points(actor, potency);
-        }
+            if (!actor) {
+                console.error("Actor not found.");
+                return;
+            }
 
-       await apply_alcohol_properties_to_actor(actor, properties);
+            if (properties.map(p => p.toLowerCase()).includes("sobering")) {
+                await decrease_inebriation_points(actor, potency);
+            } else {
+                await add_inebriation_points(actor, potency);
+            }
 
+            await apply_alcohol_properties_to_actor(actor, properties);
+        });
     });
 });
+
 
 
 async function apply_alcohol_properties_to_actor(actor, properties){
@@ -214,13 +213,14 @@ async function apply_alcohol_properties_to_actor(actor, properties){
     if (properties.map(p => p.toLowerCase()).includes("disarming")){
         //console.log("Want to apply disarming");
         // Look for Racial
-        let race = extract_race_from_racial_property(properties);
-        //console.log(race);
-        if (race != null){
+        let race_drink = extract_race_from_racial_property(properties);
+        let race_char = actor.system.details.race?.name;
+        if (race_drink != null & race_char != null){
             // Check i actor has same race (only impose disadvantage if racial does not match actor)
-            let race_name = actor.system.details.race.name;
+            console.log(actor);
+            
             //console.log(race_name);
-            if (!(race_name.toLowerCase().includes(race.toLowerCase()))) {
+            if (!(race_char.toLowerCase().includes(race_drink.toLowerCase()))) {
                 // Disadvantage on perception 
                 //console.log("Making changes.");
                 let changes = [
