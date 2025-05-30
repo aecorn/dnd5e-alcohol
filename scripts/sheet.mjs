@@ -1,11 +1,12 @@
 import { calculate_thresholds } from "./conditions.mjs";
 
 
-Hooks.on("renderActorSheet", async (_sheet, html) => {
-    let thres = await calculate_thresholds(_sheet.object);
+Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
+  
+    let thres = await calculate_thresholds(_sheet.actor);
 
     let inebriation_max = thres.incapacitated;
-    let inebriation_points = await _sheet.object.getFlag("dnd5e-alcohol", "inebriation") || 0;
+    let inebriation_points = await _sheet.actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
     let inebriation_percent = Math.floor((inebriation_points / inebriation_max) * 100);
 
 
