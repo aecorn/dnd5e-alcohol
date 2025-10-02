@@ -154,9 +154,19 @@ export async function refresh_conditions(actor, inebriation = null) {
 
 
 Hooks.on("renderChatMessageHTML", (message, html, data) => {
-    // Use querySelectorAll since html is now a native HTMLElement
+    add_click_event_apply_condition(html);
+});
+
+Hooks.on("dnd5e.renderChatMessage", (message, html, data) => {
+    console.log(html);
+    add_click_event_apply_condition(html);
+});
+
+    
+function add_click_event_apply_condition(html){
     html.querySelectorAll(".apply-condition").forEach((button) => {
         button.addEventListener("click", async (event) => {
+            // Use querySelectorAll since html is now a native HTMLElement
             event.preventDefault();
 
             // Extract actor ID and condition from data attributes
@@ -175,7 +185,7 @@ Hooks.on("renderChatMessageHTML", (message, html, data) => {
             actor.toggleStatusEffect(condition, { active: true });
         });
     });
-});
+};
 
 
 async function addAlcoholEffect(actor, condition, chatMessage = true) {

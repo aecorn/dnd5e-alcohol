@@ -143,11 +143,11 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
 
 // renderChatMessageHTML for foundryvtt 13?
 // dnd5e.renderChatMessage for foundryvtt 12?
-Hooks.on("dnd5e.renderChatMessage", (message, html, data) => {
+Hooks.on("dnd5e.renderChatMessage", (message, html) => {
     add_event_listeners_to_chat_message(html);
 });
 
-Hooks.on("renderChatMessage", (message, html, data) => {
+Hooks.on("renderChatMessageHTML", (message, html, data) => {
     add_event_listeners_to_chat_message(html);
 });
 
