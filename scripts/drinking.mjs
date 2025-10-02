@@ -141,9 +141,20 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
   }
 
 
-  Hooks.on("renderChatMessageHTML", (message, html, data) => {
+// renderChatMessageHTML for foundryvtt 13?
+// dnd5e.renderChatMessage for foundryvtt 12?
+Hooks.on("dnd5e.renderChatMessage", (message, html, data) => {
+    add_event_listeners_to_chat_message(html);
+});
+
+Hooks.on("renderChatMessage", (message, html, data) => {
+    add_event_listeners_to_chat_message(html);
+});
+
+function add_event_listeners_to_chat_message(html){
     html.querySelectorAll(".apply-inebriation").forEach((button) => {
         button.addEventListener("click", async (event) => {
+            console.log("Apply inebriation clicked");
             event.preventDefault();
 
             const actorId = event.currentTarget.dataset.actorId;
@@ -167,7 +178,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
             await apply_alcohol_properties_to_actor(actor, properties);
         });
     });
-});
+}
 
 
 

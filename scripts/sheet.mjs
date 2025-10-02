@@ -1,8 +1,16 @@
 import { calculate_thresholds } from "./conditions.mjs";
 
 
+// renderActorSheet5eCharacter for foundryvtt 12
+Hooks.on("renderActorSheet5eCharacter", async (_sheet, html) => {
+    await add_inebriation_bar_to_sheet(_sheet, html);
+  });
+// renderActorSheet5eCharacter for foundryvtt 13
 Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
-  
+  await add_inebriation_bar_to_sheet(_sheet, html);
+});
+
+async function add_inebriation_bar_to_sheet(_sheet, html){
     let thres = await calculate_thresholds(_sheet.actor);
 
     let inebriation_max = thres.incapacitated;
@@ -44,4 +52,4 @@ Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
       }
     
     counterArea.after(progressBarArea);
-  });
+  };
