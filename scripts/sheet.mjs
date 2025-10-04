@@ -1,13 +1,17 @@
 import { calculate_thresholds } from "./conditions.mjs";
 
-
-// renderActorSheet5eCharacter for foundryvtt 12
-Hooks.on("renderActorSheet5eCharacter", async (_sheet, html) => {
-    await add_inebriation_bar_to_sheet(_sheet, html);
-  });
-// renderActorSheet5eCharacter for foundryvtt 13
-Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
-  await add_inebriation_bar_to_sheet(_sheet, html);
+Hooks.once("ready", () => {
+  // renderActorSheet5eCharacter for foundryvtt 12
+  if (game.release.generation <= 12) {
+    Hooks.on("renderActorSheet5eCharacter", async (_sheet, html) => {
+        await add_inebriation_bar_to_sheet(_sheet, html);
+      });
+  } else if (game.release.generation >= 13) {
+      // renderActorSheet5eCharacter for foundryvtt 13
+      Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
+        await add_inebriation_bar_to_sheet(_sheet, html);
+      });
+  }
 });
 
 async function add_inebriation_bar_to_sheet(_sheet, html){
