@@ -544,7 +544,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -609,7 +608,14 @@
       }
     },
     "flags": {},
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -770,12 +776,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!2zEx4oJnMsn8ZUX8.JMjDnWhjFi96vF7v.JVKp43iyvQFPakX1"
         }
@@ -802,12 +809,13 @@
       "_stats": {
         "compendiumSource": "Compendium.dnd5e-alcohol.drinks.Item.ftP1wX2DsAz3oz0V",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737997648290,
         "modifiedTime": 1737998372669,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.JMjDnWhjFi96vF7v"
     },
@@ -969,12 +977,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!2zEx4oJnMsn8ZUX8.9PrMNyUBLX1MME9Y.2Xb4mLbCu8JtLkQ4"
         }
@@ -1003,12 +1012,13 @@
       "_stats": {
         "compendiumSource": "Compendium.dnd5e-alcohol.drinks.Item.DUq4mJ38Ky8NiRtg",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737997650350,
         "modifiedTime": 1737998366619,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.9PrMNyUBLX1MME9Y"
     },
@@ -1170,12 +1180,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!2zEx4oJnMsn8ZUX8.alWnZaiinX9QCFzl.r88uMwiwVjQeDtHc"
         }
@@ -1202,12 +1213,13 @@
       "_stats": {
         "compendiumSource": "Compendium.dnd5e-alcohol.drinks.Item.QRngY1mkAJtDaWj1",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737997655380,
         "modifiedTime": 1737998363668,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.alWnZaiinX9QCFzl"
     },
@@ -1369,12 +1381,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!2zEx4oJnMsn8ZUX8.XU14FDnS3f3fHhO3.8G1QmnotbGtjYkSJ"
         }
@@ -1401,12 +1414,13 @@
       "_stats": {
         "compendiumSource": "Compendium.dnd5e-alcohol.drinks.Item.oRzVrJvXDISYmECQ",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737997667217,
         "modifiedTime": 1737998369753,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.XU14FDnS3f3fHhO3"
     },
@@ -1568,12 +1582,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": null,
             "modifiedTime": null,
-            "lastModifiedBy": null
+            "lastModifiedBy": null,
+            "exportSource": null
           },
           "_key": "!actors.items.effects!2zEx4oJnMsn8ZUX8.SmZJCUxE1LpBvv0l.GtF037JF8dx4HoH9"
         }
@@ -1600,12 +1615,13 @@
       "_stats": {
         "compendiumSource": "Compendium.dnd5e-alcohol.drinks.Item.gwGOiArnBy4vtyIQ",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737997674518,
         "modifiedTime": 1737998359440,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.SmZJCUxE1LpBvv0l"
     },
@@ -1652,12 +1668,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737998308824,
         "modifiedTime": 1738525473703,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.OSHKTqxaly4SM8ss"
     },
@@ -1820,12 +1837,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737998384735,
         "modifiedTime": 1738525449616,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.b3GbQGPZlmwpULYZ"
     },
@@ -1872,12 +1890,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737998469194,
         "modifiedTime": 1737998501731,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.hK7bLB6hg84MwckU"
     },
@@ -1924,12 +1943,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738517020383,
         "modifiedTime": 1738517098620,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.HdOMnu6493wvHDdS"
     },
@@ -2060,12 +2080,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": 1738525293646,
             "modifiedTime": 1738525386981,
-            "lastModifiedBy": "4DestKlpiBDHIre4"
+            "lastModifiedBy": "4DestKlpiBDHIre4",
+            "exportSource": null
           },
           "_key": "!actors.items.effects!2zEx4oJnMsn8ZUX8.ut7c2pOBkD6DW3kN.f6mCddLKxp0wTUJa"
         }
@@ -2087,12 +2108,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738525276422,
         "modifiedTime": 1738525379127,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!2zEx4oJnMsn8ZUX8.ut7c2pOBkD6DW3kN"
     }
@@ -2125,12 +2147,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737997328421,
         "modifiedTime": 1737997412976,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.effects!2zEx4oJnMsn8ZUX8.VeuGwFybWkZwD3R4"
     }
@@ -2149,12 +2172,13 @@
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.350",
     "systemId": "dnd5e",
     "systemVersion": "4.0.4",
     "createdTime": 1737402002150,
     "modifiedTime": 1737997608029,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "lastModifiedBy": "4DestKlpiBDHIre4",
+    "exportSource": null
   },
   "_key": "!actors!2zEx4oJnMsn8ZUX8"
 }

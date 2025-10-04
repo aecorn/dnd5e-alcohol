@@ -533,7 +533,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -598,7 +597,14 @@
       }
     },
     "flags": {},
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -760,12 +766,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738511004236,
         "modifiedTime": 1738511122011,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!cBD189GVu4kssPYg.n1TsWKAbCZCAs4nv"
     },
@@ -812,12 +819,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738511147658,
         "modifiedTime": 1738511223616,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!cBD189GVu4kssPYg.RGMVOYIMA0yDGnvo"
     },
@@ -864,12 +872,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738511266036,
         "modifiedTime": 1738511294485,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!cBD189GVu4kssPYg.WTjEVLNQiPOBki1d"
     },
@@ -917,19 +926,18 @@
         "4DestKlpiBDHIre4": 3
       },
       "flags": {
-        "core": {
-          "sourceId": "Compendium.dnd5e.monsterfeatures.PqVfFNyOPmecrS7N"
-        }
+        "core": {}
       },
       "_stats": {
         "compendiumSource": "Compendium.dnd5e.monsterfeatures.PqVfFNyOPmecrS7N",
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738511341224,
         "modifiedTime": 1738511341224,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!cBD189GVu4kssPYg.qQWIMqUly888Pkxk"
     }
@@ -947,12 +955,13 @@
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.350",
     "systemId": "dnd5e",
     "systemVersion": "4.3.1",
     "createdTime": 1737399683803,
     "modifiedTime": 1740119508195,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "lastModifiedBy": "4DestKlpiBDHIre4",
+    "exportSource": null
   },
   "_key": "!actors!cBD189GVu4kssPYg"
 }

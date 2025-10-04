@@ -24,6 +24,7 @@ Hooks.on("dnd5e.postActivityConsumption", async (activity, hm, chatmsgdata) => {
 
     // We are sort of replacing the old chatmessage with our own, so we want to stop the default one.
     // This data is passed to the chatmessage creation, we hook into that below
+    chatmsgdata.create = false;
     chatmsgdata.data.flags.delchatmessage = true;
 });
 
@@ -32,6 +33,7 @@ Hooks.on("dnd5e.postActivityConsumption", async (activity, hm, chatmsgdata) => {
 Hooks.on("preCreateChatMessage", (chatMessage) => {
     //console.log("Trying to delete chatmessage", chatMessage);
     let delchatflag = chatMessage.flags?.delchatmessage || false;
+    //console.log("Delchatflag is", delchatflag);
     if (delchatflag === true){
         return false;
     }
@@ -143,12 +145,16 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
 
 // renderChatMessageHTML for foundryvtt 13?
 // dnd5e.renderChatMessage for foundryvtt 12?
-Hooks.on("dnd5e.renderChatMessage", (message, html) => {
-    add_event_listeners_to_chat_message(html);
-});
-
-Hooks.on("renderChatMessageHTML", (message, html, data) => {
-    add_event_listeners_to_chat_message(html);
+Hooks.once("ready", () => {
+    if (game.release.generation <= 12) {
+        Hooks.on("dnd5e.renderChatMessage", (message, html) => {
+            add_event_listeners_to_chat_message(html);
+        });
+    } else if (game.release.generation >= 13) {
+        Hooks.on("renderChatMessageHTML", (message, html, data) => {
+            add_event_listeners_to_chat_message(html);
+        });
+    }
 });
 
 function add_event_listeners_to_chat_message(html){
