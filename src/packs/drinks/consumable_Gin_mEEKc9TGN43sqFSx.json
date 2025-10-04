@@ -158,12 +158,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737703724730,
         "modifiedTime": 1737703741098,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!items.effects!mEEKc9TGN43sqFSx.nrBaVLmeB6VrlqUu"
     }
@@ -190,12 +191,13 @@
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.350",
     "systemId": "dnd5e",
     "systemVersion": "4.0.4",
     "createdTime": 1737399683660,
     "modifiedTime": 1737703724757,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "lastModifiedBy": "4DestKlpiBDHIre4",
+    "exportSource": null
   },
   "_key": "!items!mEEKc9TGN43sqFSx"
 }

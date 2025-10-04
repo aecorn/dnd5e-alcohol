@@ -158,12 +158,13 @@
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.350",
     "systemId": "dnd5e",
     "systemVersion": "4.3.1",
     "createdTime": 1737403609694,
     "modifiedTime": 1739997735923,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "lastModifiedBy": "4DestKlpiBDHIre4",
+    "exportSource": null
   },
   "_key": "!items!lJiXY4uReWjkSoSj"
 }

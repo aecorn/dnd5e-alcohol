@@ -538,7 +538,6 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "hexagonalShape": 0,
     "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
@@ -603,7 +602,14 @@
       }
     },
     "flags": {},
-    "randomImg": false
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
   },
   "items": [
     {
@@ -649,12 +655,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737402495130,
         "modifiedTime": 1737402530664,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!dOBxbguGvDqMMv2v.ntb3EDV8KUTa2q08"
     },
@@ -817,12 +824,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737402540646,
         "modifiedTime": 1737402692193,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!dOBxbguGvDqMMv2v.qxBx1Cr4WyFLaKKO"
     },
@@ -984,12 +992,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1737402703742,
         "modifiedTime": 1737402794954,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_id": "moCt6P440jPLSC72",
       "_key": "!actors.items!dOBxbguGvDqMMv2v.moCt6P440jPLSC72"
@@ -1066,12 +1075,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.0.4",
         "createdTime": 1738513832407,
         "modifiedTime": 1738513839928,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!dOBxbguGvDqMMv2v.0d8i4LBX7yaAwmId"
     },
@@ -1286,12 +1296,13 @@
           "_stats": {
             "compendiumSource": null,
             "duplicateSource": null,
-            "coreVersion": "12.331",
+            "coreVersion": "13.350",
             "systemId": "dnd5e",
             "systemVersion": "4.0.4",
             "createdTime": 1738520084200,
             "modifiedTime": 1738520097399,
-            "lastModifiedBy": "4DestKlpiBDHIre4"
+            "lastModifiedBy": "4DestKlpiBDHIre4",
+            "exportSource": null
           },
           "_key": "!actors.items.effects!dOBxbguGvDqMMv2v.QqlOg7b8idUB7Q5n.8tU8rsICqXrdVgR7"
         }
@@ -1313,12 +1324,13 @@
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
-        "coreVersion": "12.331",
+        "coreVersion": "13.350",
         "systemId": "dnd5e",
         "systemVersion": "4.3.1",
         "createdTime": 1738520004698,
         "modifiedTime": 1739999236986,
-        "lastModifiedBy": "4DestKlpiBDHIre4"
+        "lastModifiedBy": "4DestKlpiBDHIre4",
+        "exportSource": null
       },
       "_key": "!actors.items!dOBxbguGvDqMMv2v.QqlOg7b8idUB7Q5n"
     }
@@ -1338,12 +1350,13 @@
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
-    "coreVersion": "12.331",
+    "coreVersion": "13.350",
     "systemId": "dnd5e",
     "systemVersion": "4.3.1",
     "createdTime": 1737399683862,
     "modifiedTime": 1739999127237,
-    "lastModifiedBy": "4DestKlpiBDHIre4"
+    "lastModifiedBy": "4DestKlpiBDHIre4",
+    "exportSource": null
   },
   "_key": "!actors!dOBxbguGvDqMMv2v"
 }
