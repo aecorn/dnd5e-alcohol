@@ -154,7 +154,7 @@ export async function refresh_conditions(actor, inebriation = null) {
 Hooks.once("ready", () => {
     if (game.release.generation <= 12) {
         Hooks.on("dnd5e.renderChatMessage", (message, html, data) => {
-            console.log(html);
+            //console.log(html);
             add_click_event_apply_condition(html);
         });
     } else if (game.release.generation >= 13) {
