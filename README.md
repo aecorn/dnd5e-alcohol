@@ -17,11 +17,6 @@ If you have ideas for enhancements or errors to report, use the "issues" on this
 > When the module is updated, items you have already imported from the compendiums will remain unchanged. Unless you import them from the compendiums again.
 
 
-# Todo:
-- make sure poisoned condition is added along Wasted
-
-
-
 ## Inebriation "points"
 The characters now have a numeric flag of how many "inebriation points" they have. Consuming alcohol will prompt for a Save, if the save is failed, the potency and properties from the drink can be manually applied to the character from the chatcard.
 

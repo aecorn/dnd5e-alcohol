@@ -35,3 +35,34 @@
 .inebriation-score {
     padding-inline-start: 55% !important;
 }
+
+  .resource-container-alco{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    padding: .2rem .4rem;
+  }
+
+  /* the bar sits behind everything */
+  .resource-container-alco .bar-alco{
+    position: absolute;
+    inset: 0;             /* top:0; right:0; bottom:0; left:0 */
+    width: 0%;           /* your current fill */
+    height: 100%;
+    z-index: 0;
+    background: linear-gradient(to right, #2473a1 0%, #94a810 100%);
+    border-radius: 4px;
+    pointer-events: none; /* so it won't block clicks on the input */
+  }
+
+  /* bring text & input above the bar */
+  .resource-container-alco .foreground{
+    position: relative;
+    z-index: 1;
+  }
+
+  .resource-value-alco{
+    width: 3ch;
+    text-align: center;
+  }
