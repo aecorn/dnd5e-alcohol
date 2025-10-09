@@ -19,13 +19,11 @@ Hooks.once("ready", () => {
   // renderActorSheet5eCharacter for foundryvtt 12
   if (game.release.generation <= 12) {
     Hooks.on("renderActorSheet5eCharacter", async (_sheet, html) => {
-        let template = _sheet.template;
-        console.log(_sheet.constructor.name);
-        if (template === "systems/dnd5e/templates/actors/character-sheet-2.hbs") {
+        //console.log(_sheet.constructor.name);
+        if (_sheet.constructor.name === "ActorSheet5eCharacter2") {
           await add_inebriation_bar_to_dnd_sheet(_sheet, html);
-        } else {
+        } else if (_sheet.constructor.name === "ActorSheet5eCharacter") {
           await add_inebriation_bar_to_old_dnd_sheet(_sheet, html);
-        }
       });
   } else if (game.release.generation >= 13) {
       // renderActorSheet5eCharacter for foundryvtt 13
