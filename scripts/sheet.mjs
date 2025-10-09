@@ -96,7 +96,7 @@ async function add_inebriation_bar_to_dnd_sheet(_sheet, html){
     let {inebriation_points, inebriation_max, inebriation_percent, tipsyThres, drunkThres, wastedThres} = await get_progressbar_data(_sheet);
     
     $(html).find(".sidebar ").children().first().before(
-      `<div data-tidy-render-scheme="handlebars" class="inebriation-tidy5e-classic-container" style="margin-bottom: 0.76rem;position: relative;width: 100%;height: 20px;border: white;border-width: 2px;border: solid;border-radius: 3px;" title="Inebriation Points">
+      `<div data-tidy-render-scheme="handlebars" class="inebriation-tidy5e-classic-container" style="margin-bottom: 0.76rem;position: relative;width: 100%;height: 20px;" title="Inebriation Points">
        
       <div class="resource-container svelte-129gcyy">
         
