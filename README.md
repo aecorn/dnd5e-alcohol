@@ -4,6 +4,8 @@
 <!--![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fdnd5e-alcohol&colorB=4aa94a)
 -->
 
+This is a module for the tabletop roleplaying game Dungeons & Dragons 5th Edition (D&D 5E)for the software FoundryVTT that adds alcohol consumption and its effects to the game. Its main mechanic is an inebriation point system that tracks how drunk a character is, and applies various conditions and effects based on their level of inebriation.
+
 > DISCLAIMER (shortened):
 > dnd5e-alcohol is a fantasy roleplaying module for FoundryVTT and does not promote or encourage real-life alcohol consumption. This is purely fictional and should not be interpreted as endorsing drinking, especially underage drinking or alcohol use during pregnancy. I seek no financial gain from this module. Please play and drink responsibly, and remember that real-world alcohol consumption carries risks. (See full disclaimer at bottom of Readme.)
 
@@ -23,6 +25,19 @@ The characters now have a numeric flag of how many "inebriation points" they hav
 ### Inebriation meter in character sheet
 ![Inebriation bar](imgs/inebriation_bar.png) \
 There is a bar / meter in the character sheet that shows the current inebriation points.
+
+#### Supported sheets:
+- Legacy 5e
+- Default 5e (first introduced in v11 of Foundry?)
+- Tidy5e classic (foundry v12)
+- Tidy5e classic (foundry v13)
+- Tidy5e "quadrone" (foundry v13)
+
+![Legacy 5e](imgs/sheet_classic_npc.png) \
+![Tidy5e classic foundry v12](imgs/tidy5e_classic_foundry12.png) \
+![Tidy5e classic foundry v13](imgs/tidy5e_classic_foundry13.png) \
+![Tidy5e quadrone v13](imgs/tidy5e_quadrone.png) \
+
 
 ### Thresholds for new conditions
 ![Conditions token](imgs/conditions_token.png) \
@@ -105,7 +120,6 @@ Rolls on a Wild Magic table, with effects on the drinker.
 - Liquid Courage
 - Liquid Talent
 - Temperance of Mind
-
 
 
 
