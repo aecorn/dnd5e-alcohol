@@ -34,28 +34,24 @@ Hooks.once("ready", () => {
         await add_inebriation_bar_to_dnd_sheet(_sheet, html);
       });
   }
+});
 
 
   //systems/dnd5e/templates/actors/character-sheet-2.hbs
 
   // Tidy5e sheets
-  if (game.modules.get("tidy5e-sheet")?.active) {
-    Hooks.on("tidy5e-sheet.renderActorSheet", async (_sheet, html, actor) => {
-      await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
-    });
-    Hooks.on("renderTidy5eActorSheetClassicV2Base2", async (_sheet, html, actor) => {
-      //console.log(_sheet.constructor.name === "Tidy5eCharacterSheet");
-      await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
-    });
-    Hooks.on("renderTidy5eCharacterSheetQuadrone", async (_sheet, html, actor) => {      
-      //console.log(_sheet.constructor.name === "Tidy5eCharacterSheetQuadrone");
-      console.log("Render quadrone sheet");
-      await add_inebriation_bar_to_tidy_quadrone_sheet(_sheet, html);
-    });
-    
-}
-});
-
+  Hooks.on("tidy5e-sheet.renderActorSheet", async (_sheet, html, actor) => {
+    await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
+  });
+  Hooks.on("renderTidy5eActorSheetClassicV2Base2", async (_sheet, html, actor) => {
+    //console.log(_sheet.constructor.name === "Tidy5eCharacterSheet");
+    await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
+  });
+  Hooks.on("renderTidy5eCharacterSheetQuadrone", async (_sheet, html, actor) => {      
+    //console.log(_sheet.constructor.name === "Tidy5eCharacterSheetQuadrone");
+    console.log("Render quadrone sheet");
+    await add_inebriation_bar_to_tidy_quadrone_sheet(_sheet, html);
+  });
 
 
 async function add_inebriation_bar_to_dnd_sheet(_sheet, html){
