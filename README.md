@@ -123,7 +123,6 @@ Rolls on a Wild Magic table, with effects on the drinker.
 
 
 
-
 # Full Disclaimer
 
 ## Fantasy Content Only
