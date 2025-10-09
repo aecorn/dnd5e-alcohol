@@ -39,7 +39,8 @@ Hooks.once("ready", () => {
   // Tidy5e sheets
   if (game.modules.get("tidy5e-sheet")?.active) {
     Hooks.on("tidy5e-sheet.renderActorSheet", async (_sheet, html, actor) => {
-      await add_inebriation_bar_to_tidy_sheet(_sheet, html);
+      console.log(typeof _sheet);
+      await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
     });
   }
 
@@ -81,11 +82,11 @@ async function add_inebriation_bar_to_dnd_sheet(_sheet, html){
     counterArea.after(progressBarArea);
   };
 
-  async function add_inebriation_bar_to_tidy_sheet(_sheet, html){
+  async function add_inebriation_bar_to_tidy_classic_sheet(_sheet, html){
     let {inebriation_points, inebriation_max, inebriation_percent, tipsyThres, drunkThres, wastedThres} = await get_progressbar_data(_sheet);
     
-    $(html).find(".portrait-hp").after(
-      `<div data-tidy-render-scheme="handlebars" class="portrait-hp svelte-l1hffv" style="bottom:1.25rem;" title="Inebriation Points">
+    $(html).find(".side-panel").children().first().before(
+      `<div data-tidy-render-scheme="handlebars" class="inebriation-tidy5e-classic-container" style="margin-bottom: 1.25rem;position: relative;width: 100%;" title="Inebriation Points">
        
       <div class="resource-container svelte-129gcyy">
         
