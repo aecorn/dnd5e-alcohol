@@ -15,10 +15,20 @@ async function get_progressbar_data(_sheet){
 
   }
 
+async function should_show_bar(_sheet){
+  let showAtZero = game.settings.get('dnd5e-alcohol', 'showBarZeroInebriation');
+  let inebriation_points = await _sheet.actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
+  if (!showAtZero && inebriation_points <= 0){
+    return false;
+  } else {
+    return true;
+  }
+}
 
 Hooks.on("renderActorSheet5eCharacter", async (_sheet, html) => {
   //console.log(_sheet.constructor.name);
   // new sheet in v12
+  if (!await should_show_bar(_sheet)) return;
   if (_sheet.constructor.name === "ActorSheet5eCharacter2") {
     await add_inebriation_bar_to_dnd_sheet(_sheet, html);
   // Old sheet in v12
@@ -29,8 +39,9 @@ Hooks.on("renderActorSheet5eCharacter", async (_sheet, html) => {
 // renderActorSheet5eCharacter for foundryvtt 13
 Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
   console.log(_sheet.constructor.name);
+  if (!await should_show_bar(_sheet)) return;
   // New sheet in v13
-  if (_sheet.constructor.name === "CharacterActorSheet") {
+  if (_sheet.constructor.name === "CharacterActorSheet" && should_show_bar) {
     await add_inebriation_bar_to_dnd_sheet(_sheet, html);
   }
 });
@@ -40,14 +51,17 @@ Hooks.on("renderCharacterActorSheet", async (_sheet, html) => {
 
 // Tidy5e sheets
 Hooks.on("tidy5e-sheet.renderActorSheet", async (_sheet, html, actor) => {
+  if (!await should_show_bar(_sheet)) return;
   await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
 });
 Hooks.on("renderTidy5eActorSheetClassicV2Base2", async (_sheet, html, actor) => {
   //console.log(_sheet.constructor.name === "Tidy5eCharacterSheet");
+  if (!await should_show_bar(_sheet)) return;
   await add_inebriation_bar_to_tidy_classic_sheet(_sheet, html);
 });
 Hooks.on("renderTidy5eCharacterSheetQuadrone", async (_sheet, html, actor) => {      
   //console.log(_sheet.constructor.name === "Tidy5eCharacterSheetQuadrone");
+  if (!await should_show_bar(_sheet)) return;
   console.log("Render quadrone sheet");
   await add_inebriation_bar_to_tidy_quadrone_sheet(_sheet, html);
 });

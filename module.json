@@ -87,6 +87,7 @@
   ],
   "esmodules": [
     "scripts/main.mjs",
+    "scripts/settings.mjs",
     "scripts/conditions.mjs", 
     "scripts/rest.mjs",
     "scripts/sheet.mjs",
