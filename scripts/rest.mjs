@@ -1,7 +1,8 @@
 import { reset_inebriation } from "./inebriation_points.mjs";
 import { refresh_conditions } from "./conditions.mjs";
 
-Hooks.on("dnd5e.shortRest", async (actor, data) => {
+
+async function short_rest_reduces_inebriation(actor) {
     let inebriation = await actor.getFlag("dnd5e-alcohol", "inebriation") || 0;
 
     if (inebriation > 0) {
@@ -16,17 +17,7 @@ Hooks.on("dnd5e.shortRest", async (actor, data) => {
 
         console.log(`${actor.name} short rested. Inebriation reduced to ${newInebriation}.`);
     }
-});
-
-
-Hooks.on("dnd5e.longRest", async (actor) => {
-    if (!actor) return;
-  
-    //console.log(`Long rest completed for ${actor.name}. Removing alcohol effects.`);
-  
-    await reset_inebriation(actor);
-  
-  });
+}
 
 
   Hooks.on("dnd5e.preLongRest", async (actor) => {
@@ -60,6 +51,14 @@ Hooks.on("dnd5e.longRest", async (actor) => {
 });
 
 Hooks.on("dnd5e.preRestCompleted", async (actor, data) => {
+    // To support Rest Recovery module we can do it in this hook instead?
+    console.log(data);
+    if (data.type === "long"){
+        await reset_inebriation(actor);
+    } else if (data.type === "short"){
+        await short_rest_reduces_inebriation(actor);
+    }
+
     if (await actor.getFlag("dnd5e-alcohol", "failed_rest")) {
 
         //console.log("Rest failed");
@@ -87,6 +86,9 @@ Hooks.on("dnd5e.preRestCompleted", async (actor, data) => {
 
         // Remove the failed_rest flag after blocking the rest
         await actor.unsetFlag("dnd5e-alcohol", "failed_rest");
+
+
+  
 
         return false; // Stops normal long rest processing
     }
