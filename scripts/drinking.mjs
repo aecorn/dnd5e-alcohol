@@ -42,7 +42,7 @@ Hooks.on("preCreateChatMessage", (chatMessage) => {
 
 
 
-Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
+Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
     let effectName = effect.name.toLowerCase();
     let actor = effect.parent;
     //console.log(effectName);
@@ -57,8 +57,19 @@ Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
 
     let [potency, properties] = extract_potency_properties_from_name(effectName);
 
-    create_alcohol_chat_message_for_actor(actor, potency, properties);
+    let skipchatcard = game.settings.get('dnd5e-alcohol', 'skipConRollInebriation');
+    if (skipchatcard){
+        if (properties.map(p => p.toLowerCase()).includes("sobering")) {
+            await decrease_inebriation_points(actor, potency);
+        } else {
+            await add_inebriation_points(actor, potency);
+        }
 
+        await apply_alcohol_properties_to_actor(actor, properties);
+        return false;
+    }
+
+    create_alcohol_chat_message_for_actor(actor, potency, properties);
     return false;
     
 });

@@ -1,4 +1,5 @@
 import {update_drunkards_third_leg} from "./items.mjs";
+import {THRESHOLD_FORMULA_DEFAULTS, THRESHOLD_SETTING_KEYS} from "./settings.mjs";
 
 const ALCOHOL_EFFECTS = {
     tipsy: {
@@ -69,14 +70,224 @@ export async function calculate_thresholds(actor){
         bonus += actor.system.attributes.prof;
     }
 
-    let condition_thresholds = {
-        tipsy: con_mod + bonus,
-        drunk: Math.floor(con_score / 2) + bonus,
-        wasted: 10 + con_mod + bonus,
-        incapacitated: con_score+ bonus,
+    const context = {
+        m: con_mod,
+        p: bonus,
+        s: con_score,
+    };
 
-    }
+    const condition_thresholds = {
+        tipsy: evaluate_threshold_formula(get_threshold_formula("tipsy"), context, "tipsy"),
+        drunk: evaluate_threshold_formula(get_threshold_formula("drunk"), context, "drunk"),
+        wasted: evaluate_threshold_formula(get_threshold_formula("wasted"), context, "wasted"),
+        incapacitated: evaluate_threshold_formula(get_threshold_formula("incapacitated"), context, "incapacitated"),
+    };
+    condition_thresholds.drunk = Math.max(condition_thresholds.drunk, condition_thresholds.tipsy);
+    condition_thresholds.wasted = Math.max(condition_thresholds.wasted, condition_thresholds.drunk);
+    condition_thresholds.incapacitated = Math.max(condition_thresholds.incapacitated, condition_thresholds.wasted);
     return condition_thresholds;
+}
+
+function get_threshold_formula(key) {
+    const stored = game.settings.get("dnd5e-alcohol", THRESHOLD_SETTING_KEYS[key]);
+    if (typeof stored !== "string" || stored.trim() === "") {
+        return THRESHOLD_FORMULA_DEFAULTS[key];
+    }
+    return stored;
+}
+
+function evaluate_threshold_formula(formula, context, label) {
+    try {
+        const normalized = formula.toLowerCase().replace(/\s+/g, "");
+        const withPercents = normalized.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
+
+        if (!/^[0-9mps+\-*/().]+$/.test(withPercents)) {
+            throw new Error("Invalid characters");
+        }
+
+        const tokens = tokenize_expression(withPercents);
+        const rpn = to_rpn(tokens);
+        const result = eval_rpn(rpn, context);
+
+        if (!Number.isFinite(result)) {
+            throw new Error("Invalid result");
+        }
+
+        return Math.floor(result);
+    } catch (error) {
+        console.warn(`Invalid ${label} threshold formula "${formula}". Falling back to defaults.`, error);
+        const fallback = THRESHOLD_FORMULA_DEFAULTS[label];
+        if (formula === fallback) {
+            return 0;
+        }
+        return evaluate_threshold_formula(fallback, context, label);
+    }
+}
+
+function tokenize_expression(expr) {
+    const tokens = [];
+    let i = 0;
+
+    while (i < expr.length) {
+        const char = expr[i];
+
+        if (char >= "0" && char <= "9" || char === ".") {
+            let num = char;
+            i += 1;
+            while (i < expr.length && ((expr[i] >= "0" && expr[i] <= "9") || expr[i] === ".")) {
+                num += expr[i];
+                i += 1;
+            }
+            if (num === "." || num.split(".").length > 2) {
+                throw new Error("Invalid number");
+            }
+            tokens.push({type: "number", value: parseFloat(num)});
+            continue;
+        }
+
+        if (char === "m" || char === "p" || char === "s") {
+            tokens.push({type: "variable", value: char});
+            i += 1;
+            continue;
+        }
+
+        if ("+-*/()".includes(char)) {
+            tokens.push({type: "operator", value: char});
+            i += 1;
+            continue;
+        }
+
+        throw new Error("Invalid token");
+    }
+
+    return tokens;
+}
+
+function to_rpn(tokens) {
+    const output = [];
+    const operators = [];
+    let prevType = "start";
+
+    const precedence = {
+        "+": 1,
+        "-": 1,
+        "*": 2,
+        "/": 2,
+        "u-": 3,
+        "u+": 3,
+    };
+
+    for (const token of tokens) {
+        if (token.type === "number" || token.type === "variable") {
+            output.push(token);
+            prevType = "value";
+            continue;
+        }
+
+        if (token.value === "(") {
+            operators.push(token.value);
+            prevType = "leftParen";
+            continue;
+        }
+
+        if (token.value === ")") {
+            while (operators.length && operators[operators.length - 1] !== "(") {
+                output.push({type: "operator", value: operators.pop()});
+            }
+            if (!operators.length) {
+                throw new Error("Mismatched parentheses");
+            }
+            operators.pop();
+            prevType = "value";
+            continue;
+        }
+
+        if ("+-*/".includes(token.value)) {
+            let op = token.value;
+            if (prevType === "start" || prevType === "leftParen" || prevType === "operator") {
+                op = token.value === "-" ? "u-" : "u+";
+            }
+
+            while (operators.length) {
+                const top = operators[operators.length - 1];
+                if (top === "(") break;
+
+                const topPrec = precedence[top];
+                const opPrec = precedence[op];
+                if (topPrec > opPrec || (topPrec === opPrec && op !== "u-" && op !== "u+")) {
+                    output.push({type: "operator", value: operators.pop()});
+                    continue;
+                }
+                break;
+            }
+
+            operators.push(op);
+            prevType = "operator";
+            continue;
+        }
+    }
+
+    while (operators.length) {
+        const op = operators.pop();
+        if (op === "(") {
+            throw new Error("Mismatched parentheses");
+        }
+        output.push({type: "operator", value: op});
+    }
+
+    return output;
+}
+
+function eval_rpn(tokens, context) {
+    const stack = [];
+
+    for (const token of tokens) {
+        if (token.type === "number") {
+            stack.push(token.value);
+            continue;
+        }
+
+        if (token.type === "variable") {
+            stack.push(Number(context[token.value] ?? 0));
+            continue;
+        }
+
+        if (token.type === "operator") {
+            if (token.value === "u-" || token.value === "u+") {
+                if (stack.length < 1) throw new Error("Invalid expression");
+                const value = stack.pop();
+                stack.push(token.value === "u-" ? -value : value);
+                continue;
+            }
+
+            if (stack.length < 2) throw new Error("Invalid expression");
+            const right = stack.pop();
+            const left = stack.pop();
+            switch (token.value) {
+                case "+":
+                    stack.push(left + right);
+                    break;
+                case "-":
+                    stack.push(left - right);
+                    break;
+                case "*":
+                    stack.push(left * right);
+                    break;
+                case "/":
+                    stack.push(left / right);
+                    break;
+                default:
+                    throw new Error("Unsupported operator");
+            }
+            continue;
+        }
+    }
+
+    if (stack.length !== 1) {
+        throw new Error("Invalid expression");
+    }
+
+    return stack[0];
 }
 
 
@@ -324,4 +535,3 @@ Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
         console.log(`Custom properties applied to ${effect.name} from the alcohol module.`);
     }
 });
-
