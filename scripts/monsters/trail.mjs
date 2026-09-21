@@ -2,7 +2,7 @@ async function TrailChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} walked over a <span style="color:red">Slippery trail</span>.</b></p>
             <p>You must succeed on a <b>[[/save ability=dex dc=12]]</b> Dexterity saving throw or fall prone.</p>
-            <button class="apply-condition" data-actor-id="${actor.id}" data-condition="prone">Apply Prone Condition</button>
+            <button class="apply-condition" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-condition="prone">Apply Prone Condition</button>
             `;
 
     if (chatContent) {

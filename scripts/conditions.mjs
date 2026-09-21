@@ -385,7 +385,9 @@ function add_click_event_apply_condition(html){
             // Extract actor ID and condition from data attributes
             const actorId = event.currentTarget.dataset.actorId;
             const condition = event.currentTarget.dataset.condition;
-            const actor = game.actors.get(actorId);
+            // Prefer the UUID: an unlinked token's own actor is NOT the world actor game.actors.get() returns
+            const actorUuid = event.currentTarget.dataset.actorUuid;
+            const actor = (actorUuid ? fromUuidSync(actorUuid) : null) ?? game.actors.get(actorId);
 
             // Disable the button to prevent re-use
             event.currentTarget.disabled = true;

@@ -2,7 +2,7 @@ async function SightChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} is Drunk and can see <span style="color:red">The Terror of the Barrom</span>.</b></p>
             <p>You must succeed on a <b>[[/save ability=wis dc=10]]</b> Wisdom saving throw or become frightened.</p>
-            <button class="apply-condition" data-actor-id="${actor.id}" data-condition="frightened">Apply Frightened Condition</button>
+            <button class="apply-condition" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-condition="frightened">Apply Frightened Condition</button>
             `;
 
     if (chatContent) {

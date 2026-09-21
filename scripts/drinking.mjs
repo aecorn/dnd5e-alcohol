@@ -125,7 +125,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
         <b>${actor.name}</b> make a ${save} save to avoid inebriation.<br><br>
         You can choose to fail the test automatically.<br>
         If you fail the test, apply the inebriation points and effects (Sobering drinks will subtract inebriation points):
-        <button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency}" data-properties="${properties.join(' - ')}">Apply Inebriation</button>
+        <button class="apply-inebriation" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-potency="${potency}" data-properties="${properties.join(' - ')}">Apply Inebriation</button>
         `;
 
     // Add extra button to autofail if has Racial property + actor has related race -> one less potency
@@ -134,7 +134,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
         // Check i actor has same race
         let race_name = actor.system.details?.race?.name || "Human";  // Sad human default
         if (race_name.toLowerCase().includes(race.toLowerCase())) {
-            content += `<button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency-1}" data-properties="${properties.join(' - ')}">Fail on Purpose (1 less inebriation points because of racial property)</button>`;
+            content += `<button class="apply-inebriation" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-potency="${potency-1}" data-properties="${properties.join(' - ')}">Fail on Purpose (1 less inebriation points because of racial property)</button>`;
         }
     }
 
@@ -184,7 +184,9 @@ function add_event_listeners_to_chat_message(html){
             const actorId = event.currentTarget.dataset.actorId;
             const potency = parseInt(event.currentTarget.dataset.potency);
             const properties = event.currentTarget.dataset.properties.split(" - ");
-            const actor = game.actors.get(actorId);
+            // Prefer the UUID: an unlinked token's own actor is NOT the world actor game.actors.get() returns
+            const actorUuid = event.currentTarget.dataset.actorUuid;
+            const actor = (actorUuid ? fromUuidSync(actorUuid) : null) ?? game.actors.get(actorId);
 
             event.currentTarget.disabled = true;
 
