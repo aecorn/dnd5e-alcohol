@@ -16,6 +16,8 @@ async function SightChatMessage(actor) {
 
 
 Hooks.on("combatTurnChange", async (combat) => {
+    // This hook runs on every connected client; only one should post the card / roll the save
+    if (game.user !== game.users.activeGM) return;
     const combatant = combat.turns[combat.turn];
     if (!combatant?.token?.actor) return;
     let token = combatant.token;

@@ -5,6 +5,8 @@ import { isOverlapping} from "./trail.mjs";
 
 // Keg golems have an aura of 5 feet of intoxicating fumes (triggers on start of turn)
 Hooks.on("combatTurnChange", async (combat) => {
+    // This hook runs on every connected client; only one should post the fumes card
+    if (game.user !== game.users.activeGM) return;
     console.log(combat);
     // Find Keg Golems in combat
     let featureName = "alcoholic fumes";
