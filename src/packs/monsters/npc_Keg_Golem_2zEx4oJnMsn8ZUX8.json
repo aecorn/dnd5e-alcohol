@@ -1981,7 +1981,8 @@
               "chatFlavor": ""
             },
             "duration": {
-              "units": "inst",
+              "value": "10",
+              "units": "minute",
               "concentration": false,
               "override": false
             },

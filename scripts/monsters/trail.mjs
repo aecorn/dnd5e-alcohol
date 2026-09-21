@@ -282,3 +282,44 @@ Hooks.on('preUpdateToken', async function (token, update) {
     //console.log(token);
 
   });
+
+
+// Trail cleanup: the trail is tied to the golem's "Open Tap" effect. When that effect ends
+// (expired, deleted or disabled), delete every drawing the golem's token laid and clear its list.
+async function clearTrail(tokenDoc){
+    let paths = tokenDoc.getFlag("dnd5e-alcohol", "path") || [];
+    if (paths.length === 0) return;
+    let scene = tokenDoc.parent;
+    let ids = paths.map(path => path.id).filter(id => scene?.drawings.has(id));
+    if (ids.length > 0) await scene.deleteEmbeddedDocuments("Drawing", ids);
+    await tokenDoc.unsetFlag("dnd5e-alcohol", "path");
+}
+
+function tokenDocsForActor(actor){
+    // A token's own (unlinked) actor belongs to exactly one token
+    if (actor.isToken) return actor.token ? [actor.token] : [];
+    let tokenDocs = [];
+    for (let scene of game.scenes){
+        for (let tokenDoc of scene.tokens){
+            if (tokenDoc.actorLink && tokenDoc.actorId === actor.id) tokenDocs.push(tokenDoc);
+        }
+    }
+    return tokenDocs;
+}
+
+function openTapEnded(effect){
+    if (effect.name !== "Open Tap") return;
+    // Only one client should clean up, otherwise every GM tries to delete the same drawings
+    if (game.user !== game.users.activeGM) return;
+    let actor = effect.parent;
+    if (!(actor instanceof Actor)) return;
+    // Keep the trail if the golem still has another Open Tap effect running
+    if (actor.effects.some(other => other.id !== effect.id && other.name === "Open Tap" && other.active)) return;
+    for (let tokenDoc of tokenDocsForActor(actor)) clearTrail(tokenDoc);
+}
+
+Hooks.on("deleteActiveEffect", (effect) => openTapEnded(effect));
+Hooks.on("updateActiveEffect", (effect, changes) => {
+    // Expired effects are only marked (not deleted) on some setups, so react to that too
+    if (changes.disabled === true || foundry.utils.getProperty(changes, "duration.expired") === true) openTapEnded(effect);
+});

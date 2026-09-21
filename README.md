@@ -108,6 +108,7 @@ Rolls on a Wild Magic table, with effects on the drinker.
 
 ### Keg Golem
 - Can use an action to "open tap" and make a slippery trail, that characters might slip on if they cross it.
+- Open Tap lasts 10 minutes. When it ends (it runs out, or the effect is disabled or deleted) the whole trail is removed. Golems already imported into a world keep their old Open Tap duration until the Open Tap activity on their item is set to 10 minutes.
 
 
 ## Alcohol-Themed Items
