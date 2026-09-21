@@ -1,3 +1,5 @@
+import { rollSaveAndApply } from "./autosave.mjs";
+
 async function SightChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} is Drunk and can see <span style="color:red">The Terror of the Barrom</span>.</b></p>
@@ -11,6 +13,15 @@ async function SightChatMessage(actor) {
             content: chatContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
+    }
+}
+
+
+async function SightSeen(actor) {
+    if (game.settings.get("dnd5e-alcohol", "automateMonsterSaves")) {
+        await rollSaveAndApply(actor, {ability: "wis", dc: 10, condition: "frightened", label: "Terror of the Barrom"});
+    } else {
+        await SightChatMessage(actor);
     }
 }
 
@@ -46,7 +57,7 @@ Hooks.on("combatTurnChange", async (combat) => {
         //console.log(token);
         //console.log(canvas.visibility.testVisibility(terrorToken, {object: token}));
         if (canvas.visibility.testVisibility(terrorToken, {object: token})){
-            await SightChatMessage(token.actor);
+            await SightSeen(token.actor);
             return;
         }
     }

@@ -1,3 +1,5 @@
+import { rollSaveAndApply } from "./autosave.mjs";
+
 async function TrailChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} walked over a <span style="color:red">Slippery trail</span>.</b></p>
@@ -11,6 +13,15 @@ async function TrailChatMessage(actor) {
             content: chatContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
+    }
+}
+
+
+async function TrailCrossed(actor) {
+    if (game.settings.get("dnd5e-alcohol", "automateMonsterSaves")) {
+        await rollSaveAndApply(actor, {ability: "dex", dc: 12, condition: "prone", label: "Slippery trail"});
+    } else {
+        await TrailChatMessage(actor);
     }
 }
 
@@ -211,6 +222,8 @@ Hooks.on('preUpdateToken', async function (token, update) {
     let drawing_ids_in_canvas = canvas.drawings.objects.children.map(drawing => drawing.document._id);
     // Reset the flag with deleted drawings
 
+    // One card (or one save) per move, no matter how many trail pieces the move crosses
+    let crossedTrail = false;
     for (let open_tap_token of open_tap_tokens) {
         let token_paths = await open_tap_token.document.getFlag("dnd5e-alcohol", "path") || [];
         // Filter out drawings that are no longer in the canvas
@@ -225,10 +238,12 @@ Hooks.on('preUpdateToken', async function (token, update) {
             //console.log("movedArea", movedArea);
             if (isOverlapping(movedArea, path.corners)){
                 //console.log("Token passed over trail?");
-                await TrailChatMessage(token.actor);
+                crossedTrail = true;
+                break;
             }
         }
     }
+    if (crossedTrail) await TrailCrossed(token.actor);
 
     //console.log("Open tap tokens", open_tap_tokens);
 
