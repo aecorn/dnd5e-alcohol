@@ -42,7 +42,14 @@ Hooks.on("preCreateChatMessage", (chatMessage) => {
 
 
 
-Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
+// NOT async: Foundry's preCreate veto only respects a SYNCHRONOUS `false` return.
+// An async function's immediate return value is always a Promise (truthy), so
+// `return false` from an async listener here never actually cancels creation -
+// the raw "Alcohol - Potency X" effect was being created and left on the actor
+// permanently on every real drink, on top of the intended flow below. The
+// async calls are fire-and-forget (not awaited) so this listener itself stays
+// synchronous; nothing after them depended on their completion anyway.
+Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
     let effectName = effect.name.toLowerCase();
     let actor = effect.parent;
     //console.log(effectName);
@@ -60,18 +67,18 @@ Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
     let skipchatcard = game.settings.get('dnd5e-alcohol', 'skipConRollInebriation');
     if (skipchatcard){
         if (properties.map(p => p.toLowerCase()).includes("sobering")) {
-            await decrease_inebriation_points(actor, potency);
+            decrease_inebriation_points(actor, potency);
         } else {
-            await add_inebriation_points(actor, potency);
+            add_inebriation_points(actor, potency);
         }
 
-        await apply_alcohol_properties_to_actor(actor, properties);
+        apply_alcohol_properties_to_actor(actor, properties);
         return false;
     }
 
     create_alcohol_chat_message_for_actor(actor, potency, properties);
     return false;
-    
+
 });
 
 
@@ -118,7 +125,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
         <b>${actor.name}</b> make a ${save} save to avoid inebriation.<br><br>
         You can choose to fail the test automatically.<br>
         If you fail the test, apply the inebriation points and effects (Sobering drinks will subtract inebriation points):
-        <button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency}" data-properties="${properties.join(' - ')}">Apply Inebriation</button>
+        <button class="apply-inebriation" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-potency="${potency}" data-properties="${properties.join(' - ')}">Apply Inebriation</button>
         `;
 
     // Add extra button to autofail if has Racial property + actor has related race -> one less potency
@@ -127,7 +134,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
         // Check i actor has same race
         let race_name = actor.system.details?.race?.name || "Human";  // Sad human default
         if (race_name.toLowerCase().includes(race.toLowerCase())) {
-            content += `<button class="apply-inebriation" data-actor-id="${actor.id}" data-potency="${potency-1}" data-properties="${properties.join(' - ')}">Fail on Purpose (1 less inebriation points because of racial property)</button>`;
+            content += `<button class="apply-inebriation" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-potency="${potency-1}" data-properties="${properties.join(' - ')}">Fail on Purpose (1 less inebriation points because of racial property)</button>`;
         }
     }
 
@@ -177,7 +184,9 @@ function add_event_listeners_to_chat_message(html){
             const actorId = event.currentTarget.dataset.actorId;
             const potency = parseInt(event.currentTarget.dataset.potency);
             const properties = event.currentTarget.dataset.properties.split(" - ");
-            const actor = game.actors.get(actorId);
+            // Prefer the UUID: an unlinked token's own actor is NOT the world actor game.actors.get() returns
+            const actorUuid = event.currentTarget.dataset.actorUuid;
+            const actor = (actorUuid ? fromUuidSync(actorUuid) : null) ?? game.actors.get(actorId);
 
             event.currentTarget.disabled = true;
 

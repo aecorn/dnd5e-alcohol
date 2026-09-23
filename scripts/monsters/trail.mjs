@@ -2,14 +2,14 @@ async function TrailChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} walked over a <span style="color:red">Slippery trail</span>.</b></p>
             <p>You must succeed on a <b>[[/save ability=dex dc=12]]</b> Dexterity saving throw or fall prone.</p>
-            <button class="apply-condition" data-actor-id="${actor.id}" data-condition="prone">Apply Prone Condition</button>
+            <button class="apply-condition" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-condition="prone">Apply Prone Condition</button>
             `;
 
     if (chatContent) {
         await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: chatContent,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
     }
 }
@@ -82,12 +82,14 @@ export function isOverlapping(rect1, rect2, epsilon = 10) {
 
 function did_move(token, update){
     //console.log(token);
-    let x1 = token.x + token.object.w/2;
-    let y1 = token.y + token.object.h/2;
+    let halfWidth = token.width * canvas.dimensions.size / 2;
+    let halfHeight = token.height * canvas.dimensions.size / 2;
+    let x1 = token.x + halfWidth;
+    let y1 = token.y + halfHeight;
     let x2 = update.x || token.x;
     let y2 = update.y || token.y;
-    x2 += token.object.w/2;
-    y2 += token.object.h/2;
+    x2 += halfWidth;
+    y2 += halfHeight;
     if (x1 === x2 && y1 === y2) return false;
     return [x1, y1, x2, y2];
 }
@@ -175,6 +177,7 @@ function corners_from_points([px1, py1, px2, py2, x, y, tokenWidth]){
 
 
 Hooks.on('preUpdateToken', async function (token, update) {
+    if (!token.actor) return;
     // Immune to the Open Tap effect if they have it themselves
     if (token.actor.effects.some(effect => effect.name === "Open Tap")){return;}
 
@@ -188,6 +191,7 @@ Hooks.on('preUpdateToken', async function (token, update) {
     for (let token_idx in canvas.tokens.objects.children){
         let token = canvas.tokens.objects.children[token_idx];
         //console.log(token);
+        if (!token.actor) continue;
         if(token.actor.effects.some(effect => effect.name === "Open Tap")){
             open_tap_tokens.push(token);
         }
@@ -233,6 +237,7 @@ Hooks.on('preUpdateToken', async function (token, update) {
 
 // Making a trail, thanks @Xaukael
 Hooks.on('preUpdateToken', async function (token, update) {
+    if (!token.actor) return;
     // Check that actor has "open tap"-effect active
     let open_tap = false;
     for (const effect_index in token.actor.effects.contents){

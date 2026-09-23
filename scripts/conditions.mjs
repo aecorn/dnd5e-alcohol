@@ -385,7 +385,9 @@ function add_click_event_apply_condition(html){
             // Extract actor ID and condition from data attributes
             const actorId = event.currentTarget.dataset.actorId;
             const condition = event.currentTarget.dataset.condition;
-            const actor = game.actors.get(actorId);
+            // Prefer the UUID: an unlinked token's own actor is NOT the world actor game.actors.get() returns
+            const actorUuid = event.currentTarget.dataset.actorUuid;
+            const actor = (actorUuid ? fromUuidSync(actorUuid) : null) ?? game.actors.get(actorId);
 
             // Disable the button to prevent re-use
             event.currentTarget.disabled = true;
@@ -404,7 +406,11 @@ function add_click_event_apply_condition(html){
 async function addAlcoholEffect(actor, condition, chatMessage = true) {
     //console.log(`Adding alcohol effect: ${condition}`);
     if (!actor || !ALCOHOL_EFFECTS[condition.toLowerCase()]) return;
-    let effectData = ALCOHOL_EFFECTS[condition.toLowerCase()];
+    // Clone, don't reference: ALCOHOL_EFFECTS is the shared module-level template.
+    // The Deep Gut halving below used to mutate it directly, which permanently
+    // corrupted the Tipsy/Drunk/Wasted definitions for every other actor for the
+    // rest of the session after the first Deep Gut character triggered it.
+    let effectData = structuredClone(ALCOHOL_EFFECTS[condition.toLowerCase()]);
 
     // If actor has deep gut, reduce skill penalties with half
     if (actor.items.some(item => item.name.toLowerCase() == "deep gut")){
@@ -486,7 +492,7 @@ async function AlcoholChatMessage(actor, addedConditions = [], removedConditions
         await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: chatContent,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
     }
 }
@@ -523,7 +529,12 @@ Hooks.on("preCreateActiveEffect", async (effect, options, userId) => {
     let effectName = effect.name.toLowerCase();
     let alcoholEffect = Object.values(ALCOHOL_EFFECTS).find(e => e.name.toLowerCase() === effectName);
 
-    if (alcoholEffect & effectName != "incapacitated") {
+    // Skip effects that already have their changes populated (e.g. by addAlcoholEffect(),
+    // which already applied the correct per-actor data including Deep Gut halving) -
+    // this hook is only meant to backfill a bare, manually-created effect (changes.length === 0).
+    // Without this guard, this hook unconditionally overwrites changes from the raw shared
+    // ALCOHOL_EFFECTS template, silently undoing addAlcoholEffect()'s Deep Gut halving every time.
+    if (alcoholEffect && effectName != "incapacitated" && effect.changes.length === 0) {
 
         // Modify the effect directly
         await effect.updateSource({

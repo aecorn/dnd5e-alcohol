@@ -12,7 +12,7 @@ async function short_rest_reduces_inebriation(actor) {
         ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: `<b>${actor.name}'s inebriation level has decreased by 1 to ${newInebriation} because of a short rest.</b>`,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
 
         console.log(`${actor.name} short rested. Inebriation reduced to ${newInebriation}.`);
@@ -43,7 +43,7 @@ async function short_rest_reduces_inebriation(actor) {
             content: `<b>${actor.name} fails to rest properly due to extreme intoxication!</b><br>
                       They do not gain the benefits of their long rest (Like HP, hit dice, spell slots etc). 
                       But the alcohol-induced effects are removed.`,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
     } else {
         await actor.setFlag("dnd5e-alcohol", "failed_rest", false);

@@ -2,21 +2,25 @@ async function SightChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} is Drunk and can see <span style="color:red">The Terror of the Barrom</span>.</b></p>
             <p>You must succeed on a <b>[[/save ability=wis dc=10]]</b> Wisdom saving throw or become frightened.</p>
-            <button class="apply-condition" data-actor-id="${actor.id}" data-condition="frightened">Apply Frightened Condition</button>
+            <button class="apply-condition" data-actor-id="${actor.id}" data-actor-uuid="${actor.uuid}" data-condition="frightened">Apply Frightened Condition</button>
             `;
 
     if (chatContent) {
         await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
             content: chatContent,
-            type: CONST.CHAT_MESSAGE_STYLES.OTHER
+            style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
     }
 }
 
 
 Hooks.on("combatTurnChange", async (combat) => {
-    let token = combat.turns[combat.turn].token;
+    // This hook runs on every connected client; only one should post the card / roll the save
+    if (game.user !== game.users.activeGM) return;
+    const combatant = combat.turns[combat.turn];
+    if (!combatant?.token?.actor) return;
+    let token = combatant.token;
 
     // if token is not drunk, exit
     let isDrunk = token.actor.effects.some(effect => effect.name.toLowerCase() == "drunk");
@@ -28,8 +32,8 @@ Hooks.on("combatTurnChange", async (combat) => {
 
     // Find tokens with the terror feature
     let featureName = "terror of the barrom";
-    let terrorTokens = canvas.tokens.objects.children.filter(token => 
-        token.actor.items.some(item => 
+    let terrorTokens = canvas.tokens.objects.children.filter(token =>
+        token.actor && token.actor.items.some(item =>
             item.name.toLowerCase() === featureName));
     
     // If no tokens have the feature, exit

@@ -18,6 +18,7 @@ export function reset_inebriation_macro(token){
 
 // Replace "my-module-id" with your module's unique ID
 Hooks.once("ready", async () => {
+    if (!game.user.isGM) return;
     let macroName = "Increase Inebriation 1"; // Change to your macro's name
     // Check if macro exists in the world
     let existingMacro = game.macros.find(m => m.name === macroName);
