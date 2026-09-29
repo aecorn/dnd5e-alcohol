@@ -71,6 +71,15 @@ Hooks.once("init", () => {
       /** "audio", "image", "video", "imagevideo", "folder", "font", "graphics", "text", or "any" */
       //filePicker: "any"
     });
+    game.settings.register('dnd5e-alcohol', 'automateMonsterSaves', {
+      name: 'Automate monster saves',
+      hint: 'Roll the saving throw automatically and apply the condition on a failure, instead of posting a chat card with buttons. Covers the Slippery Trail of the Keg Golem (Dexterity save, prone) and the Terror of the Barrom (Wisdom save, frightened).',
+      scope: 'world',
+      config: true,
+      type: new foundry.data.fields.BooleanField(),
+      default: false,
+      requiresReload: false,
+    });
     game.settings.register('dnd5e-alcohol', 'skipConRollInebriation', {
       name: 'Skip Constitution Saving Throw for Inebriation.',
       hint: 'Apply inebriation and conditions directly to characters without the chatcard asking for a constitution save.',

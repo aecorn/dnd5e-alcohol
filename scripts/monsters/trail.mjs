@@ -1,3 +1,5 @@
+import { rollSaveAndApply } from "./autosave.mjs";
+
 async function TrailChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} walked over a <span style="color:red">Slippery trail</span>.</b></p>
@@ -11,6 +13,15 @@ async function TrailChatMessage(actor) {
             content: chatContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER
         });
+    }
+}
+
+
+async function TrailCrossed(actor) {
+    if (game.settings.get("dnd5e-alcohol", "automateMonsterSaves")) {
+        await rollSaveAndApply(actor, {ability: "dex", dc: 12, condition: "prone", label: "Slippery trail"});
+    } else {
+        await TrailChatMessage(actor);
     }
 }
 
@@ -211,6 +222,8 @@ Hooks.on('preUpdateToken', async function (token, update) {
     let drawing_ids_in_canvas = canvas.drawings.objects.children.map(drawing => drawing.document._id);
     // Reset the flag with deleted drawings
 
+    // One card (or one save) per move, no matter how many trail pieces the move crosses
+    let crossedTrail = false;
     for (let open_tap_token of open_tap_tokens) {
         let token_paths = await open_tap_token.document.getFlag("dnd5e-alcohol", "path") || [];
         // Filter out drawings that are no longer in the canvas
@@ -225,10 +238,12 @@ Hooks.on('preUpdateToken', async function (token, update) {
             //console.log("movedArea", movedArea);
             if (isOverlapping(movedArea, path.corners)){
                 //console.log("Token passed over trail?");
-                await TrailChatMessage(token.actor);
+                crossedTrail = true;
+                break;
             }
         }
     }
+    if (crossedTrail) await TrailCrossed(token.actor);
 
     //console.log("Open tap tokens", open_tap_tokens);
 
@@ -282,3 +297,44 @@ Hooks.on('preUpdateToken', async function (token, update) {
     //console.log(token);
 
   });
+
+
+// Trail cleanup: the trail is tied to the golem's "Open Tap" effect. When that effect ends
+// (expired, deleted or disabled), delete every drawing the golem's token laid and clear its list.
+async function clearTrail(tokenDoc){
+    let paths = tokenDoc.getFlag("dnd5e-alcohol", "path") || [];
+    if (paths.length === 0) return;
+    let scene = tokenDoc.parent;
+    let ids = paths.map(path => path.id).filter(id => scene?.drawings.has(id));
+    if (ids.length > 0) await scene.deleteEmbeddedDocuments("Drawing", ids);
+    await tokenDoc.unsetFlag("dnd5e-alcohol", "path");
+}
+
+function tokenDocsForActor(actor){
+    // A token's own (unlinked) actor belongs to exactly one token
+    if (actor.isToken) return actor.token ? [actor.token] : [];
+    let tokenDocs = [];
+    for (let scene of game.scenes){
+        for (let tokenDoc of scene.tokens){
+            if (tokenDoc.actorLink && tokenDoc.actorId === actor.id) tokenDocs.push(tokenDoc);
+        }
+    }
+    return tokenDocs;
+}
+
+function openTapEnded(effect){
+    if (effect.name !== "Open Tap") return;
+    // Only one client should clean up, otherwise every GM tries to delete the same drawings
+    if (game.user !== game.users.activeGM) return;
+    let actor = effect.parent;
+    if (!(actor instanceof Actor)) return;
+    // Keep the trail if the golem still has another Open Tap effect running
+    if (actor.effects.some(other => other.id !== effect.id && other.name === "Open Tap" && other.active)) return;
+    for (let tokenDoc of tokenDocsForActor(actor)) clearTrail(tokenDoc);
+}
+
+Hooks.on("deleteActiveEffect", (effect) => openTapEnded(effect));
+Hooks.on("updateActiveEffect", (effect, changes) => {
+    // Expired effects are only marked (not deleted) on some setups, so react to that too
+    if (changes.disabled === true || foundry.utils.getProperty(changes, "duration.expired") === true) openTapEnded(effect);
+});

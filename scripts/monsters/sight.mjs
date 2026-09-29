@@ -1,3 +1,5 @@
+import { rollSaveAndApply } from "./autosave.mjs";
+
 async function SightChatMessage(actor) {
     let chatContent =`
             <p><b>${actor.name} is Drunk and can see <span style="color:red">The Terror of the Barrom</span>.</b></p>
@@ -41,6 +43,15 @@ function canSeeToken(observer, target) {
     }
 }
 
+async function SightSeen(actor) {
+    if (game.settings.get("dnd5e-alcohol", "automateMonsterSaves")) {
+        await rollSaveAndApply(actor, {ability: "wis", dc: 10, condition: "frightened", label: "Terror of the Barrom"});
+    } else {
+        await SightChatMessage(actor);
+    }
+}
+
+
 Hooks.on("combatTurnChange", async (combat) => {
     // This hook runs on every connected client; only one should post the card / roll the save
     if (game.user !== game.users.activeGM) return;
@@ -71,7 +82,7 @@ Hooks.on("combatTurnChange", async (combat) => {
     // Check if the actor can see each of the terrors
     for (let terrorToken of terrorTokens) {
         if (terrorToken !== observer && canSeeToken(observer, terrorToken)){
-            await SightChatMessage(token.actor);
+            await SightSeen(token.actor);
             return;
         }
     }

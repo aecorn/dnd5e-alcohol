@@ -108,7 +108,11 @@ Rolls on a Wild Magic table, with effects on the drinker.
 
 ### Keg Golem
 - Can use an action to "open tap" and make a slippery trail, that characters might slip on if they cross it.
+- Open Tap lasts 10 minutes. When it ends (it runs out, or the effect is disabled or deleted) the whole trail is removed. Golems already imported into a world keep their old Open Tap duration until the Open Tap activity on their item is set to 10 minutes.
 
+
+### Automating the monster saves
+- Off by default. The module setting "Automate monster saves" rolls the Slippery Trail Dexterity save (DC 12) and the Terror of the Barrom Wisdom save (DC 10) for you and applies Prone or Frightened on a failure, instead of posting a chat card with buttons.
 
 ## Alcohol-Themed Items
 - Barroom Knucks: Improves unarmed strikes and improved weapon damage while drunk.
