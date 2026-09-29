@@ -124,7 +124,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.on("renderSettingsConfig", (_app, html) => {
-  const root = html?.[0] ?? html;
+  const root = html instanceof HTMLElement ? html : html?.[0];
   if (!root?.querySelector) return;
 
   const tipsyInput =
@@ -143,9 +143,9 @@ Hooks.on("renderSettingsConfig", (_app, html) => {
     section.appendChild(header);
     section.appendChild(rule);
     const hint = document.createElement("p");
-    hint.className = "notes";
+    hint.className = "notes hint";
     hint.textContent =
-      "Use m (CON mod), p (proficiency bonus when Deep Gut applies), s (CON score). Supports + - * /, parentheses, and percentages.";
+      "m = Constitution modifier; p = proficiency bonus if the character has Deep Gut (otherwise 0); s = Constitution score. Supports + - * /, parentheses, and percentages.";
     section.appendChild(hint);
     tipsyGroup.insertAdjacentElement("beforebegin", section);
   }
@@ -161,4 +161,20 @@ Hooks.on("renderSettingsConfig", (_app, html) => {
   if (!lastGroup) return;
 
   lastGroup.insertAdjacentElement("afterend", resetGroup);
+
+  const formulaInputs = Object.entries(THRESHOLD_SETTING_KEYS).map(([threshold, key]) => ({
+    input: root.querySelector(`input[name='dnd5e-alcohol.${key}']`),
+    defaultFormula: THRESHOLD_FORMULA_DEFAULTS[threshold],
+  }));
+  const updateResetButton = () => {
+    resetButton.disabled = formulaInputs.every(({ input, defaultFormula }) =>
+      input && input.value.replace(/\s+/g, "") === defaultFormula.replace(/\s+/g, "")
+    );
+    resetButton.title = resetButton.disabled ? "All threshold formulas match the defaults." : "";
+  };
+  for (const { input } of formulaInputs) {
+    input?.addEventListener("input", updateResetButton);
+    input?.addEventListener("change", updateResetButton);
+  }
+  updateResetButton();
 });
