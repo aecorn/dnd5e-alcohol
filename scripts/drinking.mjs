@@ -42,44 +42,37 @@ Hooks.on("preCreateChatMessage", (chatMessage) => {
 
 
 
-// NOT async: Foundry's preCreate veto only respects a SYNCHRONOUS `false` return.
-// An async function's immediate return value is always a Promise (truthy), so
-// `return false` from an async listener here never actually cancels creation -
-// the raw "Alcohol - Potency X" effect was being created and left on the actor
-// permanently on every real drink, on top of the intended flow below. The
-// async calls are fire-and-forget (not awaited) so this listener itself stays
-// synchronous; nothing after them depended on their completion anyway.
-Hooks.on("preCreateActiveEffect", (effect, options, userId) => {
-    let effectName = effect.name.toLowerCase();
-    let actor = effect.parent;
-    //console.log(effectName);
-    //console.log(effect);
-    //console.log(options);
+// Foundry requires a synchronous false to veto creation. Resolve the drinking
+// workflow separately, keeping its dependent updates in order.
+Hooks.on("preCreateActiveEffect", (effect) => {
+    const actor = effect.parent;
+    if (actor?.documentName !== "Actor") return;
+    const effectName = effect.name.toLowerCase();
+    if (!effectName.startsWith("alcohol -")) return;
 
-    if (!effectName.startsWith("alcohol -")) {
-        //console.log("Not an alcohol effect. Exiting.");
-        return;  // Stops execution but allows the system to proceed normally.
-    }
-    
+    const [potency, properties] = extract_potency_properties_from_name(effectName);
+    process_alcohol_effect(actor, potency, properties).catch(error => {
+        console.error("dnd5e-alcohol | Failed to apply drink", error);
+        ui.notifications.error(`Could not apply the drink to ${actor.name}. See the console for details.`);
+    });
+    return false;
+});
 
-    let [potency, properties] = extract_potency_properties_from_name(effectName);
-
+async function process_alcohol_effect(actor, potency, properties) {
     let skipchatcard = game.settings.get('dnd5e-alcohol', 'skipConRollInebriation');
     if (skipchatcard){
         if (properties.map(p => p.toLowerCase()).includes("sobering")) {
-            decrease_inebriation_points(actor, potency);
+            await decrease_inebriation_points(actor, potency);
         } else {
-            add_inebriation_points(actor, potency);
+            await add_inebriation_points(actor, potency);
         }
 
-        apply_alcohol_properties_to_actor(actor, properties);
-        return false;
+        await apply_alcohol_properties_to_actor(actor, properties);
+        return;
     }
 
-    create_alcohol_chat_message_for_actor(actor, potency, properties);
-    return false;
-
-});
+    await create_alcohol_chat_message_for_actor(actor, potency, properties);
+}
 
 
 
@@ -143,7 +136,7 @@ export async function create_alcohol_chat_message_for_actor(actor, potency, prop
               speaker: ChatMessage.getSpeaker(),
               content: content 
           };
-    ChatMessage.create(chatData, {});
+    await ChatMessage.create(chatData, {});
 
   };
 
