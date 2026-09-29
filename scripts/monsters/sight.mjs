@@ -14,13 +14,42 @@ async function SightChatMessage(actor) {
     }
 }
 
+function canSeeToken(observer, target) {
+    if (!observer.hasSight || target.document.hidden) return false;
+
+    // Uncontrolled tokens have no vision source on the GM client. Keep this
+    // temporary source out of the canvas collection and dispose of it afterward.
+    const temporary = !observer.vision;
+    const source = observer.vision ?? new CONFIG.Canvas.visionSourceClass({
+        sourceId: `${observer.sourceId}.dnd5e-alcohol-sight`,
+        object: observer,
+    });
+    try {
+        if (temporary) {
+            Object.assign(source.blinded, observer._getVisionBlindedStates());
+            source.initialize(observer._getVisionSourceData());
+        }
+        const config = canvas.visibility._createVisibilityTestConfig(target.center, {object: target});
+        return observer.document.detectionModes.some(mode => {
+            const detection = CONFIG.Canvas.detectionModes[mode.id];
+            // Hearing and tremorsense do not satisfy the feature's sight requirement.
+            return detection && detection.type === detection.constructor.DETECTION_TYPES.SIGHT
+                && detection.testVisibility(source, mode, config);
+        });
+    } finally {
+        if (temporary) source.destroy();
+    }
+}
 
 Hooks.on("combatTurnChange", async (combat) => {
     // This hook runs on every connected client; only one should post the card / roll the save
     if (game.user !== game.users.activeGM) return;
+    if (!canvas.ready || combat.scene?.id !== canvas.scene?.id) return;
     const combatant = combat.turns[combat.turn];
     if (!combatant?.token?.actor) return;
     let token = combatant.token;
+    const observer = token.object;
+    if (!observer) return;
 
     // if token is not drunk, exit
     let isDrunk = token.actor.effects.some(effect => effect.name.toLowerCase() == "drunk");
@@ -41,14 +70,9 @@ Hooks.on("combatTurnChange", async (combat) => {
 
     // Check if the actor can see each of the terrors
     for (let terrorToken of terrorTokens) {
-        // Check if updated token sees 
-        //console.log(terrorToken);
-        //console.log(token);
-        //console.log(canvas.visibility.testVisibility(terrorToken, {object: token}));
-        if (canvas.visibility.testVisibility(terrorToken, {object: token})){
+        if (terrorToken !== observer && canSeeToken(observer, terrorToken)){
             await SightChatMessage(token.actor);
             return;
         }
     }
 });
-

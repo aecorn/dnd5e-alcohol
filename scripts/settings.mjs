@@ -117,7 +117,6 @@ Hooks.once("init", () => {
     game.settings.registerMenu("dnd5e-alcohol", "resetThresholdFormulas", {
       name: "Reset Alcohol Threshold Formulas",
       label: "Reset",
-      hint: "Restore the threshold formulas to their defaults.",
       type: ThresholdFormulaResetForm,
       restricted: true,
     });
