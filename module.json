@@ -3,8 +3,8 @@
   "title": "Alcohol system for DnD 5e",
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": "12",
-    "verified": "13"
+    "minimum": "14",
+    "verified": "14"
   },
   "authors": [
     {
@@ -19,8 +19,8 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "4.2.0",
-          "verified": "5.0.3"
+          "minimum": "5.3.1",
+          "verified": "6.0.5"
         }
       }
     ],
